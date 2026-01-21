@@ -97,7 +97,7 @@ export default function HowItWorks({
       <div className="container mx-auto px-4">
         
         <div className="mx-auto mb-16 max-w-4xl text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl" style={{ fontFamily: 'var(--font-inter)' }}>
+          <h2 className="text-5xl font-medium tracking-tight text-foreground sm:text-5xl" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
             How it works
           </h2>
           <p className="mt-4 text-lg font-bold text-primary text-muted-foreground" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
