@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Inter } from "next/font/google";
+import { Inter, Caudex } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,23 +7,14 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const satoshi = localFont({
-  src: [
-    {
-      path: "../public/Fonts/WEB/fonts/Satoshi-Variable.woff2",
-      style: "normal",
-    },
-    {
-      path: "../public/Fonts/WEB/fonts/Satoshi-VariableItalic.woff2",
-      style: "italic",
-    },
-  ],
-  variable: "--font-satoshi",
+const caudex = Caudex({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-caudex",
 });
 
 export const metadata: Metadata = {
-  title: "Vulpes",
-  description: "Turn slow hours into full tables",
+  title: "Trivvi - Connecting Diners & Restaurants",
 };
 
 export default function RootLayout({
@@ -35,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${satoshi.variable} ${inter.variable} antialiased bg-white`}
+        className={`${inter.variable} ${caudex.variable} antialiased bg-white`}
       >
         {children}
       </body>

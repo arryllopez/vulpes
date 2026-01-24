@@ -23,7 +23,7 @@ html.has-scroll-smooth body {
   --popover: #ffffff;
   --popover-foreground: #171717;
   
-  --primary: #344e41;
+  --primary: #03045E;
   --primary-foreground: #ffffff;
   
   --secondary: #f4f4f5;
@@ -46,31 +46,48 @@ html.has-scroll-smooth body {
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: #344e41;
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --font-sans: var(--font-satoshi);
+  /* Surfaces */
+  --color-background: #003049;
+  --color-foreground: #eae2b7;
+
+  --color-card: #eae2b7;
+  --color-card-foreground: #003049;
+
+  --color-popover: #eae2b7;
+  --color-popover-foreground: #003049;
+
+  /* Brand */
+  --color-primary: #003049;
+  --color-primary-foreground: #eae2b7;
+
+  --color-accent: #f77f00;
+  --color-accent-foreground: #003049;
+
+  /* Feedback */
+  --color-destructive: #d62828;
+  --color-destructive-foreground: #ffffff;
+
+  /* Subtle UI */
+  --color-muted: #00243a;
+  --color-muted-foreground: #cfc8a3;
+
+  --color-border: rgba(234, 226, 183, 0.3);
+  --color-input: rgba(234, 226, 183, 0.2);
+  --color-ring: #fcbf49;
+
+  /* Typography */
+  --font-sans: var(--font-inter);
 }
+
 
 html,
 body {
   background: #ffffff !important;
   color: #171717;
-  font-family: var(--font-satoshi), sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Sky gradient background */
+.bg-clouds {
+  background: linear-gradient(180deg, #90E0EF 0%, #ADE8F4 35%, #CAF0F8 60%, #ffffff 100%);
 }
