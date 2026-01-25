@@ -8,7 +8,8 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import LottieAnimation from "@/components/LottieAnimation";
 import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
 import { FadeText } from "@/components/ui/fade-text";
-import { TextEffect } from "@/components/ui/text-effect"
+import { TextEffect } from "@/components/ui/text-effect";
+import IphoneFrame  from "@/components/ui/IphoneFrame";
 
 export default function ForDiners() {
   const [email, setEmail] = useState("");
@@ -110,10 +111,10 @@ export default function ForDiners() {
                 as="p"
                 preset="blur"
                 delay={1.6}
-                className="text-xl md:text-2xl text-black whitespace-nowrap"
+                className="text-xl md:text-2xl text-black text-center"
               >
                 {`Trivvi uses real-time alerts to help restaurants fill empty tables.
-            Diners find great deals nearby.`}
+Diners find great deals nearby.`}
               </TextEffect>
 
             </div>
@@ -136,7 +137,7 @@ export default function ForDiners() {
               </TextEffect>
             </section>
             <BentoGrid className="lg:grid-rows-3">
-              
+
               {features.map((feature) => (
                 <BentoCard key={feature.name} {...feature} />
               ))}
@@ -193,15 +194,8 @@ export default function ForDiners() {
               </p>
             </div>
 
-            <div className="shrink-0 flex justify-end">
-              <video
-                src="/phoneMockup/iNotifications-Stack.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-64 h-[28rem] md:w-80 md:h-[36rem] rounded-3xl object-cover"
-              />
+            <div className="min-h-screen flex items-center justify-center p-8">
+              <IphoneFrame />
             </div>
           </div>
         </section>
