@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface Cloud {
@@ -12,23 +11,23 @@ interface Cloud {
   duration: number;
 }
 
-export function AnimatedClouds({ cloudCount = 20 }: { cloudCount?: number }) {
-  const [clouds, setClouds] = useState<Cloud[]>([]);
+function generateClouds(count: number): Cloud[] {
+  const clouds: Cloud[] = [];
+  for (let i = 0; i < count; i++) {
+    clouds.push({
+      id: i,
+      size: Math.random() * 300 + 200,
+      left: Math.random() * 120 - 10,
+      top: Math.random() * 15 - 5,
+      delay: Math.random() * -30,
+      duration: Math.random() * 40 + 50,
+    });
+  }
+  return clouds;
+}
 
-  useEffect(() => {
-    const generatedClouds: Cloud[] = [];
-    for (let i = 0; i < cloudCount; i++) {
-      generatedClouds.push({
-        id: i,
-        size: Math.random() * 300 + 200,
-        left: Math.random() * 120 - 10,
-        top: Math.random() * 15 - 5,
-        delay: Math.random() * -30,
-        duration: Math.random() * 40 + 50,
-      });
-    }
-    setClouds(generatedClouds);
-  }, [cloudCount]);
+function AnimatedCloudsInner({ cloudCount = 20 }: { cloudCount?: number }) {
+  const clouds = generateClouds(cloudCount);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -56,3 +55,5 @@ export function AnimatedClouds({ cloudCount = 20 }: { cloudCount?: number }) {
     </div>
   );
 }
+
+export { AnimatedCloudsInner as AnimatedClouds };

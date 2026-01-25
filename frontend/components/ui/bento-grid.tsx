@@ -26,11 +26,13 @@ const BentoCard = ({
   className,
   background,
   description,
+  video,
 }: {
   name: string;
   className?: string;
   background?: ReactNode;
   description: string;
+  video?: string;
 }) => (
   <div
     key={name}
@@ -41,9 +43,20 @@ const BentoCard = ({
       className,
     )}
   >
-    <div>{background}</div>
+    {video && (
+      <div className="absolute top-0 left-0 right-0 h-1/2 flex items-center justify-center overflow-hidden">
+        <video
+          src={video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full object-contain"
+        />
+      </div>
+    )}
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-8">
-      <h3 className="text-2xl font-semibold text-neutral-700">
+      <h3 className="text-2xl font-semibold text-neutral-700 font-(family-name:--font-caudex)">
         {name}
       </h3>
       <p className="max-w-lg text-neutral-500">{description}</p>

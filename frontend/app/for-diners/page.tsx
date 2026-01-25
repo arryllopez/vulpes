@@ -7,6 +7,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import LottieAnimation from "@/components/LottieAnimation";
 import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
+import { FadeText } from "@/components/ui/fade-text";
+import { TextEffect } from "@/components/ui/text-effect"
 
 export default function ForDiners() {
   const [email, setEmail] = useState("");
@@ -27,8 +29,9 @@ export default function ForDiners() {
     },
     {
       name: "Get notified, not spammed",
-      description: "Only hear about deals from restaurants actually near you, right when they drop.",
+      description: "We only notify you when something good is happening nearby — no noise, no spam.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+      video: "/phoneMockup/Notification-[remix].mp4",
     },
     {
       name: "Discover your neighborhood",
@@ -42,7 +45,7 @@ export default function ForDiners() {
     },
     {
       name: "Explore nearby",
-      description: "Get notified when someone shares a file or mentions you in a comment.",
+      description: "See deals within walking distance, right when they become available — no searching required.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
     },
   ];
@@ -61,29 +64,79 @@ export default function ForDiners() {
           </Link>
         </header>
 
-       
-        
+
+
 
         {/* Hero */}
         <section className="px-6 py-12 text-center">
           <div className="max-w-2xl mx-auto">
-            <h1 className="text-3xl md:text-6xl font-bold text-black mb-4 font-(family-name:--font-caudex)">
-              Great food.<br />Better prices.<br />Right nearby.
-            </h1>
-            <p className="text-lg md:text-xl text-black-600 max-w-lg mx-auto">
-              Vulpes sends you deals from local restaurants during their quiet hours.
-              You save money, they fill seats, your neighborhood wins.
-            </p>
+            <div className="flex flex-col items-center">
+              <FadeText
+                className="text-6xl font-bold text-black font-(family-name:--font-caudex)"
+                direction="right"
+                framerProps={{
+                  show: { transition: { delay: 0.4 } },
+                }}
+                text="Great Food."
+              />
+              <FadeText
+                className="text-6xl font-bold text-black font-(family-name:--font-caudex)"
+                direction="left"
+                framerProps={{
+                  show: { transition: { delay: 0.8 } },
+                }}
+                text="Better prices."
+              />
+              <FadeText
+                className="text-6xl font-bold text-black font-(family-name:--font-caudex)"
+                direction="right"
+                framerProps={{
+                  show: { transition: { delay: 1.2 } },
+                }}
+                text="Just next door."
+              />
+            </div>
+
+            <div className="py-10">
+              {/* <p className="text-lg md:text-xl text-black-600 mx-auto whitespace-nowrap">
+                Trivvi sends you deals from local restaurants during their quiet hours.
+                <br />
+                You save money, they fill seats.
+                <br />
+                Everybody wins.
+              </p> */}
+              <TextEffect
+                per="line"
+                as="p"
+                preset="blur"
+                delay={1.6}
+                className="text-xl md:text-2xl text-black whitespace-nowrap"
+              >
+                {`Trivvi uses real-time alerts to help restaurants fill empty tables.
+            Diners find great deals nearby.`}
+              </TextEffect>
+
+            </div>
+
           </div>
         </section>
 
         {/* Benefits */}
-        <section className="px-6 py-12">
+        <section className="px-6 py-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 font-(family-name:--font-caudex)">
-              Trivvi is Designed for Diners
-            </h2>
+            <section className="text-center py-10">
+              <TextEffect
+                per="line"
+                as="p"
+                preset="blur"
+                delay={2}
+                className="text-2xl  md:text-3xl text-black font-(family-name:--font-caudex) "
+              >
+                {`Trivvi is Designed for Diners`}
+              </TextEffect>
+            </section>
             <BentoGrid className="lg:grid-rows-3">
+              
               {features.map((feature) => (
                 <BentoCard key={feature.name} {...feature} />
               ))}
@@ -94,21 +147,28 @@ export default function ForDiners() {
         {/* How it works */}
         <section className="px-6 py-16">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-12">
-              How it works
+            <h2 className="text-4xl md:text-4xl font-bold mb-12 font-(family-name:--font-caudex)">
+              Setup in 3 easy steps
             </h2>
             <div className="flex flex-col md:flex-row gap-8 md:gap-4">
               {[
-                { step: "1", emoji: "📱", text: "Sign up & enable notifications" },
-                { step: "2", emoji: "🔔", text: "Get pinged when deals drop nearby" },
+                { step: "1", emoji: "📱", text: "Sign up & enable notifications", subtext: "" },
+                { step: "2", emoji: "🔔", text: "Get alerted when nearby deals drop ", subtext: "Only when it's worth your attention" },
                 { step: "3", emoji: "🍜", text: "Show up, eat up, save up" },
               ].map((item) => (
                 <div key={item.step} className="flex-1 flex flex-col items-center">
-                  <span className="text-4xl mb-3">{item.emoji}</span>
+                  <span className="text-4xl mb-3">
+                    {item.emoji}
+                  </span>
                   <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold mb-3">
                     {item.step}
                   </div>
-                  <p className="text-gray-700 font-medium">{item.text}</p>
+                  <p className="text-gray-700 ">
+                    {item.text}
+                  </p>
+                  <p className=" text-gray-500 font-(family-name:--font-caudex)">
+                    {item.subtext}
+                  </p>
                 </div>
               ))}
             </div>
@@ -147,7 +207,7 @@ export default function ForDiners() {
         </section>
 
         {/* Waitlist signup */}
-        <section className="px-6 py-16 bg-primary/5">
+        <section className="px-6 py-16">
           <div className="max-w-md mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
               Be first in line
@@ -185,7 +245,7 @@ export default function ForDiners() {
 
         {/* Footer */}
         <footer className="px-6 py-8 text-center text-gray-400 text-sm">
-          <p>Made with 🦊 by Vulpes</p>
+          <p></p>
         </footer>
       </main>
     </SmoothScroll>

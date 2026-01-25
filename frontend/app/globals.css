@@ -88,17 +88,17 @@ body {
 }
 
 /* Cloud Animation */
-@keyframes moveUp {
+@keyframes moveLeft {
   from {
-    transform: translateY(100vh);
+    transform: translateX(-100vw);
   }
   to {
-    transform: translateY(-150vh);
+    transform: translateX(100vw);
   }
 }
 
 .cloud {
-  animation: moveUp 50s linear infinite;
+  animation: moveLeft 60s linear infinite;
 }
 
 /* Glass Button Styles */
