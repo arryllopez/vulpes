@@ -10,7 +10,8 @@ import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
 import NotificationsAnimation from "@/public/animationsLottie/notifications.json";
 import PizzaAnimation from "@/public/animationsLottie/pizza ingrediants.json";
 import WalletAnimation from "@/public/animationsLottie/Wallet Animation.json";
-import NavigationAnimation from "@/public/animationsLottie/Nnavigation (1).json"
+import FoodCarousel from "@/public/animationsLottie/Food.json";
+import Navigation from "@/public/animationsLottie/map navigation.json";
 import { FadeText } from "@/components/ui/fade-text";
 import { TextEffect } from "@/components/ui/text-effect";
 import IphoneFrame from "@/components/ui/IphoneFrame";
@@ -44,16 +45,18 @@ export default function ForDiners() {
       name: "On-demand navigation",
       description: "Follow the in-app map for directions and get to the deal with ease.",
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-      background: (
-        <>
-          <div
-            className="absolute inset-0 bg-center"
-            style={{ backgroundImage: "url('/imageAssets/mapbox.png')", backgroundSize: "190%" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/90 backdrop-blur-[0px]" />
-          <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_100%)] backdrop-blur-sm" />
-        </>
-      ),
+      lottieAnimation: Navigation,
+      animationClassName: "!inset-0 !h-full scale-150"
+      // background: (
+      //   <>
+      //     <div
+      //       className="absolute inset-0 bg-center"
+      //       style={{ backgroundImage: "url('/imageAssets/mapbox.png')", backgroundSize: "190%" }}
+      //     />
+      //     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/90 backdrop-blur-[0px]" />
+      //     <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_100%)] backdrop-blur-sm" />
+      //   </>
+      // ),
     },
     {
       name: "Support great food",
@@ -65,14 +68,27 @@ export default function ForDiners() {
       name: "Your deals, your way",
       description: "See the deals you want, right when they're available. Skip the hassle of searching.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+      lottieAnimation : FoodCarousel,
     },
   ];
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-white relative overflow-hidden">
+        {/* City Skyline Background */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-70 pointer-events-none z-0 opacity-20 blur-[1px]"
+          style={{
+            backgroundImage: "url('/imageAssets/citySkyline.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center bottom",
+            maskImage: "linear-gradient(to top, black 0%, black 60%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to top, black 0%, black 60%, transparent 100%)",
+          }}
+        />
+
         {/* Header */}
-        <header className="p-6">
+        <header className="p-6 relative z-10">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"

@@ -75,7 +75,7 @@ const BentoCard = ({
       )}>
         <LottieAnimation
           animationData={lottieAnimation}
-          className="h-full w-auto"
+          className="h-full w-full"
         />
       </div>
     )}
