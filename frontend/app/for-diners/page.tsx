@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
 import SmoothScroll from "@/components/SmoothScroll";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import LottieAnimation from "@/components/LottieAnimation";
@@ -96,7 +97,7 @@ export default function ForDiners() {
 
         {/* Hero */}
         <section className="px-6 py-12 text-center relative z-10">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <div className="flex flex-col items-center">
               <FadeText
                 className="text-6xl font-bold text-black font-(family-name:--font-caudex)"
@@ -137,7 +138,7 @@ export default function ForDiners() {
                 as="p"
                 preset="blur"
                 delay={1.6}
-                className="text-xl md:text-2xl text-black text-center mx-auto"
+                className="text-xl md:text-2xl text-black text-center mx-auto whitespace-nowrap"
               >
                 {`Trivvi uses real-time alerts to help restaurants fill empty tables.
 Diners find great deals nearby.`}
@@ -174,70 +175,109 @@ Diners find great deals nearby.`}
         {/* How it works */}
         <section className="px-6 py-16 relative z-10">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl md:text-4xl font-bold mb-16 text-center font-(family-name:--font-caudex)">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-4xl md:text-4xl font-bold mb-16 text-center font-(family-name:--font-caudex)"
+            >
               Trivvi in 3 easy steps
-            </h2>
+            </motion.h2>
             <div className="flex flex-col gap-24">
               {/* Step 1 */}
               <div className="flex flex-col md:flex-row items-center gap-12">
-                <div className="shrink-0">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="shrink-0"
+                >
                   <IphoneStep1 />
-                </div>
-                <div className="flex-1 flex flex-col justify-center items-center text-center">
-                  
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  className="flex-1 flex flex-col justify-center items-center text-center"
+                >
                   <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 font-(family-name:--font-caudex)">
                     1
                   </div>
-                  <p className="text-2xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
+                  <p className="text-3xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
                     Create your Trivvi account
                   </p>
-                  <p className="text-lg text-gray-500 font-(family-name:--font-caudex)">
+                  <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
                     Create your account in seconds. It&apos;s fast, secure, and sets you up to start discovering your favorite food deals right away.
                   </p>
-                </div>
+                </motion.div>
               </div>
 
               {/* Step 2 */}
               <div className="flex flex-col md:flex-row-reverse items-center gap-12">
-                <div className="shrink-0">
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="shrink-0"
+                >
                   <IphoneStep2 />
-                </div>
-                <div className="flex-1 flex flex-col justify-center items-center text-center">
-                  
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  className="flex-1 flex flex-col justify-center items-center text-center"
+                >
                   <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 font-(family-name:--font-caudex)">
                     2
                   </div>
-                  <p className="text-2xl font-semibold text-black 700 mb-2 font-(family-name:--font-caudex)">
+                  <p className="text-3xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
                     Pick your favourites
                   </p>
-                  <p className="text-lg text-black-500 font-(family-name:--font-caudex)">
-                    Choose the foods you love and how far you want to go. 
+                  <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
+                    Choose the foods you love and how far you want to go.
                   </p>
-                  <p className="text-lg text-gray-500 font-(family-name:--font-caudex)">
-                   Trivvi only notifies you about the foods you love 
-                   <br/> 
+                  <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
+                   Trivvi only notifies you about the foods you love
+                   <br/>
                    within the distance you choose.
                   </p>
-                </div>
+                </motion.div>
               </div>
 
               {/* Step 3 */}
               <div className="flex flex-col md:flex-row items-center gap-12">
-                <div className="shrink-0">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="shrink-0"
+                >
                   <IphoneStep3 />
-                </div>
-                <div className="flex-1 flex flex-col justify-center items-center text-center">
-                  
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  className="flex-1 flex flex-col justify-center items-center text-center"
+                >
                   <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 font-(family-name:--font-caudex)">
                     3
                   </div>
-                  <p className="text-2xl font-semibold text-gray-700 mb-2 font-(family-name:--font-caudex)">
+                  <p className="text-3xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
                     Stay in the loop
                   </p>
-                  <p className="text-lg text-gray-500 font-(family-name:--font-caudex)">
+                  <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
                     Personalized real-time alerts, right when they matter.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -245,25 +285,43 @@ Diners find great deals nearby.`}
 
         <section className="min-h-screen flex items-center justify-center px-6 py-24 bg-white relative z-10">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-            <div className="shrink-0 flex justify-start">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="shrink-0 flex justify-start"
+            >
               <LottieAnimation
                 animationData={ParrotAnimation}
                 className="w-64 h-64 md:w-80 md:h-80"
               />
-            </div>
+            </motion.div>
 
-            <div className="flex-1 text-center px-4">
+            <motion.div
+              initial={{ opacity: 0, y: -40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="flex-1 text-center px-4"
+            >
               <h2 className="text-4xl md:text-6xl font-bold text-[#03045E] mb-6 font-(family-name:--font-caudex)">
                 Meet Chirp
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 font-(family-name:--font-inter) max-w-lg mx-auto">
                 Your friendly guide to the best local deals. Chirp helps you discover amazing food at amazing prices, right in your neighborhood.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="shrink-0 flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="shrink-0 flex items-center justify-center"
+            >
               <IphoneStep3 />
-            </div>
+            </motion.div>
           </div>
         </section>
 
