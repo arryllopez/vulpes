@@ -63,7 +63,7 @@ export default function ForDiners() {
       name: "Your deals, your way",
       description: "See the deals you want, right when they're available. Skip the hassle of searching.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
-      lottieAnimation : FoodCarousel,
+      lottieAnimation: FoodCarousel,
     },
   ];
 
@@ -244,9 +244,9 @@ Diners find great deals nearby.`}
                     Choose the foods you love and how far you want to go.
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                   Trivvi only notifies you about the foods you love
-                   <br/>
-                   within the distance you choose.
+                    Trivvi only notifies you about the foods you love
+                    <br />
+                    within the distance you choose.
                   </p>
                 </motion.div>
               </div>
@@ -338,12 +338,13 @@ Diners find great deals nearby.`}
               className="text-center mb-12"
             >
               <h3 className="text-3xl md:text-4xl font-bold text-[#03045E] mb-4 font-(family-name:--font-caudex)">
-                Your deals, on the map
+                Your foods.
+                Your map.
               </h3>
               <p className="text-lg md:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed max-w-4xl mx-auto whitespace-nowrap">
                 Our real-time interactive map shows all your favourite foods nearby.
-                <br/>Set your location or let Trivvi follow you.
-                <br/>
+                <br />Set your location or let Trivvi follow you.
+                <br />
                 Deals update as you move,
                 so you never miss a bite.
               </p>
@@ -355,9 +356,10 @@ Diners find great deals nearby.`}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
+                whileHover={{ scale: 1.015, y: -4 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                className="w-full max-w-[550px]"
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="w-full max-w-[550px] cursor-pointer"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
                   <img
@@ -372,9 +374,10 @@ Diners find great deals nearby.`}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
+                whileHover={{ scale: 1.015, y: -4 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-                className="w-full max-w-[550px]"
+                transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+                className="w-full max-w-[550px] cursor-pointer"
               >
                 <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden aspect-[4/3] flex flex-col">
                   {/* Restaurant Image */}
@@ -400,7 +403,7 @@ Diners find great deals nearby.`}
                       Mario&apos;s Pizzeria
                     </h4>
                     <p className="text-gray-600 text-sm mb-3 font-(family-name:--font-caudex)">
-                      20% off Large Handcrafted Pepperoni Pizza. 
+                      20% off Large Handcrafted Pepperoni Pizza.
                     </p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1">
