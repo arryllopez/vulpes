@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import LottieAnimation from "@/components/LottieAnimation";
 
 import { cn } from "@/lib/utils";
 
@@ -34,17 +33,12 @@ const BentoCard = ({
   background,
   description,
   video,
-  lottieAnimation,
-  animationClassName,
 }: {
   name: string;
   className?: string;
   background?: ReactNode;
   description: string;
   video?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  lottieAnimation?: any;
-  animationClassName?: string;
 }) => (
   <div
     key={name}
@@ -68,18 +62,7 @@ const BentoCard = ({
         />
       </div>
     )}
-    {lottieAnimation && (
-      <div className={cn(
-        "absolute top-0 left-0 right-0 h-1/2 flex items-center justify-center overflow-hidden",
-        animationClassName
-      )}>
-        <LottieAnimation
-          animationData={lottieAnimation}
-          className="h-full w-full"
-        />
-      </div>
-    )}
-    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-8">
+    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-8 text-center items-center">
       <h3 className="text-2xl font-semibold text-neutral-700 font-(family-name:--font-caudex)">
         {name}
       </h3>

@@ -2,10 +2,9 @@ import Image from "next/image";
 
 interface NotificationProps {
   isVisible: boolean;
-  onDismiss: () => void;
 }
 
-const Notification = ({ isVisible, onDismiss }: NotificationProps) => {
+const Notification = ({ isVisible }: NotificationProps) => {
   return (
     <div
       className={`absolute bottom-16 left-3 right-3 z-30 transition-all duration-500 ease-out ${
@@ -15,7 +14,6 @@ const Notification = ({ isVisible, onDismiss }: NotificationProps) => {
       }`}
     >
       <div
-        onClick={onDismiss}
         className="backdrop-blur-xl bg-white/20 rounded-2xl py-2 px-3 shadow-lg border border-white/10 cursor-pointer hover:bg-white/25 transition-colors"
       >
         <div className="flex items-center gap-2.5">

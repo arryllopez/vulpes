@@ -8,11 +8,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import LottieAnimation from "@/components/LottieAnimation";
 import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
-import NotificationsAnimation from "@/public/animationsLottie/notifications.json";
-import PizzaAnimation from "@/public/animationsLottie/pizza ingrediants.json";
-import WalletAnimation from "@/public/animationsLottie/Wallet Animation.json";
-import FoodCarousel from "@/public/animationsLottie/Food.json";
-import Navigation from "@/public/animationsLottie/map navigation.json";
+
 import { FadeText } from "@/components/ui/fade-text";
 import { TextEffect } from "@/components/ui/text-effect";
 import IphoneStep1 from "@/components/ui/IphoneStep1";
@@ -27,20 +23,35 @@ export default function ForDiners() {
       name: "Real savings, no catch",
       description: "Exclusive discounts. Same great food, smaller bill.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
-      lottieAnimation: WalletAnimation,
     },
     {
       name: "Get notified, not spammed",
       description: "We only notify you when something good is happening nearby — no noise, no spam.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
-      lottieAnimation: NotificationsAnimation,
-      animationClassName: "pt-8",
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 30%, #ffffff 70%)"
+          }}
+        >
+          <motion.div
+            className="absolute -top-72 left-1/2 -translate-x-1/2 scale-[0.9] origin-top"
+            initial={{ y: -50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 2.7 }}
+          >
+            <IphoneStep3 />
+          </motion.div>
+        </div>
+      ),
     },
     {
       name: "On-demand navigation",
       description: "Follow the in-app map for directions and get to the deal with ease.",
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-      lottieAnimation: Navigation,
+
       animationClassName: "!inset-0 !h-full scale-150"
       // background: (
       //   <>
@@ -57,13 +68,13 @@ export default function ForDiners() {
       name: "Support great food",
       description: "Enjoy deals that help restaurants thrive — and treat yourself.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-      lottieAnimation: PizzaAnimation,
+     
     },
     {
       name: "Your deals, your way",
       description: "See the deals you want, right when they're available. Skip the hassle of searching.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
-      lottieAnimation : FoodCarousel,
+  
     },
   ];
 

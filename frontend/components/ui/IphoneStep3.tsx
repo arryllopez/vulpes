@@ -49,7 +49,6 @@ const IPhoneStep3 = () => {
       {/* Notification */}
       <Notification
         isVisible={showNotification}
-        onDismiss={() => setShowNotification(false)}
       />
     </IPhoneFrame>
   );
