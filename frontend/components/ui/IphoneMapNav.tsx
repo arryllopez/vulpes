@@ -9,7 +9,7 @@ const IPhoneMapNav = () => {
       <img
         src="/imageAssets/InAppNavigationMockup.png"
         alt="In-App Navigation"
-        className="absolute inset-0 w-full h-full object-cover object-[100%_center] rounded-[42px]"
+        className="absolute inset-0 w-full h-full object-cover object-[100%_center] rounded-[42px] blur-[2px]"
       />
       {/* Directions Overlay  */}
       <div> 

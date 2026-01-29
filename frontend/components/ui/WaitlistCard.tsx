@@ -124,10 +124,13 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
               {/* Right side - Map */}
               <div className="flex-1">
                 <p className="text-sm text-black-600 mb-2 font-bold font-(family-name:--font-caudex)">
-                  Bring Trivvi to your city!
+                  Where would Trivvi be most useful for you?
                 </p>
                 <p className = "text-sm text-gray-600 mb-4 font-medium font-(family-name:--font-caudex)">
-                  Tap the map to help Trivvi launch where demand is strongest
+                  Think busy streets, packed food spots, late nights, and spontaneous plans.
+                </p>
+                <p className = "text-sm text-gray-600 mb-4 font-medium font-(family-name:--font-caudex)">
+                  Drop a pin where you&apos;d actually use Trivvi.
                 </p>
                 <LocationPicker onLocationSelect={handleLocationSelect} />
               </div>

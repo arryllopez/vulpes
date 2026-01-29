@@ -8,7 +8,6 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import LottieAnimation from "@/components/LottieAnimation";
 import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
-
 import { FadeText } from "@/components/ui/fade-text";
 import { TextEffect } from "@/components/ui/text-effect";
 import IphoneStep1 from "@/components/ui/IphoneStep1";
@@ -16,6 +15,9 @@ import IphoneStep2 from "@/components/ui/IphoneStep2";
 import IphoneStep3 from "@/components/ui/IphoneStep3";
 import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
 import IPhoneMapNav from "@/components/ui/IphoneMapNav";
+import BullseyeTestimonial  from "@/components/ui/bullseyeTestimonial";
+import LawrencesTestimonial from "@/components/ui/lawrencesTestimonial";
+import FoodChecklist from "@/components/ui/FoodChecklist";
 import { GradientBackground } from "@/components/ui/gradient-backgrounds";
 import WaitlistCard from "@/components/ui/WaitlistCard";
 
@@ -37,7 +39,7 @@ export default function ForDiners() {
             initial={{ y: -50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 2.7 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 2.7}}
           >
             <IphoneStep3 />
           </motion.div>
@@ -168,6 +170,9 @@ export default function ForDiners() {
         <section className="flex justify-center gap-8 py-8 relative z-10">
           <IPhoneDealRedeem />
           <IPhoneMapNav />
+          <BullseyeTestimonial />
+          <LawrencesTestimonial />
+          <FoodChecklist />
         </section>
 
         {/* Hero */}
