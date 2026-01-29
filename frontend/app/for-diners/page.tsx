@@ -96,30 +96,40 @@ export default function ForDiners() {
       name: "On-demand navigation",
       description: "Follow the in-app map for directions and get to the deal with ease.",
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
-
-      animationClassName: "!inset-0 !h-full scale-150"
-      // background: (
-      //   <>
-      //     <div
-      //       className="absolute inset-0 bg-center"
-      //       style={{ backgroundImage: "url('/imageAssets/mapbox.png')", backgroundSize: "190%" }}
-      //     />
-      //     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-white/90 backdrop-blur-[0px]" />
-      //     <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_100%)] backdrop-blur-sm" />
-      //   </>
-      // ),
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 50%, #ffffff 85%)"
+          }}
+        />
+      ),
     },
     {
       name: "Support great food",
       description: "Enjoy deals that help restaurants thrive — and treat yourself.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
-     
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 20%, #ffffff 60%)"
+          }}
+        />
+      ),
     },
     {
       name: "Your deals, your way",
       description: "See the deals you want, right when they're available. Skip the hassle of searching.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
-  
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 40%, #ffffff 80%)"
+          }}
+        />
+      ),
     },
   ];
 
