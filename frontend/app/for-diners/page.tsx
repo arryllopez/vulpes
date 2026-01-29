@@ -14,6 +14,8 @@ import { TextEffect } from "@/components/ui/text-effect";
 import IphoneStep1 from "@/components/ui/IphoneStep1";
 import IphoneStep2 from "@/components/ui/IphoneStep2";
 import IphoneStep3 from "@/components/ui/IphoneStep3";
+import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
+import IPhoneMapNav from "@/components/ui/IphoneMapNav";
 import { GradientBackground } from "@/components/ui/gradient-backgrounds";
 import WaitlistCard from "@/components/ui/WaitlistCard";
 
@@ -94,7 +96,7 @@ export default function ForDiners() {
     },
     {
       name: "On-demand navigation",
-      description: "Follow the in-app map for directions and get to the deal with ease.",
+      description: "Trivvi provides an in-app map to guide you to your next meal.",
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
       background: (
         <div
@@ -106,8 +108,8 @@ export default function ForDiners() {
       ),
     },
     {
-      name: "Support great food",
-      description: "Enjoy deals that help restaurants thrive — and treat yourself.",
+      name: "Discover great food",
+      description: "Hidden gems and local favorites you never knew existed.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
       background: (
         <div
@@ -119,8 +121,8 @@ export default function ForDiners() {
       ),
     },
     {
-      name: "Your deals, your way",
-      description: "See the deals you want, right when they're available. Skip the hassle of searching.",
+      name: "Pick the foods you love",
+      description: "Trivvi tailors alerts based on your favorite cuisines and dishes.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
       background: (
         <div
@@ -161,6 +163,12 @@ export default function ForDiners() {
             Back
           </Link>
         </header>
+
+        {/* Deal Redeem Preview */}
+        <section className="flex justify-center gap-8 py-8 relative z-10">
+          <IPhoneDealRedeem />
+          <IPhoneMapNav />
+        </section>
 
         {/* Hero */}
         <section className="px-6 py-12 text-center relative z-10">
