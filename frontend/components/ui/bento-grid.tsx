@@ -62,11 +62,11 @@ const BentoCard = ({
         />
       </div>
     )}
-    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-2 p-8 text-center items-center">
-      <h3 className="text-2xl font-semibold text-neutral-700 font-(family-name:--font-caudex)">
+    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 md:gap-2 p-4 md:p-8 text-center items-center">
+      <h3 className="text-lg md:text-2xl font-semibold text-neutral-700 font-(family-name:--font-caudex)">
         {name}
       </h3>
-      <p className="max-w-lg text-neutral-500">{description}</p>
+      <p className="max-w-lg text-sm md:text-base text-neutral-500">{description}</p>
     </div>
     <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03]" />
   </div>
