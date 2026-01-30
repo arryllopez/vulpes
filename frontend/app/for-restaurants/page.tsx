@@ -12,7 +12,8 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { FaqSections } from "@/components/ui/faq-sections";
 import { Footer } from "@/components/ui/footer";
 import { Navbar } from "@/components/ui/navbar";
-import { Mail, Bell, TrendingUp, MapPin } from "lucide-react";
+import { Mail, Bell } from "lucide-react";
+import IPhoneDashboard from "@/components/ui/IPhoneDashboard";
 import { useState } from "react";
 
 export default function ForRestaurants() {
@@ -38,28 +39,29 @@ export default function ForRestaurants() {
             background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 30%, #ffffff 70%)"
           }}
         >
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-[200px] scale-[0.85] md:scale-100">
-              <div className="text-xs text-gray-500 mb-2">Table Occupancy</div>
-              <div className="grid grid-cols-4 gap-2 mb-3">
+          <div className="absolute inset-0 flex items-center justify-end p-4 -mt-12 pr-0">
+            <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-[340px] scale-[0.85] md:scale-[1.2] translate-x-1 -translate-y-7">
+              <div className="text-base font-semibold text-gray-800 mb-5 font-(family-name:--font-caudex)">Table Occupancy</div>
+              <div className="grid grid-cols-4 gap-4 mb-5 font-(family-name:--font-caudex)">
                 {[1,2,3,4,5,6,7,8].map((i) => (
-                  <div key={i} className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-medium ${i <= 5 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'}`}>
+                  <div key={i} className={`w-14 h-14 rounded-xl flex items-center justify-center text-base font-semibold ${[2,3,5].includes(i) ? 'bg-[#abc4ff]/20 text-[#abc4ff]' : i <= 5 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'}`}>
                     {i}
                   </div>
                 ))}
               </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-gray-600">5/8 tables filled</span>
-                <span className="text-green-600 font-semibold">+3 from Trivvi</span>
+              <div className="flex items-center justify-between text-sm font-(family-name:--font-caudex)">
+                <span className="text-gray-600 font-(family-name:--font-caudex)">5/8 tables filled</span>
+                <span className="text-[#abc4ff] font-semibold">+3 from Trivvi</span>
               </div>
             </div>
           </div>
+          <div className="absolute bottom-0 left-0 right-0 h-30 bg-gradient-to-t from-white from-80% to-transparent pointer-events-none md:hidden" />
         </div>
       ),
     },
     {
-      name: "Zero upfront costs",
-      description: "No subscriptions. No setup fees. Only pay when it works.",
+      name: "Simple pricing.",
+      description: "$15/month per restaurant. First 30 days free. Cancel anytime — no hidden fees.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4 min-h-[200px]",
       background: (
         <div
@@ -79,17 +81,17 @@ export default function ForRestaurants() {
               <div className="text-[8px] md:text-[10px] text-gray-500 mb-2">Pricing</div>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Monthly Fee</span>
-                  <span className="text-green-600 font-semibold">$0</span>
-                </div>
+                  <span className="text-black font-bold font-(family-name:--font-caudex)">Monthly Fee</span>
+                  <span className="text-black font-bold font-(family-name:--font-caudex)">$15</span>
+                </div>  
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Setup Cost</span>
-                  <span className="text-green-600 font-semibold">$0</span>
+                  <span className="text-gray-600 font-bold font-(family-name:--font-caudex)">Free Trial</span>
+                  <span className="text-green-600 font-bold font-(family-name:--font-caudex)">-$15</span>
                 </div>
                 <div className="border-t border-gray-100 pt-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-800 font-medium">Per redemption</span>
-                    <span className="text-[#abc4ff] font-bold">Small fee</span>
+                    <span className="text-black font-bold font-(family-name:--font-caudex)">Total Amount</span>
+                    <span className="text-black font-bold font-(family-name:--font-caudex)">$0</span>
                   </div>
                 </div>
               </div>
@@ -100,7 +102,7 @@ export default function ForRestaurants() {
     },
     {
       name: "Track your performance",
-      description: "Real-time analytics show exactly how your deals are performing.",
+      description: "Real-time analytics show exactly how your alerts are performing.",
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
       background: (
         <div
@@ -109,38 +111,9 @@ export default function ForRestaurants() {
             background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 50%, #ffffff 85%)"
           }}
         >
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-xl p-4 w-full max-w-[280px] scale-[0.8] md:scale-[0.9]">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-sm font-semibold text-gray-800">Dashboard</span>
-                <span className="text-xs text-gray-500">Today</span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 mb-4">
-                <div className="bg-green-50 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-green-600">47</div>
-                  <div className="text-xs text-gray-600">Redemptions</div>
-                </div>
-                <div className="bg-blue-50 rounded-xl p-3">
-                  <div className="text-2xl font-bold text-blue-600">$892</div>
-                  <div className="text-xs text-gray-600">Revenue</div>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-gray-600">Views</span>
-                  <span className="font-medium">1,247</span>
-                </div>
-                <div className="w-full bg-gray-100 rounded-full h-2">
-                  <div className="bg-[#abc4ff] h-2 rounded-full" style={{width: '75%'}}></div>
-                </div>
-              </div>
-
-              <div className="mt-4 flex items-center gap-2 text-xs text-green-600">
-                <TrendingUp className="w-4 h-4" />
-                <span>+23% vs last week</span>
-              </div>
+          <div className="absolute inset-0 flex items-center justify-center p-4 -mt-8">
+            <div className="scale-[0.50] md:scale-[0.85] origin-center translate-y-6 md:-translate-y-12">
+              <IPhoneDashboard />
             </div>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-32 md:h-20 bg-gradient-to-t from-white from-40% via-white/95 via-60% to-transparent pointer-events-none" />
@@ -155,32 +128,23 @@ export default function ForRestaurants() {
         <div
           className="absolute inset-0 overflow-hidden"
           style={{
-            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 20%, #ffffff 60%)"
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 30%, #ffffff 70%)"
           }}
         >
-          <div className="absolute inset-0 flex items-center justify-center p-4 -mt-8">
-            <div className="relative">
-              <div className="w-32 h-32 rounded-full border-2 border-dashed border-[#abc4ff]/50 flex items-center justify-center">
-                <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#abc4ff]/70 flex items-center justify-center">
-                  <div className="w-10 h-10 rounded-full bg-[#abc4ff] flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-              </div>
-              {/* Dots representing nearby users */}
-              <div className="absolute top-2 right-4 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <div className="absolute bottom-8 left-0 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <div className="absolute top-12 left-2 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-              <div className="absolute bottom-4 right-8 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            </div>
+          <div className="absolute inset-0 flex items-center justify-center -translate-y-8">
+            <img
+              src="/imageAssets/peopleWalking.svg"
+              alt="People walking"
+              className="w-full h-auto object-cover"
+            />
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-40 md:h-32 bg-gradient-to-t from-white from-40% via-white/95 via-81% to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-45 bg-gradient-to-t from-white from-70% to-transparent pointer-events-none" />
         </div>
       ),
     },
     {
       name: "You stay in control",
-      description: "Set your own deals, choose your hours, adjust anytime.",
+      description: "Set your own deals, your own alerts, at your own schedule.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
       background: (
         <div
@@ -189,38 +153,106 @@ export default function ForRestaurants() {
             background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 40%, #ffffff 80%)"
           }}
         >
-          <div className="absolute inset-0 flex items-center justify-center p-4 -mt-8">
-            <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-[220px] scale-[0.85] md:scale-[0.95]">
-              <div className="text-xs font-semibold text-gray-800 mb-3">Create Deal</div>
-
-              <div className="space-y-3">
-                <div>
-                  <label className="text-[10px] text-gray-500">Discount</label>
-                  <div className="flex gap-2 mt-1">
-                    {['10%', '15%', '20%', '25%'].map((d) => (
-                      <button key={d} className={`text-[10px] px-2 py-1 rounded-lg ${d === '20%' ? 'bg-[#abc4ff] text-white' : 'bg-gray-100 text-gray-600'}`}>
-                        {d}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-[10px] text-gray-500">Active Hours</label>
-                  <div className="flex items-center gap-2 mt-1 text-xs">
-                    <span className="bg-gray-100 px-2 py-1 rounded">2:00 PM</span>
-                    <span className="text-gray-400">to</span>
-                    <span className="bg-gray-100 px-2 py-1 rounded">5:00 PM</span>
-                  </div>
-                </div>
-
-                <button className="w-full bg-[#abc4ff] text-white text-xs py-2 rounded-lg font-medium">
-                  Publish Deal
-                </button>
+          <div className="absolute inset-0">
+            {/* Trivvi Exclusive Card - top left */}
+            <div className="absolute top-4 left-2 md:top-6 md:left-4 w-[145px] md:w-[165px] bg-white rounded-xl shadow-lg p-2.5 rotate-[-3deg]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="bg-[#abc4ff]/20 text-[#abc4ff] text-[7px] md:text-[8px] font-semibold px-1.5 py-0.5 rounded font-(family-name:--font-caudex)">Trivvi Exclusive</span>
               </div>
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Item</div>
+              <input
+                type="text"
+                placeholder="Any large pizza"
+                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
+                readOnly
+              />
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Discount</div>
+              <div className="flex gap-1 mb-1">
+                {['10%', '20%', '25%'].map((d) => (
+                  <button key={d} className={`text-[7px] md:text-[8px] px-1.5 py-0.5 rounded-md font-(family-name:--font-caudex) ${d === '20%' ? 'bg-[#abc4ff] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    {d}
+                  </button>
+                ))}
+              </div>
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Duration</div>
+              <div className="flex gap-1 mb-1.5">
+                {['2hr', '4hr', 'All day'].map((t, i) => (
+                  <button key={t} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 1 ? 'bg-[#abc4ff] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <button className="w-full bg-[#abc4ff] text-white text-[8px] py-1 rounded-lg font-medium font-(family-name:--font-caudex)">
+                Publish
+              </button>
+            </div>
+
+            {/* House Special Card - middle right */}
+            <div className="absolute top-32 right-1 md:top-40 md:right-2 w-[140px] md:w-[160px] bg-white rounded-xl shadow-lg p-2.5 rotate-[4deg]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="bg-[#4f772d]/20 text-[#4f772d] text-[7px] md:text-[8px] font-semibold px-1.5 py-0.5 rounded font-(family-name:--font-caudex)">House Special</span>
+              </div>
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Dish Name</div>
+              <input
+                type="text"
+                placeholder="Chef's pasta"
+                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
+                readOnly
+              />
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Description</div>
+              <input
+                type="text"
+                placeholder="Creamy alfredo..."
+                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
+                readOnly
+              />
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Price</div>
+              <div className="flex gap-1 mb-1.5">
+                {['$9.99', '$14.99', '$19.99'].map((item, i) => (
+                  <button key={item} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 1 ? 'bg-[#4f772d] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    {item}
+                  </button>
+                ))}
+              </div>
+              <button className="w-full bg-[#4f772d] text-white text-[8px] py-1 rounded-lg font-medium font-(family-name:--font-caudex)">
+                Publish
+              </button>
+            </div>
+
+            {/* Live Update Card - bottom left */}
+            <div className="absolute bottom-16 left-3 md:bottom-20 md:left-6 w-[135px] md:w-[155px] bg-white rounded-xl shadow-lg p-2.5 rotate-[2deg]">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="bg-[#f6bd60]/20 text-[#f6bd60] text-[7px] md:text-[8px] font-semibold px-1.5 py-0.5 rounded font-(family-name:--font-caudex)">Live Update</span>
+              </div>
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Message</div>
+              <input
+                type="text"
+                placeholder="Happy hour now!"
+                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
+                readOnly
+              />
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Status</div>
+              <div className="flex gap-1 mb-1">
+                {['Open', 'Busy', 'Closing'].map((status, i) => (
+                  <button key={status} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 0 ? 'bg-[#f6bd60] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    {status}
+                  </button>
+                ))}
+              </div>
+              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Expires</div>
+              <div className="flex gap-1 mb-1.5">
+                {['1hr', '2hr', '4hr'].map((t, i) => (
+                  <button key={t} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 0 ? 'bg-[#f6bd60] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <button className="w-full bg-[#f6bd60] text-white text-[8px] py-1 rounded-lg font-medium font-(family-name:--font-caudex)">
+                Broadcast
+              </button>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-40 md:h-50 bg-gradient-to-t from-white from-50% via-white/95 via-75% to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-24 bg-gradient-to-t from-white from-50% via-white/95 via-75% to-transparent pointer-events-none" />
         </div>
       ),
     },

@@ -550,6 +550,14 @@ export default function ForDiners() {
                   answer: "Notifications are optional. You're always in control of what you receive and when.",
                 },
                 {
+                  question: "Is Trivvi safe with my location and personal info?",
+                  answer: "Yes! Trivvi only uses your location to show nearby food deals you've opted in for. We never share your personal information with restaurants or third parties without your permission. You can update your preferences or stop notifications anytime. Learn more in our Privacy Policy.",
+                },
+                {
+                  question: "Do I have to share my location?",
+                  answer: "Nope! You can manually set your location or let Trivvi follow you. Notifications only go out for foods you like within your chosen distance.",
+                },
+                {
                   question: "How do restaurants benefit from Trivvi?",
                   answer: "Trivvi helps restaurants fill empty tables, increase visibility, and attract nearby diners — without long-term discounts or third-party delivery fees.",
                 },
