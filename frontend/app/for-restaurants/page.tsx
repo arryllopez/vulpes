@@ -30,7 +30,7 @@ export default function ForRestaurants() {
   const features = [
     {
       name: "Fill empty seats instantly",
-      description: "Turn slow hours into busy ones — diners see your deals when they open the app nearby.",
+      description: "Turn slow hours into busy ones — diners see your alerts when they open the app nearby.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 min-h-[280px] md:min-h-[320px]",
       background: (
         <div
@@ -122,7 +122,7 @@ export default function ForRestaurants() {
     },
     {
       name: "Reach nearby diners",
-      description: "Connect with hungry customers within walking distance.",
+      description: "Connect with hungry customers near your restaurant's area",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
       background: (
         <div
@@ -373,23 +373,23 @@ export default function ForRestaurants() {
               {[
                 {
                   step: "1",
-                  title: "Set your slow hours",
-                  description: "Choose the times when you need more customers. Lunch lull? Late afternoon? You decide.",
+                  title: "Sign up for a Trivvi account",
+                  description: "Download the Trivvi app and sign up for a restaurant account, it's quick and easy.",
                 },
                 {
                   step: "2",
-                  title: "Create a deal",
-                  description: "Offer a discount, special, or promotion. Make it enticing enough to get people through the door.",
+                  title: "Fill in your restaurant's details",
+                  description: "Our simple onboarding process will guide you through adding important information about your restaurant.",
                 },
                 {
                   step: "3",
-                  title: "Diners see your deals nearby",
-                  description: "When diners open Trivvi in your general area, they'll see your posted deals — no background access needed.",
+                  title: "Access your personal dashboard",
+                  description: "Gain access to your dashboard where you can create and manage your special deals and alerts.",
                 },
                 {
                   step: "4",
-                  title: "Watch the seats fill up",
-                  description: "Customers arrive, you serve great food, everyone wins. View your results anytime in the dashboard.",
+                  title: "Send your first alert",
+                  description: "Entice your alerts with our custom forms and send them out to hungry customers nearby.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -540,7 +540,7 @@ export default function ForRestaurants() {
                       </svg>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 font-(family-name:--font-caudex)">
-                      Welcome to the pack!
+                      Welcome to Trivvi
                     </h3>
                     <p className="text-gray-600 font-(family-name:--font-caudex)">
                       We&apos;ll reach out soon to get you set up.
@@ -568,15 +568,15 @@ export default function ForRestaurants() {
               faqs={[
                 {
                   question: "How much does Trivvi cost?",
-                  answer: "Trivvi has no upfront costs, subscriptions, or setup fees. You only pay a small commission when a deal brings customers through your door.",
+                  answer: "Trivvi has a simple pricing model: a $15 monthly subscription fee with no hidden costs. You can post unlimited deals and alerts during your subscription period. Sign up for our waitlist to receive your first month completely free. Cancel anytime.",
                 },
                 {
                   question: "How do I create a deal?",
-                  answer: "Simply log into your Trivvi dashboard, set your slow hours, create an enticing offer, and publish. It takes less than 2 minutes.",
+                  answer: "Simply log into your Trivvi dashboard, pick what kind of alert you want to send, set the details and then hit send. Chirp will take care of the rest.",
                 },
                 {
                   question: "What kind of deals work best?",
-                  answer: "Percentage discounts (15-25% off) and special combo offers tend to perform well. The key is making it compelling enough to get people off the couch.",
+                  answer: "Percentage discounts and special combo offers tend to perform well. The key is making it compelling enough to get people off the couch.",
                 },
                 {
                   question: "How far do notifications reach?",
@@ -592,7 +592,7 @@ export default function ForRestaurants() {
                 },
                 {
                   question: "When will Trivvi be available in my area?",
-                  answer: "We're launching city by city. Join the waitlist and we'll prioritize areas with the most restaurant interest.",
+                  answer: "We're launching city by city. Join the waitlist and we'll prioritize areas with the most restaurant and user interest as we expand.",
                 },
                 {
                   question: "Do diners need the Trivvi app?",
