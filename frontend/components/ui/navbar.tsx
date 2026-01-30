@@ -2,7 +2,6 @@
 
 import React from "react"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,7 +10,7 @@ const menuItems = [
   { name: "For Diners", href: "/for-diners" },
   { name: "For Restaurants", href: "/for-restaurants" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "mailto:hello@trivvi.com" },
+  { name: "Contact", href: "mailto:contact@trivvi.io" },
 ]
 
 export function Navbar() {

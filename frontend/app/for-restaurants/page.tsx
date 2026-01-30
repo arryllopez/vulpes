@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, Clock, DollarSign, Users, Zap } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import SmoothScroll from "@/components/SmoothScroll";
 import LottieAnimation from "@/components/LottieAnimation";
 import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
+import { FadeText } from "@/components/ui/fade-text";
+import { TextEffect } from "@/components/ui/text-effect";
+import { GradientBackground } from "@/components/ui/gradient-backgrounds";
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
+import { FaqSections } from "@/components/ui/faq-sections";
+import { Footer } from "@/components/ui/footer";
+import { Navbar } from "@/components/ui/navbar";
+import { Mail, Bell, TrendingUp, MapPin } from "lucide-react";
+import { useState } from "react";
 
 export default function ForRestaurants() {
   const [email, setEmail] = useState("");
@@ -14,190 +22,587 @@ export default function ForRestaurants() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Connect to your backend/email service
     console.log("Restaurant signup:", { email, restaurantName });
     setSubmitted(true);
   };
 
-  const benefits = [
+  const features = [
     {
-      icon: <Clock className="w-8 h-8" />,
-      title: "Turn dead hours into revenue",
-      description: "Those slow 2-4pm hours? Fill them with customers who are happy to be there.",
+      name: "Fill empty seats instantly",
+      description: "Turn slow hours into busy ones with real-time alerts to nearby diners.",
+      className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 min-h-[280px] md:min-h-[320px]",
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 30%, #ffffff 70%)"
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-[200px] scale-[0.85] md:scale-100">
+              <div className="text-xs text-gray-500 mb-2">Table Occupancy</div>
+              <div className="grid grid-cols-4 gap-2 mb-3">
+                {[1,2,3,4,5,6,7,8].map((i) => (
+                  <div key={i} className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-medium ${i <= 5 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'}`}>
+                    {i}
+                  </div>
+                ))}
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-gray-600">5/8 tables filled</span>
+                <span className="text-green-600 font-semibold">+3 from Trivvi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
-      icon: <DollarSign className="w-8 h-8" />,
-      title: "No upfront costs",
-      description: "Only pay when it works. No subscriptions, no setup fees, no risk.",
+      name: "Zero upfront costs",
+      description: "No subscriptions. No setup fees. Only pay when it works.",
+      className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4 min-h-[200px]",
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 30%, #ffffff 70%)"
+          }}
+        >
+          <div
+            className="p-2 md:p-3 scale-[0.9] md:scale-[0.85] origin-top"
+            style={{
+              maskImage: "linear-gradient(to bottom, black 0%, black 70%, transparent 90%)",
+              WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 70%, transparent 90%)"
+            }}
+          >
+            <div className="bg-white rounded-xl shadow-lg p-3 text-[10px] md:text-xs">
+              <div className="text-[8px] md:text-[10px] text-gray-500 mb-2">Pricing</div>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Monthly Fee</span>
+                  <span className="text-green-600 font-semibold">$0</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Setup Cost</span>
+                  <span className="text-green-600 font-semibold">$0</span>
+                </div>
+                <div className="border-t border-gray-100 pt-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-gray-800 font-medium">Per redemption</span>
+                    <span className="text-[#abc4ff] font-bold">Small fee</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
-      icon: <Users className="w-8 h-8" />,
-      title: "Reach your neighbors",
-      description: "Connect with hungry customers within walking distance of your door.",
+      name: "Track your performance",
+      description: "Real-time analytics show exactly how your deals are performing.",
+      className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 50%, #ffffff 85%)"
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-xl p-4 w-full max-w-[280px] scale-[0.8] md:scale-[0.9]">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-sm font-semibold text-gray-800">Dashboard</span>
+                <span className="text-xs text-gray-500">Today</span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="bg-green-50 rounded-xl p-3">
+                  <div className="text-2xl font-bold text-green-600">47</div>
+                  <div className="text-xs text-gray-600">Redemptions</div>
+                </div>
+                <div className="bg-blue-50 rounded-xl p-3">
+                  <div className="text-2xl font-bold text-blue-600">$892</div>
+                  <div className="text-xs text-gray-600">Revenue</div>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-gray-600">Views</span>
+                  <span className="font-medium">1,247</span>
+                </div>
+                <div className="w-full bg-gray-100 rounded-full h-2">
+                  <div className="bg-[#abc4ff] h-2 rounded-full" style={{width: '75%'}}></div>
+                </div>
+              </div>
+
+              <div className="mt-4 flex items-center gap-2 text-xs text-green-600">
+                <TrendingUp className="w-4 h-4" />
+                <span>+23% vs last week</span>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-20 bg-gradient-to-t from-white from-40% via-white/95 via-60% to-transparent pointer-events-none" />
+        </div>
+      ),
     },
     {
-      icon: <Zap className="w-8 h-8" />,
-      title: "You stay in control",
-      description: "Set your own deals, choose your hours, adjust anytime. Your restaurant, your rules.",
+      name: "Reach nearby diners",
+      description: "Connect with hungry customers within walking distance.",
+      className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 20%, #ffffff 60%)"
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-center p-4 -mt-8">
+            <div className="relative">
+              <div className="w-32 h-32 rounded-full border-2 border-dashed border-[#abc4ff]/50 flex items-center justify-center">
+                <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#abc4ff]/70 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-[#abc4ff] flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+              </div>
+              {/* Dots representing nearby users */}
+              <div className="absolute top-2 right-4 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <div className="absolute bottom-8 left-0 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <div className="absolute top-12 left-2 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <div className="absolute bottom-4 right-8 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            </div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-40 md:h-32 bg-gradient-to-t from-white from-40% via-white/95 via-81% to-transparent pointer-events-none" />
+        </div>
+      ),
+    },
+    {
+      name: "You stay in control",
+      description: "Set your own deals, choose your hours, adjust anytime.",
+      className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+      background: (
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 40%, #ffffff 80%)"
+          }}
+        >
+          <div className="absolute inset-0 flex items-center justify-center p-4 -mt-8">
+            <div className="bg-white rounded-xl shadow-lg p-4 w-full max-w-[220px] scale-[0.85] md:scale-[0.95]">
+              <div className="text-xs font-semibold text-gray-800 mb-3">Create Deal</div>
+
+              <div className="space-y-3">
+                <div>
+                  <label className="text-[10px] text-gray-500">Discount</label>
+                  <div className="flex gap-2 mt-1">
+                    {['10%', '15%', '20%', '25%'].map((d) => (
+                      <button key={d} className={`text-[10px] px-2 py-1 rounded-lg ${d === '20%' ? 'bg-[#abc4ff] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                        {d}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-[10px] text-gray-500">Active Hours</label>
+                  <div className="flex items-center gap-2 mt-1 text-xs">
+                    <span className="bg-gray-100 px-2 py-1 rounded">2:00 PM</span>
+                    <span className="text-gray-400">to</span>
+                    <span className="bg-gray-100 px-2 py-1 rounded">5:00 PM</span>
+                  </div>
+                </div>
+
+                <button className="w-full bg-[#abc4ff] text-white text-xs py-2 rounded-lg font-medium">
+                  Publish Deal
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-40 md:h-50 bg-gradient-to-t from-white from-50% via-white/95 via-75% to-transparent pointer-events-none" />
+        </div>
+      ),
     },
   ];
 
   return (
     <SmoothScroll>
-      <main className="min-h-screen bg-white">
-        {/* Header */}
-        <header className="p-6">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Back
-          </Link>
-        </header>
+      <main className="min-h-screen bg-white relative overflow-hidden">
+        {/* Gradient Background */}
+        <GradientBackground toColor="#abc4ff" />
 
-       
-      
+        {/* Navbar */}
+        <Navbar />
 
         {/* Hero */}
-        <section className="px-6 py-12 text-center">
-          <div className="max-w-2xl mx-auto">
-            <span className="text-4xl mb-4 block">👨‍🍳</span>
-            <h1 className="text-4xl md:text-6xl font-bold text-black mb-4">
-              Empty seats?<br />Not anymore.
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 max-w-lg mx-auto">
-              Post a deal during your slow hours. Vulpes notifies hungry locals nearby.
-              They show up, you profit, your community grows.
-            </p>
+        <section className="px-6 pt-24 pb-12 text-center relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col items-center">
+              <FadeText
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-black font-(family-name:--font-caudex)"
+                direction="right"
+                framerProps={{
+                  show: { transition: { delay: 0.4 } },
+                }}
+                text="Empty seats?"
+              />
+              <FadeText
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-black font-(family-name:--font-caudex)"
+                direction="left"
+                framerProps={{
+                  show: { transition: { delay: 0.8 } },
+                }}
+                text="Not anymore."
+              />
+            </div>
+
+            <div className="py-10">
+              <TextEffect
+                per="line"
+                as="p"
+                preset="blur"
+                delay={1.2}
+                className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl md:whitespace-nowrap"
+              >
+                {`Post a deal during your slow hours. Trivvi notifies hungry locals nearby.`}
+              </TextEffect>
+              <TextEffect
+                per="line"
+                as="p"
+                preset="blur"
+                delay={1.6}
+                className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl md:whitespace-nowrap mt-2"
+              >
+                {`They show up, you profit, your community grows.`}
+              </TextEffect>
+            </div>
           </div>
         </section>
 
-        {/* Benefits */}
-        <section className="px-6 py-12 bg-gray-50">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-              Why restaurants love Vulpes
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {benefits.map((benefit, index) => (
-                <div
-                  key={index}
-                  className="flex gap-4 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow"
+        {/* Bento Grid Features */}
+        <section className="px-6 py-8 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <section className="text-center py-10">
+              <div style={{ fontWeight: 700 }}>
+                <TextEffect
+                  per="line"
+                  as="h2"
+                  preset="blur"
+                  delay={2}
+                  className="text-4xl md:text-4xl text-black font-(family-name:--font-caudex)"
                 >
-                  <div className="shrink-0 w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                    {benefit.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">{benefit.title}</h3>
-                    <p className="text-gray-600">{benefit.description}</p>
-                  </div>
-                </div>
+                  {`Trivvi is Designed for Restaurants`}
+                </TextEffect>
+              </div>
+            </section>
+            <BentoGrid className="lg:grid-rows-3" delay={2.5}>
+              {features.map((feature) => (
+                <BentoCard key={feature.name} {...feature} />
               ))}
-            </div>
+            </BentoGrid>
           </div>
         </section>
 
         {/* How it works */}
-        <section className="px-6 py-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-12">
-              How it works
-            </h2>
-            <div className="flex flex-col md:flex-row gap-8 md:gap-4">
+        <section className="px-6 py-16 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-4xl md:text-4xl font-bold mb-16 text-center font-(family-name:--font-caudex)"
+            >
+              How Trivvi works for restaurants
+            </motion.h2>
+            <div className="flex flex-col gap-16">
               {[
-                { step: "1", emoji: "📝", text: "Set your slow hours & create a deal" },
-                { step: "2", emoji: "📍", text: "We notify hungry people nearby" },
-                { step: "3", emoji: "🪑", text: "Watch the seats fill up" },
-              ].map((item) => (
-                <div key={item.step} className="flex-1 flex flex-col items-center">
-                  <span className="text-4xl mb-3">{item.emoji}</span>
-                  <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold mb-3">
+                {
+                  step: "1",
+                  title: "Set your slow hours",
+                  description: "Choose the times when you need more customers. Lunch lull? Late afternoon? You decide.",
+                },
+                {
+                  step: "2",
+                  title: "Create a deal",
+                  description: "Offer a discount, special, or promotion. Make it enticing enough to get people through the door.",
+                },
+                {
+                  step: "3",
+                  title: "We notify nearby diners",
+                  description: "Trivvi sends real-time alerts to hungry people in your area who love your type of food.",
+                },
+                {
+                  step: "4",
+                  title: "Watch the seats fill up",
+                  description: "Customers arrive, you serve great food, everyone wins. Track your results in real-time.",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.step}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                >
+                  <div className="w-20 h-20 bg-[#abc4ff] text-white rounded-full flex items-center justify-center font-bold text-3xl shrink-0 font-(family-name:--font-caudex)">
                     {item.step}
                   </div>
-                  <p className="text-gray-700 font-medium">{item.text}</p>
-                </div>
+                  <div className={`flex-1 text-center ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
+                      {item.title}
+                    </h3>
+                    <p className="text-lg text-gray-600 font-(family-name:--font-caudex)">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="min-h-screen flex items-center justify-center px-6 bg-white">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
-            <div className="shrink-0 flex justify-start">
+        {/* Meet Chirp Section */}
+        <section className="min-h-screen flex items-center justify-center px-6 py-24 bg-white relative z-10">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="shrink-0 flex justify-start"
+            >
               <LottieAnimation
                 animationData={ParrotAnimation}
-                className="w-48 h-48 md:w-64 md:h-64"
+                className="w-64 h-64 md:w-80 md:h-80"
               />
-            </div>
+            </motion.div>
 
-            <div className="flex-1 text-center px-4">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#03045E] mb-4 font-(family-name:--font-caudex)">
+            <motion.div
+              initial={{ opacity: 0, y: -40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="flex-1 text-center px-4"
+            >
+              <h2 className="text-4xl md:text-6xl font-bold text-black mb-6 font-(family-name:--font-caudex)">
                 Meet Chirp
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 font-(family-name:--font-inter) max-w-md mx-auto">
-                Your friendly guide to the best local deals. Chirp helps you discover amazing food at amazing prices, right in your neighborhood.
+              <p className="text-xl md:text-2xl text-gray-600 font-(family-name:--font-inter) max-w-lg mx-auto">
+                Your messenger to hungry locals. When you send a deal, Chirp delivers it to nearby diners who are ready to eat.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="shrink-0 flex justify-end">
-              <div className="w-48 h-80 md:w-56 md:h-96 bg-gray-100 rounded-3xl border-4 border-gray-300 flex items-center justify-center">
-                <p className="text-gray-400 text-sm">Phone Mockup</p>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="shrink-0 flex items-center justify-center"
+            >
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 max-w-sm">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-[#abc4ff] rounded-full flex items-center justify-center">
+                    <Bell className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900 font-(family-name:--font-caudex)">New Chirp Alert!</p>
+                    <p className="text-sm text-gray-500">Just now</p>
+                  </div>
+                </div>
+                <p className="text-gray-700 font-(family-name:--font-caudex)">
+                  🍕 <span className="font-semibold">Mario&apos;s Pizzeria</span> is offering 20% off large pizzas for the next 2 hours!
+                </p>
+                <p className="text-sm text-gray-500 mt-2">350m away • Ends at 4:00 PM</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Waitlist signup */}
-        <section className="px-6 py-16 bg-primary/5">
-          <div className="max-w-md mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Get early access
-            </h2>
-            <p className="text-gray-600 mb-8">
-              We&apos;re launching soon and partnering with local restaurants first.
-              Join the waitlist to be among our founding partners.
-            </p>
+        <section id="waitlist" className="px-6 py-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-2xl mx-auto"
+          >
+            <div className="relative backdrop-blur-xl bg-[#ccdbfd]/20 border border-[#ccdbfd]/40 rounded-2xl p-8 md:p-12 shadow-2xl">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#ccdbfd]/10 to-transparent pointer-events-none" />
 
-            {submitted ? (
-              <div className="bg-white rounded-2xl p-8 shadow-sm">
-                <span className="text-5xl mb-4 block">🎉</span>
-                <h3 className="text-xl font-bold mb-2">Welcome to the pack!</h3>
-                <p className="text-gray-600">We&apos;ll reach out soon to get you set up.</p>
+              <div className="relative z-10 text-center">
+                {!submitted ? (
+                  <>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 font-(family-name:--font-caudex)">
+                      Get early access
+                    </h2>
+                    <p className="text-gray-600 mb-8 font-(family-name:--font-caudex)">
+                      We&apos;re launching soon and partnering with local restaurants first.
+                      Join the waitlist to be among our founding partners.
+                    </p>
+
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                      <input
+                        type="text"
+                        required
+                        value={restaurantName}
+                        onChange={(e) => setRestaurantName(e.target.value)}
+                        placeholder="Restaurant name"
+                        className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
+                      />
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Your email"
+                        className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
+                      />
+                      <button
+                        type="submit"
+                        className="w-full h-12 px-6 bg-[#abc4ff] hover:bg-[#abc4ff]/90 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg font-(family-name:--font-caudex)"
+                      >
+                        Join as a partner
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  <div className="py-8">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-green-400/30 to-emerald-500/30 flex items-center justify-center border border-green-400/40">
+                      <svg
+                        className="w-8 h-8 text-green-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 font-(family-name:--font-caudex)">
+                      Welcome to the pack!
+                    </h3>
+                    <p className="text-gray-600 font-(family-name:--font-caudex)">
+                      We&apos;ll reach out soon to get you set up.
+                    </p>
+                  </div>
+                )}
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <input
-                  type="text"
-                  required
-                  value={restaurantName}
-                  onChange={(e) => setRestaurantName(e.target.value)}
-                  placeholder="Restaurant name"
-                  className="px-5 py-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email"
-                  className="px-5 py-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-                <button
-                  type="submit"
-                  className="px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
-                >
-                  Join as a partner
-                </button>
-              </form>
-            )}
-          </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="px-6 py-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <FaqSections
+              label="FAQ's"
+              title="Got questions?"
+              subtitle="Everything you need to know about partnering with Trivvi."
+              className="font-(family-name:--font-caudex)"
+              faqs={[
+                {
+                  question: "How much does Trivvi cost?",
+                  answer: "Trivvi has no upfront costs, subscriptions, or setup fees. You only pay a small commission when a deal brings customers through your door.",
+                },
+                {
+                  question: "How do I create a deal?",
+                  answer: "Simply log into your Trivvi dashboard, set your slow hours, create an enticing offer, and publish. It takes less than 2 minutes.",
+                },
+                {
+                  question: "What kind of deals work best?",
+                  answer: "Percentage discounts (15-25% off) and special combo offers tend to perform well. The key is making it compelling enough to get people off the couch.",
+                },
+                {
+                  question: "How far do notifications reach?",
+                  answer: "You can set a custom radius, but most restaurants see the best results targeting customers within 1-2km of their location.",
+                },
+                {
+                  question: "Can I cancel or pause deals?",
+                  answer: "Absolutely. You have full control. Pause, edit, or cancel any deal at any time from your dashboard.",
+                },
+                {
+                  question: "How do I track performance?",
+                  answer: "Your Trivvi dashboard shows real-time analytics including views, redemptions, and revenue generated from each deal.",
+                },
+                {
+                  question: "When will Trivvi be available in my area?",
+                  answer: "We're launching city by city. Join the waitlist and we'll prioritize areas with the most restaurant interest.",
+                },
+                {
+                  question: "Do diners need the Trivvi app?",
+                  answer: "Yes, diners download the free Trivvi app to receive notifications and redeem deals. We're growing our diner base alongside our restaurant partners.",
+                },
+              ]}
+            />
+          </motion.div>
         </section>
 
         {/* Footer */}
-        <footer className="px-6 py-8 text-center text-gray-400 text-sm">
-          <p>Made with 🦊 by Vulpes</p>
-        </footer>
+        <div className="relative z-10 bg-white font-(family-name:--font-caudex) text-black [&_a]:text-black [&_span]:text-black [&_div]:text-black">
+          <Footer
+            logo={
+              <Image
+                src="/imageAssets/trivviLogo.svg"
+                alt="Trivvi Logo"
+                width={40}
+                height={40}
+              />
+            }
+            brandName="Trivvi"
+            socialLinks={[
+              {
+                icon: (
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                ),
+                href: "https://x.com/trivvi",
+                label: "X",
+              },
+              {
+                icon: (
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
+                  </svg>
+                ),
+                href: "https://www.instagram.com/trivvi.io/",
+                label: "Instagram",
+              },
+              {
+                icon: <Mail className="h-5 w-5" />,
+                href: "mailto:contact@trivvi.io",
+                label: "Email",
+              },
+            ]}
+            mainLinks={[
+              { href: "/for-diners", label: "For Diners" },
+              { href: "/for-restaurants", label: "For Restaurants" },
+              { href: "/about", label: "About" },
+              { href: "mailto:contact@trivvi.io", label: "Contact" },
+            ]}
+            legalLinks={[
+              { href: "/privacy", label: "Privacy Policy" },
+              { href: "/terms", label: "Terms of Service" },
+            ]}
+            copyright={{
+              text: "© 2026 Trivvi",
+              license: "All rights reserved",
+            }}
+          />
+        </div>
       </main>
     </SmoothScroll>
   );

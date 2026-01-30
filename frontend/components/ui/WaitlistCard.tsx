@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Dynamically import LocationPicker to avoid SSR issues with Leaflet
 const LocationPicker = dynamic(() => import("./LocationPicker"), {
@@ -83,17 +84,20 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                     className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
                   />
 
-                  <label className="flex items-start gap-3 cursor-pointer">
-                    <input
-                      type="checkbox"
+                  <div className="flex items-start gap-3">
+                    <Checkbox
+                      id="opt-in"
                       checked={optInUpdates}
-                      onChange={(e) => setOptInUpdates(e.target.checked)}
-                      className="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary/20"
+                      onCheckedChange={(checked) => setOptInUpdates(checked === true)}
+                      className="mt-0.5"
                     />
-                    <span className="text-sm text-gray-600">
+                    <label
+                      htmlFor="opt-in"
+                      className="text-sm text-gray-600 cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
                       Opt in to receive updates about Trivvi&apos;s development
-                    </span>
-                  </label>
+                    </label>
+                  </div>
 
                   <button
                     type="submit"
