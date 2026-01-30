@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import IPhoneFrame from "./IphoneFrame";
 
 const IPhoneStep1 = () => {
@@ -12,7 +13,7 @@ const IPhoneStep1 = () => {
       <div className="relative z-10 flex justify-between items-center px-8 pt-4">
         <span className="text-gray-800">9:41</span>
         <div className="flex items-center gap-1">
-          <div className="w-[22px] h-[11px] border border-gray-800 rounded-[3px] p-px">
+          <div className="w-5.5 h-2.75 border border-gray-800 rounded-[3px] p-px">
             <div className="w-[80%] h-full bg-gray-800 rounded-[1px]" />
           </div>
         </div>
@@ -62,19 +63,21 @@ const IPhoneStep1 = () => {
         {/* Social Logins */}
         <div className="space-y-3">
           <button className="w-full h-12 bg-white border border-gray-200 rounded-lg font-medium text-sm flex items-center justify-center gap-3">
-            <img
+            <Image
               src="/imageAssets/google-icon-logo-svgrepo-com.svg"
               alt="Google"
-              className="w-5 h-5"
+              width={20}
+              height={20}
             />
             Continue with Google
           </button>
 
           <button className="w-full h-12 bg-white border border-gray-200 rounded-lg font-medium text-sm flex items-center justify-center gap-3">
-            <img
+            <Image
               src="/imageAssets/apple-logo-svgrepo-com.svg"
               alt="Apple"
-              className="w-5 h-5"
+              width={20}
+              height={20}
             />
             Continue with Apple
           </button>

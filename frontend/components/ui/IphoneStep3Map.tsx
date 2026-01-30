@@ -19,7 +19,7 @@ const NotificationMap = ({ isVisible }: { isVisible: boolean }) => {
       >
         <div className="flex items-center gap-2.5">
           {/* App Icon */}
-          <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 shadow-md overflow-hidden bg-white">
+          <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-md overflow-hidden bg-white">
             <Image
               src="/phoneMockup/chirp-removebg-preview.png"
               alt="Chirp"

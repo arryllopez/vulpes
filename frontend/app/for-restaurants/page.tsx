@@ -40,7 +40,7 @@ export default function ForRestaurants() {
           }}
         >
           <div className="absolute inset-0 flex items-center justify-end p-4 -mt-12 pr-0">
-            <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-[340px] scale-[0.85] md:scale-[1.2] translate-x-1 -translate-y-7">
+            <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-85 scale-[0.85] md:scale-[1.2] translate-x-1 -translate-y-7">
               <div className="text-base font-semibold text-gray-800 mb-5 font-(family-name:--font-caudex)">Table Occupancy</div>
               <div className="grid grid-cols-4 gap-4 mb-5 font-(family-name:--font-caudex)">
                 {[1,2,3,4,5,6,7,8].map((i) => (
@@ -132,7 +132,7 @@ export default function ForRestaurants() {
           }}
         >
           <div className="absolute inset-0 flex items-center justify-center -translate-y-8">
-            <img
+            <Image
               src="/imageAssets/peopleWalking.svg"
               alt="People walking"
               className="w-full h-auto object-cover"
@@ -155,7 +155,7 @@ export default function ForRestaurants() {
         >
           <div className="absolute inset-0">
             {/* Live Update Card - top left (Signal-only, no deal) */}
-            <div className="absolute top-3 left-1 md:top-4 md:left-3 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[-3deg]">
+            <div className="absolute top-3 left-1 md:top-4 md:left-3 w-38.75 md:w-45 bg-white rounded-xl shadow-lg p-3 -rotate-3">
               <div className="flex items-center gap-2 mb-2">
                 <span className="bg-[#f6bd60]/20 text-[#f6bd60] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">Live Update</span>
               </div>
@@ -196,7 +196,7 @@ export default function ForRestaurants() {
             </div>
 
             {/* Trivvi Exclusive Card - middle center (Discount, attribution-heavy) */}
-            <div className="absolute top-36 left-1/2 -translate-x-1/2 md:top-44 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[4deg] overflow-hidden">
+            <div className="absolute top-36 left-1/2 -translate-x-1/2 md:top-44 w-38.75 md:w-45 bg-white rounded-xl shadow-lg p-3 rotate-[4deg] overflow-hidden">
               <div className="flex items-center gap-2 mb-2">
                 <span className="bg-[#abc4ff]/20 text-[#abc4ff] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">Trivvi Exclusive</span>
               </div>
@@ -238,7 +238,7 @@ export default function ForRestaurants() {
             </div>
 
             {/* House Special Card - top right (Promo, not exclusive) */}
-            <div className="absolute top-3 right-0 md:top-4 md:right-1 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[2deg]">
+            <div className="absolute top-3 right-0 md:top-4 md:right-1 w-38.75 md:w-45 bg-white rounded-xl shadow-lg p-3 rotate-[2deg]">
               <div className="flex items-center gap-2 mb-2">
                 <span className="bg-[#4f772d]/20 text-[#4f772d] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">House Special</span>
               </div>
@@ -392,7 +392,7 @@ export default function ForRestaurants() {
                   title: "Send your first alert",
                   description: "Entice your alerts with our custom forms and send them out to hungry customers nearby.",
                 },
-              ].map((item, index) => (
+              ].map((item) => (
                 <motion.div
                   key={item.step}
                   initial={{ opacity: 0, y: 30 }}

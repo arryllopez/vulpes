@@ -10,7 +10,8 @@ import { FadeText } from "@/components/ui/fade-text";
 import { TextEffect } from "@/components/ui/text-effect";
 import IphoneStep1 from "@/components/ui/IphoneStep1";
 import IphoneStep2 from "@/components/ui/IphoneStep2";
-import IphoneStep3 from "@/components/ui/IphoneStep3"; import IphoneStep3Map from "@/components/ui/IphoneStep3Map"; import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
+import IphoneStep3Map from "@/components/ui/IphoneStep3Map";
+import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
 import IPhoneMapNav from "@/components/ui/IphoneMapNav";
 import BullseyeTestimonial from "@/components/ui/bullseyeTestimonial";
 import LawrencesTestimonial from "@/components/ui/lawrencesTestimonial";
@@ -107,7 +108,7 @@ export default function ForDiners() {
             </div>
           </div>
           {/* Sharp white gradient for mobile text visibility */}
-          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-20 bg-gradient-to-t from-white from-40% via-white/95 via-60% to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-20 bg-linear-to-t from-white from-40% via-white/95 via-60% to-transparent pointer-events-none" />
         </div>
       ),
     },
@@ -438,12 +439,14 @@ export default function ForDiners() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                className="w-full max-w-[550px]"
+                className="w-full max-w-137.5"
               >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3]">
-                  <img
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-4/3">
+                  <Image
                     src="/imageAssets/mapMockup.png"
                     alt="Interactive map showing nearby deals"
+                    width={550}
+                    height={366}
                     className="w-full h-full object-cover"
                   />
                 </div>
