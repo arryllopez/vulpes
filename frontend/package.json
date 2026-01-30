@@ -17,7 +17,7 @@
     "locomotive-scroll": "^5.0.1",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.562.0",
-    "next": "16.1.4",
+    "next": "^16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-leaflet": "^5.0.0",

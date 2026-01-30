@@ -5,12 +5,12 @@ import { Check } from "lucide-react";
 const foodCategories = [
   { name: "Burgers", checked: true },
   { name: "Pizza", checked: true },
-  { name: "Sushi", checked: false },
-  { name: "Tacos", checked: true },
-  { name: "Pasta", checked: false },
-  { name: "Salads", checked: true },
-  { name: "Ramen", checked: false },
-  { name: "Sandwiches", checked: true },
+  { name: "Dessert", checked: false },
+  { name: "Wings", checked: true },
+  { name: "Italian", checked: false },
+  { name: "Greek", checked: true },
+  { name: "Japanese", checked: false },
+  { name: "Seafood", checked: true },
 ];
 
 const FoodChecklist = () => {

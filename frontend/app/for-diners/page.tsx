@@ -15,11 +15,12 @@ import IphoneStep2 from "@/components/ui/IphoneStep2";
 import IphoneStep3 from "@/components/ui/IphoneStep3";
 import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
 import IPhoneMapNav from "@/components/ui/IphoneMapNav";
-import BullseyeTestimonial  from "@/components/ui/bullseyeTestimonial";
+import BullseyeTestimonial from "@/components/ui/bullseyeTestimonial";
 import LawrencesTestimonial from "@/components/ui/lawrencesTestimonial";
 import FoodChecklist from "@/components/ui/FoodChecklist";
 import { GradientBackground } from "@/components/ui/gradient-backgrounds";
 import WaitlistCard from "@/components/ui/WaitlistCard";
+import { FaqSections } from "@/components/ui/faq-sections";
 
 export default function ForDiners() {
   const features = [
@@ -39,7 +40,7 @@ export default function ForDiners() {
             initial={{ y: -50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 2.7}}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 2.7 }}
           >
             <IphoneStep3 />
           </motion.div>
@@ -106,7 +107,30 @@ export default function ForDiners() {
           style={{
             background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 50%, #ffffff 85%)"
           }}
-        />
+        >
+          <div className="absolute inset-0 flex items-center justify-center p-4 -mt-12 md:mt-0">
+            <motion.div
+              className="scale-[0.45] md:scale-[0.55] origin-center -rotate-6 -mr-16"
+              initial={{ x: -30, opacity: 0, rotate: -15 }}
+              whileInView={{ x: 0, opacity: 1, rotate: -6 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 2.8 }}
+            >
+              <IPhoneDealRedeem />
+            </motion.div>
+            <motion.div
+              className="scale-[0.45] md:scale-[0.55] origin-center rotate-6 -mt-16"
+              initial={{ x: 30, opacity: 0, rotate: 15 }}
+              whileInView={{ x: 0, opacity: 1, rotate: 6 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 3.0 }}
+            >
+              <IPhoneMapNav />
+            </motion.div>
+          </div>
+          {/* Sharp white gradient for mobile text visibility */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-20 bg-gradient-to-t from-white from-40% via-white/95 via-60% to-transparent pointer-events-none" />
+        </div>
       ),
     },
     {
@@ -119,7 +143,30 @@ export default function ForDiners() {
           style={{
             background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 20%, #ffffff 60%)"
           }}
-        />
+        >
+          <div className="absolute inset-0 flex items-center justify-center p-4 -mt-16 md:-mt-12">
+            <motion.div
+              className="scale-[0.50] md:scale-[0.55] origin-center rotate-6 -mr-12"
+              initial={{ x: -30, opacity: 0, rotate: 15 }}
+              whileInView={{ x: 0, opacity: 1, rotate: 6 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 2.8 }}
+            >
+              <BullseyeTestimonial />
+            </motion.div>
+            <motion.div
+              className="scale-[0.55] md:scale-[0.55] origin-center mt-4 md:-mt-8"
+              initial={{ x: 30, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 3.0 }}
+            >
+              <LawrencesTestimonial />
+            </motion.div>
+          </div>
+          {/* Sharp white gradient for text visibility */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 md:h-32 bg-gradient-to-t from-white from-40% via-white/95 via-81% to-transparent pointer-events-none" />
+        </div>
       ),
     },
     {
@@ -132,7 +179,21 @@ export default function ForDiners() {
           style={{
             background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 40%, #ffffff 80%)"
           }}
-        />
+        >
+          <div className="absolute inset-0 flex items-center justify-center -mt-24 md:-mt-35">
+            <motion.div
+              className="w-full origin-center"
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 2.8 }}
+            >
+              <FoodChecklist />
+            </motion.div>
+          </div>
+          {/* Sharp white gradient for text visibility */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 md:h-50 bg-gradient-to-t from-white from-50% via-white/95 via-75% to-transparent pointer-events-none" />
+        </div>
       ),
     },
   ];
@@ -166,14 +227,7 @@ export default function ForDiners() {
           </Link>
         </header>
 
-        {/* Deal Redeem Preview */}
-        <section className="flex justify-center gap-8 py-8 relative z-10">
-          <IPhoneDealRedeem />
-          <IPhoneMapNav />
-          <BullseyeTestimonial />
-          <LawrencesTestimonial />
-          <FoodChecklist />
-        </section>
+
 
         {/* Hero */}
         <section className="px-6 py-12 text-center relative z-10">
@@ -218,10 +272,9 @@ export default function ForDiners() {
                 as="p"
                 preset="blur"
                 delay={1.6}
-                className="text-base md:text-xl lg:text-2xl text-black text-center mx-auto px-2"
+                className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl md:whitespace-nowrap"
               >
-                {`Trivvi uses real-time alerts to help restaurants fill empty tables.
-Diners find great deals nearby.`}
+                {`Trivvi uses real-time alerts to help diners find great deals and new food nearby.`}
               </TextEffect>
 
             </div>
@@ -230,7 +283,7 @@ Diners find great deals nearby.`}
         </section>
 
         {/* Benefits */}
-        <section className="px-6 py-8 relative z-10">
+        <section className="px-6 py-8 relative z-10">r
           <div className="max-w-7xl mx-auto">
             <section className="text-center py-10">
               <div style={{ fontWeight: 700 }}>
@@ -325,9 +378,9 @@ Diners find great deals nearby.`}
                     Choose the foods you love and how far you want to go.
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                   Trivvi only notifies you about the foods you love
-                   <br/>
-                   within the distance you choose.
+                    Trivvi only notifies you about the foods you love
+                    <br />
+                    within the distance you choose.
                   </p>
                 </motion.div>
               </div>
@@ -423,8 +476,8 @@ Diners find great deals nearby.`}
               </h3>
               <p className="text-lg md:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed max-w-4xl mx-auto whitespace-nowrap">
                 Our real-time interactive map shows all your favourite foods nearby.
-                <br/>Set your location or let Trivvi follow you.
-                <br/>
+                <br />Set your location or let Trivvi follow you.
+                <br />
                 Deals update as you move,
                 so you never miss a bite.
               </p>
@@ -481,7 +534,7 @@ Diners find great deals nearby.`}
                       Mario&apos;s Pizzeria
                     </h4>
                     <p className="text-gray-600 text-sm mb-3 font-(family-name:--font-caudex)">
-                      20% off Large Handcrafted Pepperoni Pizza. 
+                      20% off Large Handcrafted Pepperoni Pizza.
                     </p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1">
@@ -500,9 +553,70 @@ Diners find great deals nearby.`}
 
         {/* Waitlist signup */}
         <section className="px-6 py-16 relative z-10">
-          <div className="flex justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex justify-center"
+          >
             <WaitlistCard />
-          </div>
+          </motion.div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="px-6 py-16 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <FaqSections
+              label="FAQ's"
+              title="Got questions?"
+              subtitle="Everything you need to know about Trivvi and how it works for diners."
+              className="font-(family-name:--font-caudex)"
+              faqs={[
+                {
+                  question: "What is Trivvi?",
+                  answer: "Trivvi is a real-time food discovery app that alerts you when something good is happening nearby — from limited-time deals to hidden local spots worth checking out.",
+                },
+                {
+                  question: "Is Trivvi free for diners?",
+                  answer: "Yes. Trivvi is completely free for diners. Just download the app, create an account, and start receiving alerts about great food nearby.",
+                },
+                {
+                  question: "How are notifications decided?",
+                  answer: "You choose the foods you like and how far you're willing to go. Trivvi only notifies you when something relevant happens within your preferences — no spam.",
+                },
+                {
+                  question: "Do all alerts include discounts?",
+                  answer: "Not always. Some Chirps highlight limited-time deals, while others spotlight great local spots when they're quieter than usual.",
+                },
+                {
+                  question: "How is this different from Yelp / Google Maps?",
+                  answer: "Yelp and Maps help you research. Trivvi helps you decide in the moment — with real-time alerts, not endless scrolling.",
+                },
+                {
+                  question: "When will Trivvi launch in my city?",
+                  answer: "We're launching city by city. The more demand we see in an area, the sooner Trivvi arrives there.",
+                },
+                {
+                  question: "Do I need to enable notifications?",
+                  answer: "Notifications are optional. You're always in control of what you receive and when.",
+                },
+                {
+                  question: "How do restaurants benefit from Trivvi?",
+                  answer: "Trivvi helps restaurants fill empty tables, increase visibility, and attract nearby diners — without long-term discounts or third-party delivery fees.",
+                },
+                {
+                  question: "How do I join the waitlist?",
+                  answer: "Enter your email, drop a pin on the map, and you're in. We'll notify you when Trivvi launches near you.",
+                },
+              ]}
+            />
+          </motion.div>
         </section>
 
         {/* Footer */}
