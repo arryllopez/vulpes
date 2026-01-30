@@ -25,6 +25,11 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const handleNavClick = () => {
+    setMenuState(false)
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }
+
   return (
     <header>
       <nav data-state={menuState && "active"} className="fixed group z-20 w-full px-2 font-(family-name:--font-caudex)">
@@ -36,7 +41,7 @@ export function Navbar() {
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
             <div className="flex w-full justify-between lg:w-auto">
-              <Link href="/" className="transition-opacity duration-300 hover:opacity-75 flex items-center gap-2">
+              <Link href="/" onClick={handleNavClick} className="transition-opacity duration-300 hover:opacity-75 flex items-center gap-2">
                 <Image
                   src="/imageAssets/trivviLogo.svg"
                   alt="Trivvi Logo"
@@ -62,6 +67,7 @@ export function Navbar() {
                   <li key={index}>
                     <Link
                       href={item.href}
+                      onClick={handleNavClick}
                       className="text-gray-600 hover:text-black block duration-150"
                     >
                       <span>{item.name}</span>
@@ -78,6 +84,7 @@ export function Navbar() {
                     <li key={index}>
                       <Link
                         href={item.href}
+                        onClick={handleNavClick}
                         className="text-gray-600 hover:text-black block duration-150"
                       >
                         <span>{item.name}</span>
