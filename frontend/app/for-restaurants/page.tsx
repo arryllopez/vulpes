@@ -30,7 +30,7 @@ export default function ForRestaurants() {
   const features = [
     {
       name: "Fill empty seats instantly",
-      description: "Turn slow hours into busy ones with real-time alerts to nearby diners.",
+      description: "Turn slow hours into busy ones — diners see your deals when they open the app nearby.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 min-h-[280px] md:min-h-[320px]",
       background: (
         <div
@@ -101,8 +101,8 @@ export default function ForRestaurants() {
       ),
     },
     {
-      name: "Track your performance",
-      description: "Real-time analytics show exactly how your alerts are performing.",
+      name: "View your performance",
+      description: "Simple analytics show exactly how your posted deals are performing.",
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
       background: (
         <div
@@ -154,105 +154,126 @@ export default function ForRestaurants() {
           }}
         >
           <div className="absolute inset-0">
-            {/* Trivvi Exclusive Card - top left */}
-            <div className="absolute top-4 left-2 md:top-6 md:left-4 w-[145px] md:w-[165px] bg-white rounded-xl shadow-lg p-2.5 rotate-[-3deg]">
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="bg-[#abc4ff]/20 text-[#abc4ff] text-[7px] md:text-[8px] font-semibold px-1.5 py-0.5 rounded font-(family-name:--font-caudex)">Trivvi Exclusive</span>
+            {/* Live Update Card - top left (Signal-only, no deal) */}
+            <div className="absolute top-3 left-1 md:top-4 md:left-3 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[-3deg]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="bg-[#f6bd60]/20 text-[#f6bd60] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">🔵 Live Update</span>
               </div>
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Item</div>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Headline</div>
               <input
                 type="text"
-                placeholder="Any large pizza"
-                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
+                placeholder="No wait right now"
+                className="w-full text-[8px] md:text-[9px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1.5 font-(family-name:--font-caudex) placeholder:text-gray-400"
                 readOnly
               />
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Discount</div>
-              <div className="flex gap-1 mb-1">
-                {['10%', '20%', '25%'].map((d) => (
-                  <button key={d} className={`text-[7px] md:text-[8px] px-1.5 py-0.5 rounded-md font-(family-name:--font-caudex) ${d === '20%' ? 'bg-[#abc4ff] text-white' : 'bg-gray-100 text-gray-600'}`}>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Category</div>
+              <div className="flex gap-1 mb-1.5 flex-wrap">
+                {['Pizza', 'Ramen', 'Burgers'].map((c, i) => (
+                  <button key={c} className={`text-[6px] md:text-[7px] px-1.5 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 1 ? 'bg-[#f6bd60] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    {c}
+                  </button>
+                ))}
+              </div>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Duration</div>
+              <div className="flex gap-1 mb-1.5 flex-wrap">
+                {['30m', '1hr', '2hr', '3hr'].map((t, i) => (
+                  <button key={t} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 2 ? 'bg-[#f6bd60] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    {t}
+                  </button>
+                ))}
+              </div>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Radius</div>
+              <div className="flex items-center gap-1 mb-2">
+                <div className="flex-1 h-1 bg-gray-200 rounded-full relative">
+                  <div className="absolute left-0 top-0 h-1 w-[60%] bg-[#f6bd60] rounded-full" />
+                  <div className="absolute top-1/2 -translate-y-1/2 left-[60%] w-2 h-2 bg-[#f6bd60] rounded-full border border-white shadow-sm" />
+                </div>
+                <span className="text-[6px] md:text-[7px] text-gray-600 font-(family-name:--font-caudex)">1.2km</span>
+              </div>
+              <button className="w-full bg-[#f6bd60] text-white text-[8px] md:text-[9px] py-1.5 rounded-lg font-medium font-(family-name:--font-caudex)">
+                Broadcast
+              </button>
+            </div>
+
+            {/* Trivvi Exclusive Card - middle right (Discount, attribution-heavy) */}
+            <div className="absolute top-36 right-0 md:top-44 md:right-1 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[4deg]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="bg-[#abc4ff]/20 text-[#abc4ff] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">🟢 Trivvi Exclusive</span>
+              </div>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Deal Title</div>
+              <input
+                type="text"
+                placeholder="20% off Lunch Menu"
+                className="w-full text-[8px] md:text-[9px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1.5 font-(family-name:--font-caudex) placeholder:text-gray-400"
+                readOnly
+              />
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Discount Type</div>
+              <div className="flex gap-1 mb-1.5 flex-wrap">
+                {['% off', '$ off', 'Free item'].map((d, i) => (
+                  <button key={d} className={`text-[6px] md:text-[7px] px-1.5 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 0 ? 'bg-[#abc4ff] text-white' : 'bg-gray-100 text-gray-600'}`}>
                     {d}
                   </button>
                 ))}
               </div>
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Duration</div>
-              <div className="flex gap-1 mb-1.5">
-                {['2hr', '4hr', 'All day'].map((t, i) => (
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Duration</div>
+              <div className="flex gap-1 mb-1.5 flex-wrap">
+                {['1hr', '2hr', '3hr'].map((t, i) => (
                   <button key={t} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 1 ? 'bg-[#abc4ff] text-white' : 'bg-gray-100 text-gray-600'}`}>
                     {t}
                   </button>
                 ))}
               </div>
-              <button className="w-full bg-[#abc4ff] text-white text-[8px] py-1 rounded-lg font-medium font-(family-name:--font-caudex)">
-                Publish
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Radius (max 2km)</div>
+              <div className="flex items-center gap-1 mb-2">
+                <div className="flex-1 h-1 bg-gray-200 rounded-full relative">
+                  <div className="absolute left-0 top-0 h-1 w-[40%] bg-[#abc4ff] rounded-full" />
+                  <div className="absolute top-1/2 -translate-y-1/2 left-[40%] w-2 h-2 bg-[#abc4ff] rounded-full border border-white shadow-sm" />
+                </div>
+                <span className="text-[6px] md:text-[7px] text-gray-600 font-(family-name:--font-caudex)">0.8km</span>
+              </div>
+              <button className="w-full bg-[#abc4ff] text-white text-[8px] md:text-[9px] py-1.5 rounded-lg font-medium font-(family-name:--font-caudex)">
+                Get Deal
               </button>
             </div>
 
-            {/* House Special Card - middle right */}
-            <div className="absolute top-32 right-1 md:top-40 md:right-2 w-[140px] md:w-[160px] bg-white rounded-xl shadow-lg p-2.5 rotate-[4deg]">
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="bg-[#4f772d]/20 text-[#4f772d] text-[7px] md:text-[8px] font-semibold px-1.5 py-0.5 rounded font-(family-name:--font-caudex)">House Special</span>
+            {/* House Special Card - bottom left (Promo, not exclusive) */}
+            <div className="absolute bottom-14 left-2 md:bottom-16 md:left-4 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[2deg]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="bg-[#4f772d]/20 text-[#4f772d] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">🟣 House Special</span>
               </div>
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Dish Name</div>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Special Name</div>
               <input
                 type="text"
-                placeholder="Chef's pasta"
-                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
+                placeholder="Friday $15.99 Alfredo"
+                className="w-full text-[8px] md:text-[9px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1.5 font-(family-name:--font-caudex) placeholder:text-gray-400"
                 readOnly
               />
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Description</div>
-              <input
-                type="text"
-                placeholder="Creamy alfredo..."
-                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
-                readOnly
-              />
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Price</div>
-              <div className="flex gap-1 mb-1.5">
-                {['$9.99', '$14.99', '$19.99'].map((item, i) => (
-                  <button key={item} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 1 ? 'bg-[#4f772d] text-white' : 'bg-gray-100 text-gray-600'}`}>
-                    {item}
-                  </button>
-                ))}
-              </div>
-              <button className="w-full bg-[#4f772d] text-white text-[8px] py-1 rounded-lg font-medium font-(family-name:--font-caudex)">
-                Publish
-              </button>
-            </div>
-
-            {/* Live Update Card - bottom left */}
-            <div className="absolute bottom-16 left-3 md:bottom-20 md:left-6 w-[135px] md:w-[155px] bg-white rounded-xl shadow-lg p-2.5 rotate-[2deg]">
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="bg-[#f6bd60]/20 text-[#f6bd60] text-[7px] md:text-[8px] font-semibold px-1.5 py-0.5 rounded font-(family-name:--font-caudex)">Live Update</span>
-              </div>
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Message</div>
-              <input
-                type="text"
-                placeholder="Happy hour now!"
-                className="w-full text-[8px] px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 mb-1 font-(family-name:--font-caudex) placeholder:text-gray-400"
-                readOnly
-              />
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Status</div>
-              <div className="flex gap-1 mb-1">
-                {['Open', 'Busy', 'Closing'].map((status, i) => (
-                  <button key={status} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 0 ? 'bg-[#f6bd60] text-white' : 'bg-gray-100 text-gray-600'}`}>
-                    {status}
-                  </button>
-                ))}
-              </div>
-              <div className="text-[7px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Expires</div>
-              <div className="flex gap-1 mb-1.5">
-                {['1hr', '2hr', '4hr'].map((t, i) => (
-                  <button key={t} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 0 ? 'bg-[#f6bd60] text-white' : 'bg-gray-100 text-gray-600'}`}>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Duration</div>
+              <div className="flex gap-1 mb-1.5 flex-wrap">
+                {['Today', '2hr', 'Custom'].map((t, i) => (
+                  <button key={t} className={`text-[6px] md:text-[7px] px-1 py-0.5 rounded-md font-(family-name:--font-caudex) ${i === 0 ? 'bg-[#4f772d] text-white' : 'bg-gray-100 text-gray-600'}`}>
                     {t}
                   </button>
                 ))}
               </div>
-              <button className="w-full bg-[#f6bd60] text-white text-[8px] py-1 rounded-lg font-medium font-(family-name:--font-caudex)">
-                Broadcast
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Radius (max 2km)</div>
+              <div className="flex items-center gap-1 mb-1.5">
+                <div className="flex-1 h-1 bg-gray-200 rounded-full relative">
+                  <div className="absolute left-0 top-0 h-1 w-[75%] bg-[#4f772d] rounded-full" />
+                  <div className="absolute top-1/2 -translate-y-1/2 left-[75%] w-2 h-2 bg-[#4f772d] rounded-full border border-white shadow-sm" />
+                </div>
+                <span className="text-[6px] md:text-[7px] text-gray-600 font-(family-name:--font-caudex)">1.5km</span>
+              </div>
+              <div className="flex items-center gap-1.5 mb-2">
+                <div className="w-3 h-3 rounded border border-gray-300 bg-gray-50" />
+                <span className="text-[6px] md:text-[7px] text-gray-600 font-(family-name:--font-caudex)">Make Trivvi Exclusive</span>
+              </div>
+              <button className="w-full bg-[#4f772d] text-white text-[8px] md:text-[9px] py-1.5 rounded-lg font-medium font-(family-name:--font-caudex)">
+                See Special
               </button>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-24 bg-gradient-to-t from-white from-50% via-white/95 via-75% to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-32 md:h-20 bg-gradient-to-t from-white from-50% via-white/95 via-75% to-transparent pointer-events-none" />
         </div>
       ),
     },
@@ -362,13 +383,13 @@ export default function ForRestaurants() {
                 },
                 {
                   step: "3",
-                  title: "We notify nearby diners",
-                  description: "Trivvi sends real-time alerts to hungry people in your area who love your type of food.",
+                  title: "Diners see your deals nearby",
+                  description: "When diners open Trivvi in your general area, they'll see your posted deals — no background access needed.",
                 },
                 {
                   step: "4",
                   title: "Watch the seats fill up",
-                  description: "Customers arrive, you serve great food, everyone wins. Track your results in real-time.",
+                  description: "Customers arrive, you serve great food, everyone wins. View your results anytime in the dashboard.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -566,8 +587,8 @@ export default function ForRestaurants() {
                   answer: "Absolutely. You have full control. Pause, edit, or cancel any deal at any time from your dashboard.",
                 },
                 {
-                  question: "How do I track performance?",
-                  answer: "Your Trivvi dashboard shows real-time analytics including views, redemptions, and revenue generated from each deal.",
+                  question: "How do I view performance?",
+                  answer: "Your Trivvi dashboard shows analytics including views, redemptions, and revenue generated from each deal — updated whenever you check in.",
                 },
                 {
                   question: "When will Trivvi be available in my area?",

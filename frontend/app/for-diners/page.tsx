@@ -10,8 +10,7 @@ import { FadeText } from "@/components/ui/fade-text";
 import { TextEffect } from "@/components/ui/text-effect";
 import IphoneStep1 from "@/components/ui/IphoneStep1";
 import IphoneStep2 from "@/components/ui/IphoneStep2";
-import IphoneStep3 from "@/components/ui/IphoneStep3";
-import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
+import IphoneStep3 from "@/components/ui/IphoneStep3";import IphoneStep3Map from "@/components/ui/IphoneStep3Map";import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
 import IPhoneMapNav from "@/components/ui/IphoneMapNav";
 import BullseyeTestimonial from "@/components/ui/bullseyeTestimonial";
 import LawrencesTestimonial from "@/components/ui/lawrencesTestimonial";
@@ -27,7 +26,7 @@ export default function ForDiners() {
   const features = [
     {
       name: "Get notified, not spammed",
-      description: "Trivvi only notifies you of the food you love.",
+      description: "Open the Trivvi app to show relevant deals and alerts on foods you love from restaurants nearby.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 min-h-[280px] md:min-h-[320px]",
       background: (
         <div
@@ -37,7 +36,7 @@ export default function ForDiners() {
           }}
         >
           <div className="absolute -top-80 md:-top-72 left-1/2 -translate-x-1/2 scale-[0.7] md:scale-[0.9] origin-top">
-            <IphoneStep3 />
+            <IphoneStep3Map />
           </div>
         </div>
       ),
@@ -210,15 +209,25 @@ export default function ForDiners() {
                 <br />
                 Everybody wins.
               </p> */}
-              <TextEffect
-                per="line"
-                as="p"
-                preset="blur"
-                delay={1.6}
-                className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl md:whitespace-nowrap"
-              >
-                {`Trivvi uses real-time alerts to help diners find great deals and new food nearby.`}
-              </TextEffect>
+              <div className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl mx-auto">
+                <TextEffect
+                  per="word"
+                  as="span"
+                  preset="blur"
+                  delay={1.6}
+                >
+                  {`Trivvi helps diners discover great food at better prices`}
+                </TextEffect>
+                <br className="hidden md:block" />
+                <TextEffect
+                  per="word"
+                  as="span"
+                  preset="blur"
+                  delay={1.6}
+                >
+                  {` from great restaurants nearby.`}
+                </TextEffect>
+              </div>
 
             </div>
 
@@ -337,7 +346,7 @@ export default function ForDiners() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="shrink-0"
                 >
-                  <IphoneStep3 />
+                  <IphoneStep3Map />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
@@ -353,7 +362,7 @@ export default function ForDiners() {
                     Stay in the loop
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                    Receive personalized real-time alerts sent out by restaurants near you, right when they matter.
+                    When you open the app, you&apos;ll see personalized deals from restaurants in your approximate area (~500m) — only the foods you love.
                   </p>
                 </motion.div>
               </div>
@@ -398,7 +407,7 @@ export default function ForDiners() {
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
               className="shrink-0 flex items-center justify-center"
             >
-              <IphoneStep3 />
+              <IphoneStep3Map />
             </motion.div>
           </div>
         </section>
@@ -418,11 +427,11 @@ export default function ForDiners() {
                 Your deals, on the map
               </h3>
               <p className="text-lg md:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed max-w-4xl mx-auto whitespace-nowrap">
-                Our real-time interactive map shows all of your favourite foods nearby.
-                <br />Set your location or let Trivvi follow you.
+                Our interactive map shows deals in your general vicinity when you open the app.
+                <br />Set your location manually or opt in to check your area on launch.
                 <br />
-                Deals update as you move,
-                so you never miss a bite.
+                Refresh anytime to see what&apos;s nearby —
+                no background access needed.
               </p>
             </motion.div>
 
@@ -523,7 +532,7 @@ export default function ForDiners() {
               faqs={[
                 {
                   question: "What is Trivvi?",
-                  answer: "Trivvi is a real-time food discovery app that alerts you when something good is happening nearby — from limited-time deals to hidden local spots worth checking out.",
+                  answer: "Trivvi is a food discovery app that shows you great deals in your general area when you open it — from limited-time offers to hidden local spots worth checking out.",
                 },
                 {
                   question: "Is Trivvi free for diners?",
@@ -531,7 +540,7 @@ export default function ForDiners() {
                 },
                 {
                   question: "How are notifications decided?",
-                  answer: "You choose the foods you like and how far you're willing to go. Trivvi only notifies you when something relevant happens within your preferences — no spam.",
+                  answer: "You choose the foods you like and your preferred distance. When you open Trivvi, it checks your approximate area once and shows relevant deals — no background access, no spam.",
                 },
                 {
                   question: "Do all alerts include discounts?",
@@ -539,7 +548,7 @@ export default function ForDiners() {
                 },
                 {
                   question: "How is this different from Yelp / Google Maps?",
-                  answer: "Yelp and Maps help you research. Trivvi helps you decide in the moment — with real-time alerts, not endless scrolling.",
+                  answer: "Yelp and Maps help you research. Trivvi helps you decide in the moment — open the app and see nearby deals instantly, no endless scrolling.",
                 },
                 {
                   question: "When will Trivvi launch in my city?",
@@ -551,11 +560,11 @@ export default function ForDiners() {
                 },
                 {
                   question: "Is Trivvi safe with my location and personal info?",
-                  answer: "Yes! Trivvi only uses your location to show nearby food deals you've opted in for. We never share your personal information with restaurants or third parties without your permission. You can update your preferences or stop notifications anytime. Learn more in our Privacy Policy.",
+                  answer: "Yes! Trivvi only checks your general area when the app is open — never in the background. We use approximate location (~500m) to show nearby deals you've opted in for. We never share your personal information with restaurants or third parties without your permission. You can update your preferences anytime. Learn more in our Privacy Policy.",
                 },
                 {
                   question: "Do I have to share my location?",
-                  answer: "Nope! You can manually set your location or let Trivvi follow you. Notifications only go out for foods you like within your chosen distance.",
+                  answer: "Nope! You can manually set your location anytime. If you opt in, Trivvi checks your general area only when you open the app — never in the background. Deals shown match your food preferences and chosen distance.",
                 },
                 {
                   question: "How do restaurants benefit from Trivvi?",

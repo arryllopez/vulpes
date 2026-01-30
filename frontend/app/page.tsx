@@ -47,7 +47,7 @@ export default function Home() {
               delay={2}
               className="text-base md:text-xl lg:text-2xl text-black px-4"
             >
-              {`Trivvi delivers real-time alerts that help restaurants fill empty tables while connecting diners to great deals nearby.`}
+              {`Right Place. Right Time`}
             </TextEffect>
 
           </div>
