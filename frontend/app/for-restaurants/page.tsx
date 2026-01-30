@@ -12,7 +12,7 @@ import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import { FaqSections } from "@/components/ui/faq-sections";
 import { Footer } from "@/components/ui/footer";
 import { Navbar } from "@/components/ui/navbar";
-import { Mail, Bell } from "lucide-react";
+import { Mail } from "lucide-react";
 import IPhoneDashboard from "@/components/ui/IPhoneDashboard";
 import { useState } from "react";
 
@@ -157,7 +157,7 @@ export default function ForRestaurants() {
             {/* Live Update Card - top left (Signal-only, no deal) */}
             <div className="absolute top-3 left-1 md:top-4 md:left-3 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[-3deg]">
               <div className="flex items-center gap-2 mb-2">
-                <span className="bg-[#f6bd60]/20 text-[#f6bd60] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">🔵 Live Update</span>
+                <span className="bg-[#f6bd60]/20 text-[#f6bd60] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">Live Update</span>
               </div>
               <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Headline</div>
               <input
@@ -195,10 +195,10 @@ export default function ForRestaurants() {
               </button>
             </div>
 
-            {/* Trivvi Exclusive Card - middle right (Discount, attribution-heavy) */}
-            <div className="absolute top-36 right-0 md:top-44 md:right-1 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[4deg]">
+            {/* Trivvi Exclusive Card - middle center (Discount, attribution-heavy) */}
+            <div className="absolute top-36 left-1/2 -translate-x-1/2 md:top-44 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[4deg] overflow-hidden">
               <div className="flex items-center gap-2 mb-2">
-                <span className="bg-[#abc4ff]/20 text-[#abc4ff] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">🟢 Trivvi Exclusive</span>
+                <span className="bg-[#abc4ff]/20 text-[#abc4ff] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">Trivvi Exclusive</span>
               </div>
               <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Deal Title</div>
               <input
@@ -234,12 +234,13 @@ export default function ForRestaurants() {
               <button className="w-full bg-[#abc4ff] text-white text-[8px] md:text-[9px] py-1.5 rounded-lg font-medium font-(family-name:--font-caudex)">
                 Get Deal
               </button>
+              <div className="absolute bottom-0 left-0 right-0 h-25 bg-gradient-to-t from-white from-50% to-transparent pointer-events-none" />
             </div>
 
-            {/* House Special Card - bottom left (Promo, not exclusive) */}
-            <div className="absolute bottom-14 left-2 md:bottom-16 md:left-4 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[2deg]">
+            {/* House Special Card - top right (Promo, not exclusive) */}
+            <div className="absolute top-3 right-0 md:top-4 md:right-1 w-[155px] md:w-[180px] bg-white rounded-xl shadow-lg p-3 rotate-[2deg]">
               <div className="flex items-center gap-2 mb-2">
-                <span className="bg-[#4f772d]/20 text-[#4f772d] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">🟣 House Special</span>
+                <span className="bg-[#4f772d]/20 text-[#4f772d] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">House Special</span>
               </div>
               <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Special Name</div>
               <input
@@ -358,7 +359,7 @@ export default function ForRestaurants() {
         </section>
 
         {/* How it works */}
-        <section className="px-6 py-16 relative z-10">
+        <section className="px-6 py-24 relative z-10">
           <div className="max-w-5xl mx-auto">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
@@ -394,16 +395,16 @@ export default function ForRestaurants() {
               ].map((item, index) => (
                 <motion.div
                   key={item.step}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                  className="flex flex-col items-center gap-4"
                 >
                   <div className="w-20 h-20 bg-[#abc4ff] text-white rounded-full flex items-center justify-center font-bold text-3xl shrink-0 font-(family-name:--font-caudex)">
                     {item.step}
                   </div>
-                  <div className={`flex-1 text-center ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+                  <div className="text-center">
                     <h3 className="text-2xl md:text-3xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
                       {item.title}
                     </h3>
@@ -418,18 +419,106 @@ export default function ForRestaurants() {
         </section>
 
         {/* Meet Chirp Section */}
-        <section className="min-h-screen flex items-center justify-center px-6 py-24 bg-white relative z-10">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <section className="flex items-center justify-center px-6 py-24 bg-white relative z-10 overflow-hidden">
+          {/* Scattered notification mockups - hidden on mobile */}
+          <div className="absolute inset-0 pointer-events-none hidden md:block">
+            {/* Notification 1 - Top left */}
+            <div className="absolute top-12 left-12 md:top-16 md:left-32 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-4deg] border border-gray-100">
+              <div className="flex items-start gap-2">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
+                  <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/50 text-[10px]">now</span>
+                  </div>
+                  <p className="text-black font-medium text-xs">Chirp just found a new deal!</p>
+                  <p className="text-black/70 text-xs truncate">15% off jerk chicken @ Big Jerk Cuisine (200m)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Notification 2 - Top right */}
+            <div className="absolute top-16 right-12 md:top-20 md:right-32 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[3deg] border border-gray-100">
+              <div className="flex items-start gap-2">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
+                  <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/50 text-[10px]">2m ago</span>
+                  </div>
+                  <p className="text-black font-medium text-xs">New deal nearby!</p>
+                  <p className="text-black/70 text-xs truncate">BOGO burgers @ Royal Burgers (350m)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Notification 3 - Bottom left */}
+            <div className="absolute bottom-16 left-16 md:bottom-20 md:left-40 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[2deg] border border-gray-100">
+              <div className="flex items-start gap-2">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
+                  <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/50 text-[10px]">5m ago</span>
+                  </div>
+                  <p className="text-black font-medium text-xs">Fresh deal alert!</p>
+                  <p className="text-black/70 text-xs truncate">$5 off brunch @ Lawrence&apos;s (150m)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Notification 4 - Bottom right */}
+            <div className="absolute bottom-12 right-16 md:bottom-16 md:right-40 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-3deg] border border-gray-100">
+              <div className="flex items-start gap-2">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
+                  <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/50 text-[10px]">8m ago</span>
+                  </div>
+                  <p className="text-black font-medium text-xs">Limited time offer!</p>
+                  <p className="text-black/70 text-xs truncate">Free dessert @ Spencer&apos;s Salads (400m)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Notification 5 - Middle left (partially visible) */}
+            <div className="absolute top-1/2 left-4 md:left-16 -translate-y-1/2 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-6deg] border border-gray-100">
+              <div className="flex items-start gap-2">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
+                  <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between">
+                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/50 text-[10px]">12m ago</span>
+                  </div>
+                  <p className="text-black font-medium text-xs">Happy hour special!</p>
+                  <p className="text-black/70 text-xs truncate">20% off drinks @ Big Jerk Cuisine (200m)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 relative z-10">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="shrink-0 flex justify-start"
+              className="shrink-0"
             >
               <LottieAnimation
                 animationData={ParrotAnimation}
-                className="w-64 h-64 md:w-80 md:h-80"
+                className="w-48 h-48 md:w-64 md:h-64"
               />
             </motion.div>
 
@@ -438,44 +527,20 @@ export default function ForRestaurants() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              className="flex-1 text-center px-4"
+              className="text-center md:text-left"
             >
-              <h2 className="text-4xl md:text-6xl font-bold text-black mb-6 font-(family-name:--font-caudex)">
+              <h2 className="text-4xl md:text-5xl font-bold text-black mb-4 font-(family-name:--font-caudex)">
                 Meet Chirp
               </h2>
-              <p className="text-xl md:text-2xl text-gray-600 font-(family-name:--font-inter) max-w-lg mx-auto">
+              <p className="text-lg md:text-xl text-gray-600 font-(family-name:--font-inter) max-w-md">
                 Your messenger to hungry locals. When you send a deal, Chirp delivers it to nearby diners who are ready to eat.
               </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-              className="shrink-0 flex items-center justify-center"
-            >
-              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 max-w-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-[#abc4ff] rounded-full flex items-center justify-center">
-                    <Bell className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 font-(family-name:--font-caudex)">New Chirp Alert!</p>
-                    <p className="text-sm text-gray-500">Just now</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 font-(family-name:--font-caudex)">
-                  🍕 <span className="font-semibold">Mario&apos;s Pizzeria</span> is offering 20% off large pizzas for the next 2 hours!
-                </p>
-                <p className="text-sm text-gray-500 mt-2">350m away • Ends at 4:00 PM</p>
-              </div>
             </motion.div>
           </div>
         </section>
 
         {/* Waitlist signup */}
-        <section id="waitlist" className="px-6 py-16 relative z-10">
+        <section id="waitlist" className="px-6 py-24 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

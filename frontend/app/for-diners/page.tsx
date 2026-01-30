@@ -291,7 +291,7 @@ export default function ForDiners() {
                     Create your Trivvi account
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                    Create your account in seconds. It&apos;s fast, secure, and sets you up to start discovering your favourite food deals right away.
+                    Download the Trivvi app and create your account in seconds. It&apos;s fast, secure, and sets you up to start discovering your favourite food deals right away.
                   </p>
                 </motion.div>
               </div>
