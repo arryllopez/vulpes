@@ -56,14 +56,14 @@ export default function Home() {
           <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 mt-10">
             <BlurFade delay={1.8} duration={0.5}>
               <Link href="/for-diners">
-                <GlassButton size="lg">
+                <GlassButton size="lg" contentClassName="text-black">
                   I&apos;m hungry for deals
                 </GlassButton>
               </Link>
             </BlurFade>
             <BlurFade delay={2.0} duration={0.5}>
               <Link href="/for-restaurants">
-                <GlassButton size="lg">
+                <GlassButton size="lg" contentClassName="text-black">
                   I run a restaurant
                 </GlassButton>
               </Link>

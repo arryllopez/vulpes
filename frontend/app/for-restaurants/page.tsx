@@ -14,17 +14,53 @@ import { Footer } from "@/components/ui/footer";
 import { Navbar } from "@/components/ui/navbar";
 import { Mail } from "lucide-react";
 import IPhoneDashboard from "@/components/ui/IPhoneDashboard";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 
 export default function ForRestaurants() {
   const [email, setEmail] = useState("");
   const [restaurantName, setRestaurantName] = useState("");
+  const [restaurantAddress, setRestaurantAddress] = useState("");
+  const [optInUpdates, setOptInUpdates] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Restaurant signup:", { email, restaurantName });
-    setSubmitted(true);
+    if (!email || !restaurantName || !restaurantAddress) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/restaurant-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          restaurantName,
+          restaurantAddress,
+          optInUpdates,
+          website: honeypot,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to join waitlist');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      console.error('Restaurant waitlist signup error:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const features = [
@@ -534,7 +570,7 @@ export default function ForRestaurants() {
                     <span className="text-black/50 text-[10px]">12m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">Happy hour special!</p>
-                  <p className="text-black/70 text-xs ">20% off drinks @ Allison&apos;s (200m)</p>
+                  <p className="text-black/70 text-xs ">20% off drinks @ Jonathan&apos;s (200m)</p>
                 </div>
               </div>
             </motion.div>
@@ -614,32 +650,96 @@ export default function ForRestaurants() {
                       Get early access
                     </h2>
                     <p className="text-gray-600 mb-8 font-(family-name:--font-caudex)">
-                      We&apos;re launching soon and partnering with local restaurants first.
-                      Join the waitlist to be among our founding partners.
+                      We&apos;re launching city by city and partnering with local restaurants first.
+                      <br/> 
+                      Join the waitlist to become one of Trivvi&apos;s founding partners.
+                      <br/> 
+                      We use your address to confirm whether Trivvi is launching in your area.
+                      <br/>
+                      <strong className = "font-bold" >Founding partners get the first month free. Cancel anytime.</strong>
                     </p>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1 text-left font-(family-name:--font-caudex)">
+                          Restaurant Name
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={restaurantName}
+                          onChange={(e) => setRestaurantName(e.target.value)}
+                          placeholder="Your restaurant's name"
+                          className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1 text-left font-(family-name:--font-caudex)">
+                          Restaurant Address
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={restaurantAddress}
+                          onChange={(e) => setRestaurantAddress(e.target.value)}
+                          placeholder="Street name, city, state/province"
+                          className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1 text-left font-(family-name:--font-caudex)">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="Your email"
+                          className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
+                        />
+                      </div>
+
+                      {/* Honeypot field - hidden from humans, bots will fill it */}
                       <input
                         type="text"
-                        required
-                        value={restaurantName}
-                        onChange={(e) => setRestaurantName(e.target.value)}
-                        placeholder="Restaurant name"
-                        className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
+                        name="website"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                        autoComplete="off"
+                        tabIndex={-1}
+                        aria-hidden="true"
+                        className="absolute -left-[9999px] opacity-0 h-0 w-0 pointer-events-none"
                       />
-                      <input
-                        type="email"
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Your email"
-                        className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
-                      />
+
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id="opt-in-restaurant"
+                          checked={optInUpdates}
+                          onCheckedChange={(checked) => setOptInUpdates(checked === true)}
+                          className="mt-0.5"
+                        />
+                        <label
+                          htmlFor="opt-in-restaurant"
+                          className="text-sm text-gray-600 cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                          Opt in to receive updates about Trivvi&apos;s development
+                        </label>
+                      </div>
+
+                      {/* Error message */}
+                      {error && (
+                        <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                          {error}
+                        </p>
+                      )}
+
                       <button
                         type="submit"
-                        className="w-full h-12 px-6 bg-[#abc4ff] hover:bg-[#abc4ff]/90 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg font-(family-name:--font-caudex) cursor-pointer"
+                        disabled={isLoading}
+                        className="w-full h-12 px-6 bg-[#abc4ff] hover:bg-[#abc4ff]/90 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg font-(family-name:--font-caudex) cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        Join as a partner
+                        {isLoading ? 'Joining...' : 'Join as a partner'}
                       </button>
                     </form>
                   </>
@@ -743,7 +843,7 @@ export default function ForRestaurants() {
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 ),
-                href: "https://x.com/trivvi",
+                href: "https://x.com/trivviapp?s=21",
                 label: "X",
               },
               {
