@@ -125,7 +125,7 @@ export async function POST(request: Request) {
       <ul>
         <li>We'll review your application and confirm your area eligibility.</li>
         <li>Once we launch in your area, we'll reach out to get you set up.</li>
-        <li>As a founding partner, you'll get your first month free! No commitments. Cancel anytime!</li>
+        <li>As a founding partner, you'll get free early access to the Trivvi app!</li>
       </ul>
 
       <p>Visit <a href="https://trivvi.io/for-restaurants">trivvi.io/for-restaurants</a> for more info.</p>
@@ -144,7 +144,7 @@ ${updatesText}
 Here's what's next:
 - We'll review your application and confirm your area eligibility.
 - Once we launch in your area, we'll reach out to get you set up.
-- As a founding partner, you'll get your first month free! No commitments. Cancel anytime!
+- As a founding partner, you'll get free early access to the Trivvi app!
 
 Visit https://trivvi.io/for-restaurants for more info.
 

@@ -656,7 +656,7 @@ export default function ForRestaurants() {
                       <br/> 
                       We use your address to confirm whether Trivvi is launching in your area.
                       <br/>
-                      <strong className = "font-bold" >Founding partners get the first month free. Cancel anytime.</strong>
+                      <strong className = "font-bold" >Founding partners get free, exclusive early access to the Trivvi app.</strong>
                     </p>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
