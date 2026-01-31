@@ -31,14 +31,47 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
   }>({ lat: null, lng: null });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [optInUpdates, setOptInUpdates] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showPinWarning, setShowPinWarning] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
 
   const handleLocationSelect = (lat: number, lng: number) => {
     setLocation({ lat, lng });
+    setShowPinWarning(false);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (!email) return;
+
+    if (!location.lat || !location.lng) {
+      setShowPinWarning(true);
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          lat: location.lat,
+          lng: location.lng,
+          optInUpdates,
+          website: honeypot,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to join waitlist');
+      }
+
       setIsSubmitted(true);
       onSubmit?.({
         email,
@@ -46,12 +79,11 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
         lng: location.lng,
         optInUpdates,
       });
-      console.log("Waitlist signup:", {
-        email,
-        lat: location.lat,
-        lng: location.lng,
-        optInUpdates,
-      });
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+      console.error('Waitlist signup error:', err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -84,6 +116,18 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                     className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
                   />
 
+                  {/* Honeypot field - hidden from humans, bots will fill it */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    autoComplete="off"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] opacity-0 h-0 w-0 pointer-events-none"
+                  />
+
                   <div className="flex items-start gap-3">
                     <Checkbox
                       id="opt-in"
@@ -99,11 +143,26 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                     </label>
                   </div>
 
+                  {/* Pin disclaimer */}
+                  {showPinWarning && (
+                    <p className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                      Please drop a pin on the map to help us understand where to launch first!
+                    </p>
+                  )}
+
+                  {/* Error message */}
+                  {error && (
+                    <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full h-12 px-6 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 font-(family-name:--font-caudex)"
+                    disabled={isLoading}
+                    className="w-full h-12 px-6 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 font-(family-name:--font-caudex) cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Join waitlist
+                    {isLoading ? 'Joining...' : 'Join waitlist'}
                   </button>
                 </form>
 
@@ -159,6 +218,9 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 You&apos;re on the list!
               </h3>
+              <p className="text-gray-600 text-sm mb-2">
+                We&apos;ve sent a confirmation email to your inbox.
+              </p>
               <p className="text-gray-600 text-sm">
                 We&apos;ll notify you when we launch
                 {location.lat && " in your area"}. Thanks for joining!

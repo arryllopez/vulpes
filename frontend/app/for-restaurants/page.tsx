@@ -135,6 +135,8 @@ export default function ForRestaurants() {
             <Image
               src="/imageAssets/peopleWalking.svg"
               alt="People walking"
+              width={400}
+              height={300}
               className="w-full h-auto object-cover"
             />
           </div>
@@ -390,7 +392,7 @@ export default function ForRestaurants() {
                 {
                   step: "4",
                   title: "Send your first alert",
-                  description: "Entice your alerts with our custom forms and send them out to hungry customers nearby.",
+                  description: "Capture attention with personalized alerts using our custom forms. Instantly notify nearby customers craving your type of food through the Trivvi app."
                 },
               ].map((item) => (
                 <motion.div
@@ -423,7 +425,13 @@ export default function ForRestaurants() {
           {/* Scattered notification mockups - hidden on mobile */}
           <div className="absolute inset-0 pointer-events-none hidden md:block">
             {/* Notification 1 - Top left */}
-            <div className="absolute top-12 left-12 md:top-16 md:left-32 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-4deg] border border-gray-100">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+              className="absolute top-12 left-12 md:top-16 md:left-32 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-4deg] border border-gray-100"
+            >
               <div className="flex items-start gap-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
                   <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
@@ -434,13 +442,19 @@ export default function ForRestaurants() {
                     <span className="text-black/50 text-[10px]">now</span>
                   </div>
                   <p className="text-black font-medium text-xs">Chirp just found a new deal!</p>
-                  <p className="text-black/70 text-xs truncate">15% off jerk chicken @ Big Jerk Cuisine (200m)</p>
+                  <p className="text-black/70 text-xs ">15% off Beef Patties @ Big Jerk Cuisine (200m)</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Notification 2 - Top right */}
-            <div className="absolute top-16 right-12 md:top-20 md:right-32 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[3deg] border border-gray-100">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.4 }}
+              className="absolute top-16 right-12 md:top-20 md:right-32 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[3deg] border border-gray-100"
+            >
               <div className="flex items-start gap-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
                   <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
@@ -451,13 +465,19 @@ export default function ForRestaurants() {
                     <span className="text-black/50 text-[10px]">2m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">New deal nearby!</p>
-                  <p className="text-black/70 text-xs truncate">BOGO burgers @ Royal Burgers (350m)</p>
+                  <p className="text-black/70 text-xs ">BOGO burgers @ Royal Burgers (350m)</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Notification 3 - Bottom left */}
-            <div className="absolute bottom-16 left-16 md:bottom-20 md:left-40 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[2deg] border border-gray-100">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+              className="absolute bottom-16 left-16 md:bottom-20 md:left-40 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[2deg] border border-gray-100 translate-y-4"
+            >
               <div className="flex items-start gap-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
                   <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
@@ -468,13 +488,19 @@ export default function ForRestaurants() {
                     <span className="text-black/50 text-[10px]">5m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">Fresh deal alert!</p>
-                  <p className="text-black/70 text-xs truncate">$5 off brunch @ Lawrence&apos;s (150m)</p>
+                  <p className="text-black/70 text-xs ">$5 off brunch @ Lawrence&apos;s (150m)</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Notification 4 - Bottom right */}
-            <div className="absolute bottom-12 right-16 md:bottom-16 md:right-40 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-3deg] border border-gray-100">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.8 }}
+              className="absolute bottom-12 right-16 md:bottom-16 md:right-40 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-3deg] border border-gray-100"
+            >
               <div className="flex items-start gap-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
                   <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
@@ -485,13 +511,19 @@ export default function ForRestaurants() {
                     <span className="text-black/50 text-[10px]">8m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">Limited time offer!</p>
-                  <p className="text-black/70 text-xs truncate">Free dessert @ Spencer&apos;s Salads (400m)</p>
+                  <p className="text-black/70 text-xs ">Free dessert @ Spencer&apos;s Salads (400m)</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Notification 5 - Middle left (partially visible) */}
-            <div className="absolute top-1/2 left-4 md:left-16 -translate-y-1/2 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-6deg] border border-gray-100">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 1.0 }}
+              className="absolute top-1/2 left-4 md:left-16 -translate-y-1/2 w-[200px] md:w-[240px] bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-3 rotate-[-6deg] border border-gray-100"
+            >
               <div className="flex items-start gap-2">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-sm overflow-hidden bg-white">
                   <Image src="/phoneMockup/chirp-removebg-preview.png" alt="Chirp" width={32} height={32} className="object-cover" />
@@ -502,10 +534,10 @@ export default function ForRestaurants() {
                     <span className="text-black/50 text-[10px]">12m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">Happy hour special!</p>
-                  <p className="text-black/70 text-xs truncate">20% off drinks @ Big Jerk Cuisine (200m)</p>
+                  <p className="text-black/70 text-xs ">20% off drinks @ Allison&apos;s (200m)</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 relative z-10">
@@ -537,6 +569,30 @@ export default function ForRestaurants() {
               </p>
             </motion.div>
           </div>
+        </section>
+
+        {/* Interactive Map Section */}
+        <section className="px-6 py-24 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-black font-(family-name:--font-caudex)">
+              Your restaurant is featured on our real-time interactive map, public for all users craving your food
+            </h2>
+            <div className="mt-12">
+              <Image
+                src="/imageAssets/mapMockup.png"
+                alt="Interactive map showing restaurants"
+                width={800}
+                height={500}
+                className="w-full h-auto rounded-2xl shadow-xl"
+              />
+            </div>
+          </motion.div>
         </section>
 
         {/* Waitlist signup */}
@@ -581,7 +637,7 @@ export default function ForRestaurants() {
                       />
                       <button
                         type="submit"
-                        className="w-full h-12 px-6 bg-[#abc4ff] hover:bg-[#abc4ff]/90 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg font-(family-name:--font-caudex)"
+                        className="w-full h-12 px-6 bg-[#abc4ff] hover:bg-[#abc4ff]/90 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg font-(family-name:--font-caudex) cursor-pointer"
                       >
                         Join as a partner
                       </button>
@@ -633,7 +689,7 @@ export default function ForRestaurants() {
               faqs={[
                 {
                   question: "How much does Trivvi cost?",
-                  answer: "Trivvi has a simple pricing model: a $15 monthly subscription fee with no hidden costs. You can post unlimited deals and alerts during your subscription period. Sign up for our waitlist to receive your first month completely free. Cancel anytime.",
+                  answer: "Trivvi has a simple pricing model: a $15 monthly subscription fee with no hidden costs. Sign up for our waitlist to receive your first month completely free. Cancel anytime.",
                 },
                 {
                   question: "How do I create a deal?",
@@ -645,7 +701,7 @@ export default function ForRestaurants() {
                 },
                 {
                   question: "How far do notifications reach?",
-                  answer: "You can set a custom radius, but most restaurants see the best results targeting customers within 1-2km of their location.",
+                  answer: "You can set a custom radius underneath 2km, but most restaurants see the best results within that range. This reaches nearby diners who are most likely to visit quickly. While reducing the radius may limit reach, it often increases conversion rates as the deals feel more urgent and relevant to those close by. Radius is also adjustable per deal, so you can experiment to find what works best for your restaurant.",
                 },
                 {
                   question: "Can I cancel or pause deals?",
@@ -657,7 +713,7 @@ export default function ForRestaurants() {
                 },
                 {
                   question: "When will Trivvi be available in my area?",
-                  answer: "We're launching city by city. Join the waitlist and we'll prioritize areas with the most restaurant and user interest as we expand.",
+                  answer: "We're launching city by city. Join the waitlist and we'll prioritize areas with the most restaurant and user interest as we expand. We'll notify you as soon as we're live in your area.",
                 },
                 {
                   question: "Do diners need the Trivvi app?",
