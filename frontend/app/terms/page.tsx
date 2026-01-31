@@ -150,31 +150,12 @@ export default function TermsOfService() {
 
             <section className="mb-10">
               <h2 className="text-2xl font-bold text-black mb-4 font-(family-name:--font-caudex)">
-                Payments and Subscriptions
+                Founding Partners & Early Access
               </h2>
 
-              <h3 className="text-xl font-semibold text-black mb-3">Payment Processing Service </h3>
+              <h3 className="text-xl font-semibold text-black mb-3">Restaurant Partners</h3>
               <p className="text-gray-700 mb-4">
-                All payments are processed securely through <strong> Stripe</strong>, a third-party payment processor. By subscribing to our Service, you agree to Stripe&apos;s <a href="https://stripe.com/ca/legal" className="text-blue-600 underline">terms of service</a> and <a href="https://stripe.com/ca/privacy" className="text-blue-600 underline">privacy policy</a>.
-              </p>
-              <h3 className="text-xl font-semibold text-black mb-3">Restaurant Partner Pricing</h3>
-              <p className="text-gray-700 mb-4">
-                Restaurant partners pay a monthly subscription fee to use the Service. Current pricing is $15 per month per restaurant location. Prices are subject to change with notice.
-              </p>
-
-              <h3 className="text-xl font-semibold text-black mb-3">Free Trial</h3>
-              <p className="text-gray-700 mb-4">
-                Restaurants who join the waitlist are considered as our <strong>founding partners</strong>. Founding partners receive the <strong>first month</strong> of their subscription for free. You are free to cancel the subscription at any time during the trial period, in which case you will not be charged and you will retain access to the service for the full duration of the trial, which is calculated 30 days after the initial launch of Trivvi in your area. Further details will also be provided granted user and restaurant demand have allowed Trivvi to launch in your area. After the trial period has ended and you have not opted out, your subscription will continue at the standard rate unless cancelled.
-              </p>
-
-              <h3 className="text-xl font-semibold text-black mb-3">Billing</h3>
-              <p className="text-gray-700 mb-4">
-                By subscribing, you authorize us to charge your payment method on a recurring monthly basis. You are responsible for keeping your payment information current.
-              </p>
-
-              <h3 className="text-xl font-semibold text-black mb-3">Cancellation</h3>
-              <p className="text-gray-700 mb-4">
-                You may cancel your subscription at any time through your account settings or by contacting us. Cancellations take effect at the end of the current billing period. We do not provide refunds for partial months.
+                Restaurants who join the waitlist become our <strong>founding partners</strong> and receive free early access to the Trivvi app. Further details will be provided when Trivvi launches in your area.
               </p>
 
               <h3 className="text-xl font-semibold text-black mb-3">Consumer Accounts</h3>

@@ -98,7 +98,7 @@ export default function PrivacyPolicy() {
                 <li><strong>Communications:</strong> To send you service updates, waitlist notifications, and marketing communications (with your consent)</li>
                 <li><strong>Improve the Service:</strong> To analyze usage patterns, fix bugs, and develop new features</li>
                 <li><strong>Customer Support:</strong> To respond to your inquiries and provide assistance</li>
-                <li><strong>Business Operations:</strong> To process payments for restaurant partners and manage accounts</li>
+                <li><strong>Business Operations:</strong> To manage restaurant partner accounts</li>
                 <li><strong>Legal Compliance:</strong> To comply with applicable laws and protect our legal rights</li>
                 <li><strong>Launch Planning:</strong> To use aggregated, anonymized location data to prioritize which cities to launch in</li>
               </ul>
@@ -131,7 +131,6 @@ export default function PrivacyPolicy() {
                   <ul className="list-disc pl-6 mt-2 space-y-1">
                     <li>Email delivery services (for confirmations and notifications)</li>
                     <li>Cloud hosting providers</li>
-                    <li>Payment processors (for restaurant subscriptions)</li>
                   </ul>
                 </li>
                 <li><strong>Restaurant Partners:</strong> Aggregated, anonymized data about deal performance (never individual user data)</li>

@@ -96,8 +96,8 @@ export default function ForRestaurants() {
       ),
     },
     {
-      name: "Simple pricing.",
-      description: "$15/month per restaurant. First 30 days free. Cancel anytime — no hidden fees.",
+      name: "Founding partners.",
+      description: "Join the waitlist to become a founding partner and get free early access to Trivvi.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4 min-h-[200px]",
       background: (
         <div
@@ -114,20 +114,20 @@ export default function ForRestaurants() {
             }}
           >
             <div className="bg-white rounded-xl shadow-lg p-3 text-[10px] md:text-xs">
-              <div className="text-[8px] md:text-[10px] text-gray-500 mb-2">Pricing</div>
+              <div className="text-[8px] md:text-[10px] text-gray-500 mb-2">Early Access</div>
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-black font-bold font-(family-name:--font-caudex)">Monthly Fee</span>
-                  <span className="text-black font-bold font-(family-name:--font-caudex)">$15</span>
-                </div>  
+                  <span className="text-black font-bold font-(family-name:--font-caudex)">Founding Partner</span>
+                  <span className="text-green-600 font-bold font-(family-name:--font-caudex)">✓</span>
+                </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600 font-bold font-(family-name:--font-caudex)">Free Trial</span>
-                  <span className="text-green-600 font-bold font-(family-name:--font-caudex)">-$15</span>
+                  <span className="text-gray-600 font-bold font-(family-name:--font-caudex)">Early Access</span>
+                  <span className="text-green-600 font-bold font-(family-name:--font-caudex)">Free</span>
                 </div>
                 <div className="border-t border-gray-100 pt-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-black font-bold font-(family-name:--font-caudex)">Total Amount</span>
-                    <span className="text-black font-bold font-(family-name:--font-caudex)">$0</span>
+                    <span className="text-black font-bold font-(family-name:--font-caudex)">Status</span>
+                    <span className="text-black font-bold font-(family-name:--font-caudex)">VIP</span>
                   </div>
                 </div>
               </div>
@@ -789,7 +789,7 @@ export default function ForRestaurants() {
               faqs={[
                 {
                   question: "How much does Trivvi cost?",
-                  answer: "Trivvi has a simple pricing model: a $15 monthly subscription fee with no hidden costs. Sign up for our waitlist to receive your first month completely free. Cancel anytime.",
+                  answer: "Restaurants who join the waitlist become our founding partners and get free early access to the Trivvi app. We'll share more details when we launch in your area.",
                 },
                 {
                   question: "How do I create a deal?",
