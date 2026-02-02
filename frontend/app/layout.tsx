@@ -28,6 +28,20 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Trivvi",
+  applicationCategory: "FoodService",
+  description: "Trivvi connects hungry diners with local restaurants offering exclusive deals and limited-time offers.",
+  operatingSystem: "iOS, Android",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,6 +49,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${caudex.variable} antialiased bg-white`}
       >

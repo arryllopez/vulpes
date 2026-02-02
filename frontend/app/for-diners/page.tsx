@@ -206,7 +206,7 @@ export default function ForDiners() {
         {/* Hero */}
         <section className="px-6 pt-24 pb-12 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-col items-center">
+            <h1 className="flex flex-col items-center">
               <FadeText
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black font-(family-name:--font-caudex)"
                 direction="right"
@@ -231,7 +231,7 @@ export default function ForDiners() {
                 }}
                 text="Just Next Door."
               />
-            </div>
+            </h1>
 
             <div className="py-10">
               {/* <p className="text-lg md:text-xl text-black-600 mx-auto whitespace-nowrap">
