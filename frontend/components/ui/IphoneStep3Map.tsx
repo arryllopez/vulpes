@@ -59,14 +59,21 @@ const IPhoneStep3Map = () => {
 
   return (
     <IPhoneFrame>
-      {/* Content wrapper to ensure proper clipping */}
-      <div className="absolute inset-0 overflow-hidden rounded-[42px]">
+      {/* Content wrapper with clip-path to properly clip blur effects */}
+      <div
+        className="absolute inset-0 overflow-hidden rounded-[42px]"
+        style={{
+          clipPath: "inset(0 round 42px)",
+          transform: "translateZ(0)"
+        }}
+      >
         {/* Blurred Map Background */}
         <Image
           src="/imageAssets/mapMockupEmpty.png"
           alt="Map background"
           fill
           className="object-cover blur-sm"
+          style={{ transform: "scale(1.05)" }}
         />
       </div>
 

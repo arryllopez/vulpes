@@ -15,7 +15,10 @@ const IPhoneFrame = ({ children }: IPhoneFrameProps) => {
         {/* Inner Frame */}
         <div className="relative w-full h-full bg-gradient-to-br from-[#1c1c1e] to-[#2c2c2e] rounded-[52px] p-[10px]">
           {/* Screen */}
-          <div className="relative w-full h-full rounded-[42px] overflow-hidden isolate">
+          <div
+            className="relative w-full h-full rounded-[42px] overflow-hidden isolate"
+            style={{ clipPath: "inset(0 round 42px)" }}
+          >
 
             {/* Dynamic Island */}
             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-black rounded-full z-20" />
