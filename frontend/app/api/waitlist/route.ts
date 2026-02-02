@@ -10,17 +10,14 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(request: Request) {
   try {
     const { email, optInUpdates, website, lat, lng } = await request.json();
-    console.log('Request body:', { email, optInUpdates, website, lat, lng });
 
     // Honeypot check
     if (website) {
-      console.log('Honeypot triggered - bot detected');
       return NextResponse.json({ success: true });
     }
 
     // Validate and sanitize email
     if (!email || typeof email !== 'string') {
-      console.log('Email validation failed');
       return NextResponse.json(
         { error: 'Email is required' },
         { status: 400 }
@@ -28,10 +25,8 @@ export async function POST(request: Request) {
     }
 
     const cleanEmail = email.trim().toLowerCase();
-    console.log('Sanitized email:', cleanEmail);
 
     if (!emailRegex.test(cleanEmail)) {
-      console.log('Email regex validation failed');
       return NextResponse.json(
         { error: 'Invalid email address' },
         { status: 400 }
@@ -39,7 +34,6 @@ export async function POST(request: Request) {
     }
 
     // Check for duplicate email
-    console.log('Checking for existing email in database...');
     const { data: existingUser } = await supabase
       .from('waitlist_users')
       .select('id')
@@ -47,7 +41,6 @@ export async function POST(request: Request) {
       .single();
 
     if (existingUser) {
-      console.log('Duplicate email found:', cleanEmail);
       return NextResponse.json(
         { error: 'This email is already on the waitlist' },
         { status: 409 }
@@ -55,7 +48,6 @@ export async function POST(request: Request) {
     }
 
     // Insert into database
-    console.log('Inserting new email into database...');
     const { error: dbError } = await supabase
       .from('waitlist_users')
       .insert({
@@ -66,19 +58,16 @@ export async function POST(request: Request) {
       });
 
     if (dbError) {
-      console.error('Database error:', dbError);
       return NextResponse.json(
         { error: 'Failed to join waitlist' },
         { status: 500 }
       );
     }
-    console.log('Database insert successful:', cleanEmail);
 
     const updatesText = optInUpdates
       ? "You've opted in to receive updates about Trivvi's development. We'll keep you posted on our progress!"
       : "You've chosen not to receive development updates. No worries - we'll only contact you when we launch in your area.";
 
-    console.log('Sending confirmation email...');
     const { error } = await resend.emails.send({
       from: 'Trivvi <contact@trivvi.io>',
       to: cleanEmail,
@@ -133,18 +122,14 @@ Visit https://trivvi.io for more info.
 
 
     if (error) {
-      console.error('Resend error:', error);
       return NextResponse.json(
         { error: 'Failed to send confirmation email' },
         { status: 500 }
       );
     }
 
-    console.log('Confirmation email sent to:', cleanEmail);
-
     return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error('Waitlist API error:', err);
+  } catch {
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500 }

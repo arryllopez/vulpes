@@ -7,20 +7,26 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// HTML escape function to prevent XSS in emails
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
 export async function POST(request: Request) {
   try {
     const { email, restaurantName, restaurantAddress, optInUpdates, website } = await request.json();
-    console.log('Request body:', { email, restaurantName, restaurantAddress, optInUpdates, website });
 
     // Honeypot check
     if (website) {
-      console.log('Honeypot triggered - bot detected');
       return NextResponse.json({ success: true });
     }
 
     // Validate email
     if (!email || typeof email !== 'string') {
-      console.log('Email validation failed');
       return NextResponse.json(
         { error: 'Email is required' },
         { status: 400 }
@@ -28,10 +34,8 @@ export async function POST(request: Request) {
     }
 
     const cleanEmail = email.trim().toLowerCase();
-    console.log('Sanitized email:', cleanEmail);
 
     if (!emailRegex.test(cleanEmail)) {
-      console.log('Email regex validation failed');
       return NextResponse.json(
         { error: 'Invalid email address' },
         { status: 400 }
@@ -56,9 +60,9 @@ export async function POST(request: Request) {
 
     const cleanRestaurantName = restaurantName.trim();
     const cleanRestaurantAddress = restaurantAddress.trim();
+    const safeRestaurantName = escapeHtml(cleanRestaurantName);
 
     // Check for duplicate email
-    console.log('Checking for existing email in database...');
     const { data: existingRestaurant } = await supabase
       .from('waitlist_restaurants')
       .select('id')
@@ -66,7 +70,6 @@ export async function POST(request: Request) {
       .single();
 
     if (existingRestaurant) {
-      console.log('Duplicate email found:', cleanEmail);
       return NextResponse.json(
         { error: 'This email is already on the waitlist' },
         { status: 409 }
@@ -74,7 +77,6 @@ export async function POST(request: Request) {
     }
 
     // Insert into database
-    console.log('Inserting new restaurant into database...');
     const { error: dbError } = await supabase
       .from('waitlist_restaurants')
       .insert({
@@ -85,19 +87,16 @@ export async function POST(request: Request) {
       });
 
     if (dbError) {
-      console.error('Database error:', dbError);
       return NextResponse.json(
         { error: 'Failed to join waitlist' },
         { status: 500 }
       );
     }
-    console.log('Database insert successful:', cleanEmail);
 
     const updatesText = optInUpdates
       ? "You've opted in to receive updates about Trivvi's development. We'll keep you posted on our progress!"
       : "You've chosen not to receive development updates. No worries - we'll only contact you when we're ready to onboard partners in your area.";
 
-    console.log('Sending confirmation email...');
     const { error } = await resend.emails.send({
       from: 'Trivvi <contact@trivvi.io>',
       to: cleanEmail,
@@ -117,7 +116,7 @@ export async function POST(request: Request) {
 
       <p>Hi there,</p>
 
-      <p>Thanks for signing up <strong>${cleanRestaurantName}</strong> to the Trivvi partner waitlist! We're excited to have you on board.</p>
+      <p>Thanks for signing up <strong>${safeRestaurantName}</strong> to the Trivvi partner waitlist! We're excited to have you on board.</p>
 
       <p>${updatesText}</p>
 
@@ -152,18 +151,14 @@ Visit https://trivvi.io/for-restaurants for more info.
     });
 
     if (error) {
-      console.error('Resend error:', error);
       return NextResponse.json(
         { error: 'Failed to send confirmation email' },
         { status: 500 }
       );
     }
 
-    console.log('Confirmation email sent to:', cleanEmail);
-
     return NextResponse.json({ success: true });
-  } catch (err) {
-    console.error('Restaurant waitlist API error:', err);
+  } catch {
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500 }
