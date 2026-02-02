@@ -15,6 +15,16 @@ const caudex = Caudex({
 
 export const metadata: Metadata = {
   title: "Trivvi - Connecting Diners & Restaurants",
+  description: "Trivvi connects hungry diners with local restaurants offering exclusive deals.",
+  icons: {
+    icon: "/imageAssets/trivviLogo.svg",
+    apple: "/imageAssets/trivviLogo.svg",
+  },
+  openGraph: {
+    title: "Trivvi - Connecting Diners & Restaurants",
+    description: "Trivvi connects hungry diners with local restaurants offering exclusive deals.",
+    images: ["/imageAssets/trivviLogo.svg"],
+  },
 };
 
 export default function RootLayout({

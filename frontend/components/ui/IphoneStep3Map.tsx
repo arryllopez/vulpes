@@ -59,13 +59,16 @@ const IPhoneStep3Map = () => {
 
   return (
     <IPhoneFrame>
-      {/* Blurred Map Background */}
-      <Image
-        src="/imageAssets/mapMockupEmpty.png"
-        alt="Map background"
-        fill
-        className="object-cover blur-sm"
-      />
+      {/* Content wrapper to ensure proper clipping */}
+      <div className="absolute inset-0 overflow-hidden rounded-[42px]">
+        {/* Blurred Map Background */}
+        <Image
+          src="/imageAssets/mapMockupEmpty.png"
+          alt="Map background"
+          fill
+          className="object-cover blur-sm"
+        />
+      </div>
 
       {/* Notification */}
       <NotificationMap isVisible={showNotification} />
