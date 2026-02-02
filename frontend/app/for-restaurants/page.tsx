@@ -16,6 +16,8 @@ import { Mail } from "lucide-react";
 import IPhoneDashboard from "@/components/ui/IPhoneDashboard";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
+import IPhoneRecentChirps from "@/components/ui/IphoneRecentChirps";
+import IPhoneStep3 from "@/components/ui/IphoneStep3Map";
 
 export default function ForRestaurants() {
   const [email, setEmail] = useState("");
@@ -79,8 +81,8 @@ export default function ForRestaurants() {
             <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-85 scale-[0.85] md:scale-[1.2] translate-x-1 -translate-y-7">
               <div className="text-base font-semibold text-gray-800 mb-5 font-(family-name:--font-caudex)">Table Occupancy</div>
               <div className="grid grid-cols-4 gap-4 mb-5 font-(family-name:--font-caudex)">
-                {[1,2,3,4,5,6,7,8].map((i) => (
-                  <div key={i} className={`w-14 h-14 rounded-xl flex items-center justify-center text-base font-semibold ${[2,3,5].includes(i) ? 'bg-[#abc4ff]/20 text-[#abc4ff]' : i <= 5 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'}`}>
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                  <div key={i} className={`w-14 h-14 rounded-xl flex items-center justify-center text-base font-semibold ${[2, 3, 5].includes(i) ? 'bg-[#abc4ff]/20 text-[#abc4ff]' : i <= 5 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400'}`}>
                     {i}
                   </div>
                 ))}
@@ -96,7 +98,7 @@ export default function ForRestaurants() {
       ),
     },
     {
-      name: "Founding partners.",
+      name: "Join as a founding partner.",
       description: "Join the waitlist to become a founding partner and get free early access to Trivvi.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4 min-h-[200px]",
       background: (
@@ -337,7 +339,7 @@ export default function ForRestaurants() {
                 framerProps={{
                   show: { transition: { delay: 0.4 } },
                 }}
-                text="Empty seats?"
+                text="Empty Seats?"
               />
               <FadeText
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black font-(family-name:--font-caudex)"
@@ -345,7 +347,7 @@ export default function ForRestaurants() {
                 framerProps={{
                   show: { transition: { delay: 0.8 } },
                 }}
-                text="Not anymore."
+                text="Not Anymore."
               />
             </div>
 
@@ -357,7 +359,7 @@ export default function ForRestaurants() {
                 delay={1.2}
                 className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl md:whitespace-nowrap"
               >
-                {`Post a deal during your slow hours. Trivvi notifies hungry locals nearby.`}
+                {`Send real-time alerts instantly. Trivvi notifies hungry locals nearby.`}
               </TextEffect>
               <TextEffect
                 per="line"
@@ -388,7 +390,10 @@ export default function ForRestaurants() {
                 </TextEffect>
               </div>
             </section>
-            <BentoGrid className="lg:grid-rows-3" delay={2.5}>
+            <BentoGrid
+              className="lg:grid-rows-3"
+              delay={2.5}
+            >
               {features.map((feature) => (
                 <BentoCard key={feature.name} {...feature} />
               ))}
@@ -474,11 +479,11 @@ export default function ForRestaurants() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/90 text-xs font-semibold">Chirp</span>
                     <span className="text-black/50 text-[10px]">now</span>
                   </div>
-                  <p className="text-black font-medium text-xs">Chirp just found a new deal!</p>
-                  <p className="text-black/70 text-xs ">15% off Beef Patties @ Big Jerk Cuisine (200m)</p>
+                  <p className="text-black font-medium text-xs">Chirp has good news!</p>
+                  <p className="text-black/70 text-xs ">No line @ Abruzzi&apos;s (200m)</p>
                 </div>
               </div>
             </motion.div>
@@ -497,11 +502,11 @@ export default function ForRestaurants() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/90 text-xs font-semibold">Chirp</span>
                     <span className="text-black/50 text-[10px]">2m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">New deal nearby!</p>
-                  <p className="text-black/70 text-xs ">BOGO burgers @ Royal Burgers (350m)</p>
+                  <p className="text-black/70 text-xs ">BOGO burgers @ Michael&apos;s Burgers (350m)</p>
                 </div>
               </div>
             </motion.div>
@@ -520,7 +525,7 @@ export default function ForRestaurants() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/90 text-xs font-semibold">Chirp</span>
                     <span className="text-black/50 text-[10px]">5m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">Fresh deal alert!</p>
@@ -543,7 +548,7 @@ export default function ForRestaurants() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/90 text-xs font-semibold">Chirp</span>
                     <span className="text-black/50 text-[10px]">8m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">Limited time offer!</p>
@@ -566,11 +571,11 @@ export default function ForRestaurants() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
-                    <span className="text-black/90 text-xs font-semibold">Trivvi</span>
+                    <span className="text-black/90 text-xs font-semibold">Chirp</span>
                     <span className="text-black/50 text-[10px]">12m ago</span>
                   </div>
                   <p className="text-black font-medium text-xs">Happy hour special!</p>
-                  <p className="text-black/70 text-xs ">20% off drinks @ Jonathan&apos;s (200m)</p>
+                  <p className="text-black/70 text-xs ">20% off drinks @ Lincoln (200m)</p>
                 </div>
               </div>
             </motion.div>
@@ -619,15 +624,33 @@ export default function ForRestaurants() {
             <h2 className="text-3xl md:text-4xl font-bold text-black font-(family-name:--font-caudex)">
               Your restaurant is featured on our real-time interactive map, public for all users craving your food
             </h2>
-            <div className="mt-12">
-              <Image
-                src="/imageAssets/mapMockup.png"
-                alt="Interactive map showing restaurants"
-                width={800}
-                height={500}
-                className="w-full h-auto rounded-2xl shadow-xl"
-              />
+            <div className="mt-12 flex justify-center">
+              <IPhoneRecentChirps />
             </div>
+          </motion.div>
+        </section>
+
+
+        <section className="px-6 py-24 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-black font-(family-name:--font-caudex)">
+              When you send an alert, Chirp notifies hungry locals nearby via in-app push notifications.
+            </h2>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+              className="shrink-0 flex items-center justify-center pt-7"
+            >
+              <IPhoneStep3 />
+            </motion.div>
           </motion.div>
         </section>
 
@@ -651,12 +674,12 @@ export default function ForRestaurants() {
                     </h2>
                     <p className="text-gray-600 mb-8 font-(family-name:--font-caudex)">
                       We&apos;re launching city by city and partnering with local restaurants first.
-                      <br/> 
+                      <br />
                       Join the waitlist to become one of Trivvi&apos;s founding partners.
-                      <br/> 
+                      <br />
                       We use your address to confirm whether Trivvi is launching in your area.
-                      <br/>
-                      <strong className = "font-bold" >Founding partners get free, exclusive early access to the Trivvi app.</strong>
+                      <br />
+                      <strong className="font-bold" >Founding partners get free, exclusive early access to the Trivvi app.</strong>
                     </p>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -797,7 +820,7 @@ export default function ForRestaurants() {
                 },
                 {
                   question: "What kind of deals work best?",
-                  answer: "Percentage discounts and special combo offers tend to perform well. The key is making it compelling enough to get people off the couch.",
+                  answer: "Percentage discounts and special combo offers tend to perform well. The key is making it compelling enough to get people up and moving.",
                 },
                 {
                   question: "How far do notifications reach?",

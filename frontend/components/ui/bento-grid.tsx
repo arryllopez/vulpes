@@ -3,6 +3,29 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.46, 0.45, 0.94] as const,
+    },
+  },
+};
+
 const BentoGrid = ({
   children,
   className,
@@ -14,11 +37,13 @@ const BentoGrid = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      variants={containerVariants}
+      transition={{ delay }}
       className={cn(
-        "grid w-full auto-rows-[rem] grid-cols-3 gap-4",
+        "grid w-full auto-rows-[rem] grid-cols-3 gap-4 transform-gpu",
         className,
       )}
     >
@@ -40,8 +65,8 @@ const BentoCard = ({
   description: string;
   video?: string;
 }) => (
-  <div
-    key={name}
+  <motion.div
+    variants={cardVariants}
     className={cn(
       "group relative col-span-3 flex flex-col justify-end overflow-hidden rounded-xl min-h-[14.5rem]",
       "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
@@ -69,7 +94,7 @@ const BentoCard = ({
       <p className="max-w-lg text-sm md:text-base text-neutral-500">{description}</p>
     </div>
     <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03]" />
-  </div>
+  </motion.div>
 );
 
 export { BentoCard, BentoGrid };

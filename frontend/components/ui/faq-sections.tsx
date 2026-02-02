@@ -1,11 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 
 interface FaqItem {
   question: string;
-  answer: string;
+  answer: ReactNode;
 }
 
 interface FaqSectionsProps {

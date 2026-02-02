@@ -31,7 +31,7 @@ const Notification = ({ isVisible }: NotificationProps) => {
           {/* Content */}
           <div className="flex-1 min-w-0 space-y-0.5">
             <div className="flex items-center justify-between">
-              <span className="text-white/90 text-sm font-semibold">Trivvi</span>
+              <span className="text-white/90 text-sm font-semibold">Chirp</span>
               <span className="text-white/50 text-xs">now</span>
             </div>
             <p className="text-white font-medium text-sm">Chirp just found a new deal!</p>

@@ -14,12 +14,12 @@ export default function About() {
     {
       icon: <Users className="w-8 h-8 text-[#abc4ff]" />,
       title: "Community First",
-      description: "We believe great food brings people together. Trivvi connects hungry diners with passionate restaurateurs.",
+      description: "We believe great food brings people together. Trivvi promotes a dine-in culture by helping people discover nearby places worth visiting." ,
     },
     {
       icon: <Utensils className="w-8 h-8 text-[#abc4ff]" />,
       title: "Supporting Restaurants",
-      description: "Every alert sent through Trivvi helps restaurants fill seats. We're dedicated to reviving dine-in culture and culinary diversity.",
+      description: "We understand that restaurants thrive on publicity. Every alert sent through Trivvi helps restaurants fill seats. We're dedicated to aiding restaurants in finding new customers and growing their business.",
     },
     {
       icon: <Bell className="w-8 h-8 text-[#abc4ff]" />,
@@ -29,7 +29,7 @@ export default function About() {
     {
       icon: <MapPin className="w-8 h-8 text-[#abc4ff]" />,
       title: "Hyper-Local",
-      description: "Deals that matter, where you are. Trivvi understands that the best meal is often the one closest to you.",
+      description: "Deals that matter, where you are. Trivvi understands that the best meal is often the one closest to you. So you can discover awesome food spots just around the corner.",
     },
   ];
 
@@ -84,11 +84,9 @@ export default function About() {
                   Too many great restaurants <span className = "font-bold">struggle for visibility </span>, while hungry people nearby scroll <span className = "font-bold">endlessly through apps, unsure where to eat.</span>
                 </p>
                 <p>
-                  We saw a disconnect. Restaurants needed a way to reach nearby diners at the right moment. Diners wanted relevant suggestions, not endless noise. So we built Trivvi. <span className = "font-bold">The bridge that connects the two.</span>
+                  We saw a disconnect. Restaurants needed a way to reach nearby diners at the right moment. Diners wanted relevant suggestions, not indecisiveness. So we built Trivvi. <span className = "font-bold">The bridge that connects diners and restaurants.</span>
                 </p>
-                <p>
-                  Today, Trivvi helps restaurants send timely alerts and offers to people who actually want them, based on what they love to eat and how far they&apos;re willing to go. <span className = "font-bold">No spam. No clutter. Just great food, when you want it.</span>
-                </p>
+                
               </div>
             </motion.div>
           </div>

@@ -24,7 +24,7 @@ const IPhoneStep1 = () => {
         {/* Logo/Brand */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 font-(family-name:--font-caudex)">Trivvi</h1>
-          <p className="text-gray-500 text-sm mt-1">Deals that come to you</p>
+          <p className="text-gray-500 text-sm mt-1">Right place. Right time</p>
         </div>
 
         {/* Form Fields */}
@@ -86,6 +86,12 @@ const IPhoneStep1 = () => {
         {/* Terms */}
         <p className="text-[10px] text-gray-400 text-center mt-6 leading-relaxed">
           By continuing, you agree to our <span style={{ textDecoration: 'underline' }}>Terms of Service</span> and <span style={{ textDecoration: 'underline' }}>Privacy Policy</span>
+        </p>
+
+        {/* Sign Up Link */}
+        <p className="text-sm text-center mt-4">
+          <span className="text-gray-500">Don&apos;t have an account?</span>{" "}
+          <span className="text-black font-semibold">Sign Up</span>
         </p>
       </div>
     </IPhoneFrame>

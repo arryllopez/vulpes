@@ -1,27 +1,64 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import SmoothScroll from "@/components/SmoothScroll";
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
-import LottieAnimation from "@/components/LottieAnimation";
-import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
 import { FadeText } from "@/components/ui/fade-text";
 import { TextEffect } from "@/components/ui/text-effect";
-import IphoneStep1 from "@/components/ui/IphoneStep1";
-import IphoneStep2 from "@/components/ui/IphoneStep2";
-import IphoneStep3Map from "@/components/ui/IphoneStep3Map";
-import IPhoneDealRedeem from "@/components/ui/IphoneDealRedeem";
-import IPhoneMapNav from "@/components/ui/IphoneMapNav";
-import BullseyeTestimonial from "@/components/ui/bullseyeTestimonial";
-import LawrencesTestimonial from "@/components/ui/lawrencesTestimonial";
-import FoodChecklist from "@/components/ui/FoodChecklist";
 import { GradientBackground } from "@/components/ui/gradient-backgrounds";
-import WaitlistCard from "@/components/ui/WaitlistCard";
 import { FaqSections } from "@/components/ui/faq-sections";
 import { Footer } from "@/components/ui/footer";
 import { Navbar } from "@/components/ui/navbar";
 import { Mail } from "lucide-react";
+import ParrotAnimation from "@/public/animationsLottie/Parrot.json";
+
+// Loading placeholder for phone mockups
+const PhoneSkeleton = () => (
+  <div className="w-[336px] h-[693px] bg-gradient-to-b from-gray-200 to-gray-100 rounded-[55px] animate-pulse" />
+);
+
+// Loading placeholder for smaller components
+const CardSkeleton = () => (
+  <div className="w-full h-48 bg-gray-100 rounded-xl animate-pulse" />
+);
+
+// Dynamic imports with loading states for below-fold components
+const LottieAnimation = dynamic(() => import("@/components/LottieAnimation"), {
+  ssr: false,
+  loading: () => <div className="w-64 h-64 md:w-80 md:h-80 bg-gray-100 rounded-full animate-pulse" />
+});
+const IphoneStep1 = dynamic(() => import("@/components/ui/IphoneStep1"), {
+  loading: () => <PhoneSkeleton />
+});
+const IphoneStep2 = dynamic(() => import("@/components/ui/IphoneStep2"), {
+  loading: () => <PhoneSkeleton />
+});
+const IphoneStep3Map = dynamic(() => import("@/components/ui/IphoneStep3Map"), {
+  loading: () => <PhoneSkeleton />
+});
+const IPhoneDealRedeem = dynamic(() => import("@/components/ui/IphoneDealRedeem"), {
+  loading: () => <PhoneSkeleton />
+});
+const IPhoneMapNav = dynamic(() => import("@/components/ui/IphoneMapNav"), {
+  loading: () => <PhoneSkeleton />
+});
+const IPhoneRecentChirps = dynamic(() => import("@/components/ui/IphoneRecentChirps"), {
+  loading: () => <PhoneSkeleton />
+});
+const BullseyeTestimonial = dynamic(() => import("@/components/ui/bullseyeTestimonial"), {
+  loading: () => <CardSkeleton />
+});
+const LawrencesTestimonial = dynamic(() => import("@/components/ui/lawrencesTestimonial"), {
+  loading: () => <CardSkeleton />
+});
+const FoodChecklist = dynamic(() => import("@/components/ui/FoodChecklist"), {
+  loading: () => <CardSkeleton />
+});
+const WaitlistCard = dynamic(() => import("@/components/ui/WaitlistCard"), {
+  loading: () => <div className="w-full max-w-md h-64 bg-gray-100 rounded-2xl animate-pulse" />
+});
 
 export default function ForDiners() {
   const features = [
@@ -138,7 +175,7 @@ export default function ForDiners() {
     },
     {
       name: "Pick the foods you love",
-      description: "Trivvi tailors alerts based on your favorite cuisines and dishes.",
+      description: "Trivvi tailors your experience based on your favorite cuisines and dishes.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
       background: (
         <div
@@ -184,7 +221,7 @@ export default function ForDiners() {
                 framerProps={{
                   show: { transition: { delay: 0.8 } },
                 }}
-                text="Better prices."
+                text="Better Prices."
               />
               <FadeText
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black font-(family-name:--font-caudex)"
@@ -192,7 +229,7 @@ export default function ForDiners() {
                 framerProps={{
                   show: { transition: { delay: 1.2 } },
                 }}
-                text="Just next door."
+                text="Just Next Door."
               />
             </div>
 
@@ -213,15 +250,6 @@ export default function ForDiners() {
                 >
                   {`Trivvi helps diners discover great food at better prices`}
                 </TextEffect>
-                <br className="hidden md:block" />
-                <TextEffect
-                  per="word"
-                  as="span"
-                  preset="blur"
-                  delay={1.6}
-                >
-                  {` from great restaurants nearby.`}
-                </TextEffect>
               </div>
 
             </div>
@@ -229,23 +257,70 @@ export default function ForDiners() {
           </div>
         </section>
 
+        {/* Welcome to Trivvi App Section */}
+        <section className="px-6 py-24 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center gap-12">
+              {/* Text - Left aligned */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 2.2 }}
+                className="flex-1 text-center md:text-left"
+              >
+                <h3 className="text-3xl md:text-5xl font-bold text-black mb-4 font-(family-name:--font-caudex)">
+                  Discover with Trivvi
+                </h3>
+                <p className="text-base md:text-lg lg:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed">
+                  Discover great food deals happening right now in your area.{" "}
+                  <br className="hidden md:block" />
+                  <strong>Unique to your tastebuds.</strong>
+                </p>
+                <p className="text-base md:text-lg lg:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed mt-4">
+                  Receive limited-time alerts from restaurants serving foods you love,{" "}
+                  <br className="hidden md:block" />
+                  <strong>at exclusive prices.</strong>
+                </p>
+              </motion.div>
+
+              {/* Phone Mockups - Right aligned */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 2.4 }}
+                className="shrink-0 relative scale-[0.55] md:scale-100 origin-center translate-x-16 -translate-y-8 md:translate-x-0 md:translate-y-0"
+              >
+                {/* Background phone - IphoneStep3Map */}
+                <div className="absolute -left-72 top-8 -rotate-10 z-0 scale-90">
+                  <IphoneStep3Map />
+                </div>
+                {/* Foreground phone - IPhoneRecentChirps */}
+                <div className="relative z-10">
+                  <IPhoneRecentChirps />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* Benefits */}
         <section className="px-6 py-8 relative z-10">
           <div className="max-w-7xl mx-auto">
-            <section className="text-center py-10">
-              <div style={{ fontWeight: 700 }}>
-                <TextEffect
-                  per="line"
-                  as="h2"
-                  preset="blur"
-                  delay={2}
-                  className="text-4xl md:text-4xl text-black font-(family-name:--font-caudex)"
-                >
-                  {`Trivvi is Designed for Diners`}
-                </TextEffect>
-              </div>
-            </section>
-            <BentoGrid className="lg:grid-rows-3" delay={2.5}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-center py-10"
+            >
+              <h2
+                style={{ fontWeight: 700 }}
+                className="text-4xl md:text-4xl text-black font-(family-name:--font-caudex)"
+              >
+                Trivvi is Designed for Diners
+              </h2>
+            </motion.div>
+            <BentoGrid className="lg:grid-rows-3">
 
               {features.map((feature) => (
                 <BentoCard key={feature.name} {...feature} />
@@ -264,7 +339,7 @@ export default function ForDiners() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="text-4xl md:text-4xl font-bold mb-16 text-center font-(family-name:--font-caudex)"
             >
-              Trivvi in 3 easy steps
+              Trivvi in 4 easy steps
             </motion.h2>
             <div className="flex flex-col gap-24">
               {/* Step 1 */}
@@ -292,7 +367,7 @@ export default function ForDiners() {
                     Create your Trivvi account
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                    Download the Trivvi app and create your account in seconds. It&apos;s fast, secure, and sets you up to start discovering your favourite food deals right away.
+                    Download the Trivvi app and create your account in seconds.
                   </p>
                 </motion.div>
               </div>
@@ -325,7 +400,7 @@ export default function ForDiners() {
                     Choose the foods you love and how far you want to go.
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                    Trivvi only shows you the foods you like
+                    Trivvi only notifies you about restaurants serving those dishes
                     <br />
                     within the distance you choose.
                   </p>
@@ -341,7 +416,7 @@ export default function ForDiners() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="shrink-0"
                 >
-                  <IphoneStep3Map />
+                  <IPhoneRecentChirps />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
@@ -354,13 +429,46 @@ export default function ForDiners() {
                     3
                   </div>
                   <p className="text-3xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
-                    Stay in the loop
+                    Discover on the go
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                    When you open the app, Chirp will notify you when restaurants nearby send out exclusive offers for the foods you love.
+                    Trivvi&apos;s real-time in app map shows you restaurants serving foods you love
                   </p>
                 </motion.div>
               </div>
+
+              {/* Step 4 */}
+              <div className="flex flex-col md:flex-row-reverse items-center gap-12">
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="shrink-0"
+                >
+                  <IphoneStep3Map />
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  className="flex-1 flex flex-col justify-center items-center text-center"
+                >
+                  <div className="w-12 h-12 bg-[#abc4ff] text-white rounded-full flex items-center justify-center font-bold text-xl mb-4 font-(family-name:--font-caudex)">
+                    4
+                  </div>
+                  <p className="text-3xl font-semibold text-black mb-2 font-(family-name:--font-caudex)">
+                    Stay in the loop
+                  </p>
+                  <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
+                    While the app is open, Chirp will send you alerts about great deals nearby. Relevant to your taste, right when you need it.
+                  </p>
+                </motion.div>
+              </div>
+
+
+
             </div>
           </div>
         </section>
@@ -407,54 +515,6 @@ export default function ForDiners() {
           </div>
         </section>
 
-        {/* Interactive Map Section */}
-        <section className="px-6 py-24 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            {/* Title - Centered Above */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-center mb-12"
-            >
-              <h3 className="text-3xl md:text-4xl font-bold text-black mb-4 font-(family-name:--font-caudex)">
-                Your deals, on the map
-              </h3>
-              <p className="text-base md:text-lg lg:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed max-w-4xl mx-auto px-4">
-                Our interactive map shows restaurants in your general vicinity when you open the app.
-                <br className="hidden md:block" /> Click on a restaurant to see their details and get directions.
-                <br className="hidden md:block" />Set your location manually or opt in to check your area on launch.
-                <br className="hidden md:block" />
-                Refresh anytime to see what&apos;s nearby —
-                no background access needed.
-              </p>
-            </motion.div>
-
-            
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-16">
-              {/* Map Image */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                className="w-full max-w-137.5"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-4/3">
-                  <Image
-                    src="/imageAssets/mapMockup.png"
-                    alt="Interactive map showing nearby deals"
-                    width={550}
-                    height={366}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
         {/* Waitlist signup */}
         <section id="waitlist" className="px-6 py-16 relative z-10">
           <motion.div
@@ -488,11 +548,11 @@ export default function ForDiners() {
                 },
                 {
                   question: "Is Trivvi free for diners?",
-                  answer: "Yes. Trivvi is completely free for diners. Just download the app, create an account, and start receiving alerts about great food nearby.",
+                  answer: "Yes. Trivvi is completely free for diners. Just download the app, create an account, and start discovering. All completely free of charge",
                 },
                 {
                   question: "How are notifications decided?",
-                  answer: "You choose the foods you like and your preferred distance. When you open Trivvi, it checks your approximate area once and shows relevant deals — no background access, no spam.",
+                  answer: "You choose the foods you like and your preferred distance. When restaurants send out alerts, our algorithm cross matches your preferences with what the restaurant is offering, ensuring your alerts are relevant to you.",
                 },
                 {
                   question: "Do all alerts include discounts?",
@@ -500,7 +560,7 @@ export default function ForDiners() {
                 },
                 {
                   question: "How is this different from Yelp / Google Maps?",
-                  answer: "Yelp and Maps help you research. Trivvi helps you decide in the moment — open the app and see nearby deals relevant to your taste instantly, no endless scrolling.",
+                  answer: "Yelp and Maps help you research. Trivvi understands that your time is valuable and it aims to cut through the endless scrolling and actually get you moving. It notifies you of great food options nearby, tailored to your tastes, right when you need it.",
                 },
                 {
                   question: "When will Trivvi launch in my city?",
@@ -508,19 +568,19 @@ export default function ForDiners() {
                 },
                 {
                   question: "Is Trivvi safe with my location and personal info?",
-                  answer: "Yes! Trivvi only checks your general area when the app is open — never in the background. We use approximate location to show nearby deals you've opted in for. We never share your personal information with restaurants or third parties without your permission. You can update your preferences anytime. Learn more in our Privacy Policy.",
+                  answer: <>Yes. Trivvi uses your location only while the app is open and permissions have been granted to show nearby restaurants and deliver more accurate alerts. We use precise location so notifications trigger at the right time. Trivvi does not track you in the background, store movement history, or sell your location data. Restaurants never see your personal information. You&apos;re always in control and can change your preferences or permissions anytime. Learn more in our <a href="/privacy" className="underline hover:text-black transition-colors">Privacy Policy</a>.</>,
                 },
-                {
-                  question: "Do I have to share my location?",
-                  answer: "Nope! You can manually set your location anytime. If you opt in, Trivvi checks your general area only when you open the app — never in the background. Deals shown match your food preferences.",
+            {
+              question: "Do I have to share my location?",
+            answer: "Nope! You can manually set your location anytime. If you opt in, Trivvi checks your area only when you open the app — never in the background. Deals shown match your food preferences.",
                 },
-                {
-                  question: "How do restaurants benefit from Trivvi?",
-                  answer: "Trivvi helps restaurants fill empty tables, increase visibility, and attract nearby diners — without long-term discounts or third-party delivery fees.",
+            {
+              question: "How do restaurants benefit from Trivvi?",
+            answer: "Trivvi helps restaurants fill empty tables, increase visibility, and attract nearby diners — without long-term discounts or third-party delivery fees.",
                 },
-                {
-                  question: "How do I join the waitlist?",
-                  answer: "Enter your email, drop a pin on the map, and you're in. We'll notify you when Trivvi launches near you.",
+            {
+              question: "How do I join the waitlist?",
+            answer: "Enter your email, drop a pin on the map, and you're in. We'll notify you when Trivvi launches near you.",
                 },
               ]}
             />

@@ -11,11 +11,12 @@ const IPhoneFrame = ({ children }: IPhoneFrameProps) => {
       <div className="absolute inset-0 rounded-[55px] bg-black/20 blur-2xl translate-y-4 scale-95" />
 
       {/* Phone Frame */}
-      <div className="relative w-[320px] h-[660px] bg-gradient-to-b from-[#8a8a8f] via-[#a5a5aa] to-[#7a7a7f] rounded-[55px] p-[3px] shadow-xl">
+      <div className="relative w-[336px] h-[693px] bg-gradient-to-b from-[#8a8a8f] via-[#a5a5aa] to-[#7a7a7f] rounded-[55px] p-[3px] shadow-xl">
         {/* Inner Frame */}
         <div className="relative w-full h-full bg-gradient-to-br from-[#1c1c1e] to-[#2c2c2e] rounded-[52px] p-[10px]">
           {/* Screen */}
-          <div className="relative w-full h-full rounded-[42px] overflow-hidden bg-black">
+          <div className="relative w-full h-full rounded-[42px] overflow-hidden ">
+
             {/* Dynamic Island */}
             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[120px] h-[35px] bg-black rounded-full z-20" />
 

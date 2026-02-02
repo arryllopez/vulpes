@@ -72,7 +72,7 @@ export default function Home() {
 
           <div className="relative z-10 flex flex-col items-center mt-6">
             <BlurFade delay={2.2} duration={0.5}>
-              <p className="text-sm text-black/70 mb-2 font-(family-name:--font-caudex)">Coming Soon</p>
+              <p className="text-2xl text-black/70 mb-2 font-(family-name:--font-caudex)">Coming Soon</p>
             </BlurFade>
             <div className="flex flex-col items-center gap-3 md:flex-row">
               <BlurFade delay={2.3} duration={0.5}>
