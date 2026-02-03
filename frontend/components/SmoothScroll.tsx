@@ -15,6 +15,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
   useEffect(() => {
     let scroll: LocomotiveScrollInstance | null = null;
+    let handleResize: (() => void) | null = null;
 
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
@@ -35,18 +36,22 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         }, 500);
 
         // Update on resize
-        const handleResize = () => scroll?.update();
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-          window.removeEventListener("resize", handleResize);
-          scroll?.destroy();
+        handleResize = () => {
+          if (scroll) {
+            scroll.update();
+          }
         };
+        window.addEventListener("resize", handleResize);
       }
     })();
 
     return () => {
-      scroll?.destroy();
+      if (handleResize) {
+        window.removeEventListener("resize", handleResize);
+      }
+      if (scroll) {
+        scroll.destroy();
+      }
     };
   }, []);
 
