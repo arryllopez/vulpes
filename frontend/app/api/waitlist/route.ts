@@ -8,11 +8,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  console.log('[Waitlist API] POST request received');
-  
   try {
     const body = await request.json();
-    console.log('[Waitlist API] Request body:', JSON.stringify(body, null, 2));
     
     const { 
       email, 
@@ -28,13 +25,11 @@ export async function POST(request: Request) {
 
     // Honeypot check
     if (website) {
-      console.log('[Waitlist API] Honeypot triggered, returning fake success');
       return NextResponse.json({ success: true });
     }
 
     // Validate and sanitize email
     if (!email || typeof email !== 'string') {
-      console.log('[Waitlist API] Email validation failed - missing or invalid type:', { email, type: typeof email });
       return NextResponse.json(
         { error: 'Email is required' },
         { status: 400 }
@@ -42,10 +37,8 @@ export async function POST(request: Request) {
     }
 
     const cleanEmail = email.trim().toLowerCase();
-    console.log('[Waitlist API] Cleaned email:', cleanEmail);
 
     if (!emailRegex.test(cleanEmail)) {
-      console.log('[Waitlist API] Email regex validation failed for:', cleanEmail);
       return NextResponse.json(
         { error: 'Invalid email address' },
         { status: 400 }
@@ -54,38 +47,28 @@ export async function POST(request: Request) {
 
     // Validate neighbourhoods
     if (!primaryNeighbourhood || !secondaryNeighbourhood) {
-      console.log('[Waitlist API] Neighbourhood validation failed:', { primaryNeighbourhood, secondaryNeighbourhood });
       return NextResponse.json(
         { error: 'Please select both neighbourhoods' },
         { status: 400 }
       );
     }
 
-    console.log('[Waitlist API] Checking for duplicate email...');
-    
     // Check for duplicate email
-    const { data: existingUser, error: lookupError } = await supabase
+    const { data: existingUser } = await supabase
       .from('waitlist_users')
       .select('id')
       .eq('email', cleanEmail)
       .single();
 
-    if (lookupError && lookupError.code !== 'PGRST116') {
-      console.log('[Waitlist API] Supabase lookup error:', lookupError);
-    }
-
     if (existingUser) {
-      console.log('[Waitlist API] Duplicate email found:', cleanEmail);
       return NextResponse.json(
         { error: 'This email is already on the waitlist' },
         { status: 409 }
       );
     }
 
-    console.log('[Waitlist API] Inserting new user into database...');
-    
     // Insert into database
-    const { data: insertData, error: dbError } = await supabase
+    const { error: dbError } = await supabase
       .from('waitlist_users')
       .insert({
         email: cleanEmail,
@@ -100,22 +83,17 @@ export async function POST(request: Request) {
       .select();
 
     if (dbError) {
-      console.error('[Waitlist API] Database insert error:', dbError);
       return NextResponse.json(
         { error: 'Failed to join waitlist' },
         { status: 500 }
       );
     }
 
-    console.log('[Waitlist API] User inserted successfully:', insertData);
-
     const updatesText = optInUpdates
       ? "You've opted in to receive updates about Trivvi's development. We'll keep you posted on our progress!"
       : "You've chosen not to receive development updates. No worries - we'll only contact you when we launch in your area.";
 
-    console.log('[Waitlist API] Sending confirmation email via Resend...');
-    
-    const { data: emailData, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'Trivvi <contact@trivvi.io>',
       to: cleanEmail,
       subject: "You're on the Trivvi waitlist!",
@@ -167,19 +145,14 @@ Visit https://trivvi.io for more info.
     });
 
     if (error) {
-      console.error('[Waitlist API] Resend email error:', error);
       return NextResponse.json(
         { error: 'Failed to send confirmation email' },
         { status: 500 }
       );
     }
 
-    console.log('[Waitlist API] Email sent successfully:', emailData);
-    console.log('[Waitlist API] Waitlist signup complete!');
-
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('[Waitlist API] Unexpected error:', err);
     return NextResponse.json(
       { error: 'Something went wrong. Please try again.' },
       { status: 500 }
