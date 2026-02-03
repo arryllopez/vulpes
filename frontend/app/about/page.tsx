@@ -34,13 +34,13 @@ export default function About() {
   ];
 
   return (
-    <SmoothScroll>
-      <main className="min-h-screen bg-white relative overflow-hidden">
-        {/* Gradient Background */}
-        <GradientBackground toColor="#abc4ff" />
-
-        {/* Navbar */}
-        <Navbar />
+    <>
+      <Navbar />
+      <SmoothScroll>
+        <main className="min-h-screen bg-white relative overflow-hidden">
+          <div data-scroll-sentinel className="absolute top-0 left-0 h-1 w-full" />
+          {/* Gradient Background */}
+          <GradientBackground toColor="#abc4ff" />
 
         {/* Hero Section */}
         <section className="px-6 pt-32 pb-16 text-center relative z-10">
@@ -232,7 +232,8 @@ export default function About() {
             }}
           />
         </div>
-      </main>
-    </SmoothScroll>
+        </main>
+      </SmoothScroll>
+    </>
   );
 }

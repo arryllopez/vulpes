@@ -321,13 +321,13 @@ export default function ForRestaurants() {
   ];
 
   return (
-    <SmoothScroll>
-      <main className="min-h-screen bg-white relative overflow-hidden">
-        {/* Gradient Background */}
-        <GradientBackground toColor="#abc4ff" />
-
-        {/* Navbar */}
-        <Navbar />
+    <>
+      <Navbar />
+      <SmoothScroll>
+        <main className="min-h-screen bg-white relative overflow-hidden">
+          <div data-scroll-sentinel className="absolute top-0 left-0 h-1 w-full" />
+          {/* Gradient Background */}
+          <GradientBackground toColor="#abc4ff" />
 
         {/* Hero */}
         <section className="px-6 pt-24 pb-12 text-center relative z-10">
@@ -673,11 +673,11 @@ export default function ForRestaurants() {
                       Get early access
                     </h2>
                     <p className="text-gray-600 mb-8 font-(family-name:--font-caudex)">
-                      We&apos;re launching city by city and partnering with local restaurants first.
-                      <br />
-                      Join the waitlist to become one of Trivvi&apos;s founding partners.
+                      We&apos;re launching in Toronto, Ontario soon!
                       <br />
                       We use your address to confirm whether Trivvi is launching in your area.
+                      <br />
+                      If you are not from Toronto, Ontario, don&apos;t worry, we&apos;ll still keep you updated on our launch plans.
                       <br />
                       <strong className="font-bold" >Founding partners get free, exclusive early access to the Trivvi app.</strong>
                     </p>
@@ -836,7 +836,7 @@ export default function ForRestaurants() {
                 },
                 {
                   question: "When will Trivvi be available in my area?",
-                  answer: "We're launching city by city. Join the waitlist and we'll prioritize areas with the most restaurant and user interest as we expand. We'll notify you as soon as we're live in your area.",
+                  answer: "We're targeting a launch in Toronto first. We'll notify you as soon as we're live in your area. Joining the waitlist ensures you're among the first to know! Launch areas are subject to change based on demand and growth.",
                 },
                 {
                   question: "Do diners need the Trivvi app?",
@@ -900,7 +900,8 @@ export default function ForRestaurants() {
             }}
           />
         </div>
-      </main>
-    </SmoothScroll>
+        </main>
+      </SmoothScroll>
+    </>
   );
 }

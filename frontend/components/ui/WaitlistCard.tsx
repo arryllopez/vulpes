@@ -38,6 +38,8 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
   const [error, setError] = useState<string | null>(null);
   const [showSelectionWarning, setShowSelectionWarning] = useState(false);
   const [honeypot, setHoneypot] = useState("");
+  const [notFromToronto, setNotFromToronto] = useState(false);
+  const [otherCity, setOtherCity] = useState("");
 
   const handlePrimaryChange = (selected: Neighbourhood | null) => {
     setPrimaryNeighbourhood(selected);
@@ -62,9 +64,17 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
     e.preventDefault();
     if (!email) return;
 
-    if (!primaryNeighbourhood || !secondaryNeighbourhood) {
-      setShowSelectionWarning(true);
-      return;
+    // Validate based on whether user is from Toronto or not
+    if (notFromToronto) {
+      if (!otherCity.trim()) {
+        setShowSelectionWarning(true);
+        return;
+      }
+    } else {
+      if (!primaryNeighbourhood || !secondaryNeighbourhood) {
+        setShowSelectionWarning(true);
+        return;
+      }
     }
 
     setIsLoading(true);
@@ -78,12 +88,14 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
         },
         body: JSON.stringify({
           email,
-          primaryNeighbourhood: primaryNeighbourhood.name,
-          secondaryNeighbourhood: secondaryNeighbourhood.name,
-          primary_lat: primaryNeighbourhood.lat,
-          primary_lng: primaryNeighbourhood.lng,
-          secondary_lat: secondaryNeighbourhood.lat,
-          secondary_lng: secondaryNeighbourhood.lng,
+          notFromToronto,
+          otherCity: notFromToronto ? otherCity.trim() : null,
+          primaryNeighbourhood: notFromToronto ? null : primaryNeighbourhood?.name,
+          secondaryNeighbourhood: notFromToronto ? null : secondaryNeighbourhood?.name,
+          primary_lat: notFromToronto ? null : primaryNeighbourhood?.lat,
+          primary_lng: notFromToronto ? null : primaryNeighbourhood?.lng,
+          secondary_lat: notFromToronto ? null : secondaryNeighbourhood?.lat,
+          secondary_lng: notFromToronto ? null : secondaryNeighbourhood?.lng,
           optInUpdates,
           website: honeypot,
         }),
@@ -124,6 +136,9 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                   <h2 className="text-3xl font-bold text-gray-900 mb-3 font-(family-name:--font-caudex)">
                     Be first in line
                   </h2>
+                  <h3 className="text-md font-bold text-gray-900 mb-3 font-(family-name:--font-caudex)"> 
+                    Launching in Toronto, Ontario. Expanding soon.
+                  </h3> 
                   <p className="text-gray-600 text-base leading-relaxed">
                     Join the waitlist and help us decide where to launch first!
                   </p>
@@ -152,30 +167,67 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                     className="absolute -left-[9999px] opacity-0 h-0 w-0 pointer-events-none"
                   />
 
-                  {/* Neighbourhood Selection */}
-                  <div className="space-y-4">
-                    <p className="text-sm text-gray-700 font-medium">
-                      Which Toronto neighbourhoods would you use Trivvi in?
-                    </p>
-
-                    {/* Primary Neighbourhood */}
-                    <NeighbourhoodDropdown
-                      label="Primary neighbourhood"
-                      placeholder="Select a neighbourhood"
-                      options={allNeighbourhoods}
-                      value={primaryNeighbourhood}
-                      onChange={handlePrimaryChange}
+                  {/* Not from Toronto checkbox */}
+                  <div className="flex items-start gap-3">
+                    <Checkbox
+                      id="not-from-toronto"
+                      checked={notFromToronto}
+                      onCheckedChange={(checked) => {
+                        setNotFromToronto(checked === true);
+                        setShowSelectionWarning(false);
+                      }}
+                      className="mt-0.5"
                     />
-
-                    {/* Secondary Neighbourhood */}
-                    <NeighbourhoodDropdown
-                      label="Secondary neighbourhood"
-                      placeholder="Select a neighbourhood"
-                      options={allNeighbourhoods}
-                      value={secondaryNeighbourhood}
-                      onChange={handleSecondaryChange}
-                    />
+                    <label
+                      htmlFor="not-from-toronto"
+                      className="text-sm text-gray-600 cursor-pointer leading-none"
+                    >
+                      I am not from Toronto, Ontario
+                    </label>
                   </div>
+
+                  {/* Location Selection */}
+                  {notFromToronto ? (
+                    <div className="space-y-2">
+                      <label className="block text-sm text-gray-600">
+                        What city are you from?
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="City, State/Province, Country"
+                        value={otherCity}
+                        onChange={(e) => {
+                          setOtherCity(e.target.value);
+                          setShowSelectionWarning(false);
+                        }}
+                        className="w-full bg-white/80 border border-[#ccdbfd]/50 text-gray-900 placeholder:text-gray-400 focus:border-primary focus:ring-primary/20 h-12 px-4 rounded-xl backdrop-blur-sm focus:outline-none focus:ring-2"
+                      />
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <p className="text-sm text-gray-700 font-medium">
+                        Which Toronto neighbourhoods would you use Trivvi in?
+                      </p>
+
+                      {/* Primary Neighbourhood */}
+                      <NeighbourhoodDropdown
+                        label="Primary neighbourhood"
+                        placeholder="Select a neighbourhood"
+                        options={allNeighbourhoods}
+                        value={primaryNeighbourhood}
+                        onChange={handlePrimaryChange}
+                      />
+
+                      {/* Secondary Neighbourhood */}
+                      <NeighbourhoodDropdown
+                        label="Secondary neighbourhood"
+                        placeholder="Select a neighbourhood"
+                        options={allNeighbourhoods}
+                        value={secondaryNeighbourhood}
+                        onChange={handleSecondaryChange}
+                      />
+                    </div>
+                  )}
 
                   {/* Opt-in checkbox */}
                   <div className="flex items-start gap-3">
@@ -196,7 +248,9 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                   {/* Selection warning */}
                   {showSelectionWarning && (
                     <p className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
-                      Please select both a primary and secondary neighbourhood to help us understand where to launch first!
+                      {notFromToronto
+                        ? "Please enter your city to help us understand where to expand!"
+                        : "Please select both a primary and secondary neighbourhood to help us understand where to launch first!"}
                     </p>
                   )}
 
@@ -234,36 +288,38 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                 </div>
               </div>
 
-              {/* Right side - Isochrone Map */}
-              <div className="flex-1 min-w-0 md:min-w-[700px] min-h-[350px] md:min-h-[520px]">
-                {hasNeighbourhoods ? (
-                  <div className="h-full">
-                    <p className="text-sm text-gray-600 mb-2 font-medium">
-                      Walking radius from selected neighbourhoods
-                    </p>
-                    <div className="h-[300px] md:h-[500px] rounded-xl overflow-hidden border border-[#ccdbfd]/30">
-                      <IsochroneMap
-                        key={selectedNeighbourhoods.map(n => n.name).join("-")}
-                        neighbourhoods={selectedNeighbourhoods}
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="h-full min-h-[300px] md:min-h-[520px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center border border-[#ccdbfd]/30">
-                    <div className="text-center px-6">
-                      <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center">
-                        <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                      <p className="text-gray-500 text-sm">
-                        Select a neighbourhood to preview it on the map
+              {/* Right side - Isochrone Map (only show for Toronto users) */}
+              {!notFromToronto && (
+                <div className="flex-1 min-w-0 md:min-w-[700px] min-h-[350px] md:min-h-[520px]">
+                  {hasNeighbourhoods ? (
+                    <div className="h-full">
+                      <p className="text-sm text-gray-600 mb-2 font-medium">
+                        Walking radius from selected neighbourhoods
                       </p>
+                      <div className="h-[300px] md:h-[500px] rounded-xl overflow-hidden border border-[#ccdbfd]/30">
+                        <IsochroneMap
+                          key={selectedNeighbourhoods.map(n => n.name).join("-")}
+                          neighbourhoods={selectedNeighbourhoods}
+                        />
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  ) : (
+                    <div className="h-full min-h-[300px] md:min-h-[520px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl flex items-center justify-center border border-[#ccdbfd]/30">
+                      <div className="text-center px-6">
+                        <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary/10 flex items-center justify-center">
+                          <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                        </div>
+                        <p className="text-gray-500 text-sm">
+                          Select a neighbourhood to preview it on the map
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           ) : (
             <div className="text-center py-8">
@@ -290,7 +346,7 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
               </p>
               <p className="text-gray-600 text-sm">
                 We&apos;ll notify you when we launch
-                {primaryNeighbourhood && ` in ${primaryNeighbourhood.name}`}. Thanks for joining!
+                {notFromToronto && otherCity ? ` in ${otherCity}` : primaryNeighbourhood ? ` in ${primaryNeighbourhood.name}` : ""}. Thanks for joining!
               </p>
             </div>
           )}

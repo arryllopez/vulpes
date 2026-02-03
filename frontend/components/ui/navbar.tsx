@@ -18,11 +18,20 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false)
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    // Find sentinel inside scroll container (works with Locomotive Scroll)
+    const sentinel = document.querySelector('[data-scroll-sentinel]')
+    if (!sentinel) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // When sentinel is not intersecting (scrolled past), navbar should be in scrolled state
+        setIsScrolled(!entry.isIntersecting)
+      },
+      { threshold: 0, rootMargin: "-50px 0px 0px 0px" }
+    )
+
+    observer.observe(sentinel)
+    return () => observer.disconnect()
   }, [])
 
   const handleNavClick = () => {

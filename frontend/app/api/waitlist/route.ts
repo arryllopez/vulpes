@@ -10,12 +10,14 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    
-    const { 
-      email, 
-      optInUpdates, 
-      website, 
-      primaryNeighbourhood, 
+
+    const {
+      email,
+      optInUpdates,
+      website,
+      notFromToronto,
+      otherCity,
+      primaryNeighbourhood,
       secondaryNeighbourhood,
       primary_lat: primaryLat,
       primary_lng: primaryLng,
@@ -45,12 +47,21 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate neighbourhoods
-    if (!primaryNeighbourhood || !secondaryNeighbourhood) {
-      return NextResponse.json(
-        { error: 'Please select both neighbourhoods' },
-        { status: 400 }
-      );
+    // Validate location info
+    if (notFromToronto) {
+      if (!otherCity || typeof otherCity !== 'string' || !otherCity.trim()) {
+        return NextResponse.json(
+          { error: 'Please enter your city' },
+          { status: 400 }
+        );
+      }
+    } else {
+      if (!primaryNeighbourhood || !secondaryNeighbourhood) {
+        return NextResponse.json(
+          { error: 'Please select both neighbourhoods' },
+          { status: 400 }
+        );
+      }
     }
 
     // Check for duplicate email
@@ -72,12 +83,14 @@ export async function POST(request: Request) {
       .from('waitlist_users')
       .insert({
         email: cleanEmail,
-        primary_neighbourhood: primaryNeighbourhood,
-        secondary_neighbourhood: secondaryNeighbourhood,
-        primary_lat: primaryLat,
-        primary_lng: primaryLng,
-        secondary_lat: secondaryLat,
-        secondary_lng: secondaryLng,
+        not_from_toronto: notFromToronto || false,
+        other_city: notFromToronto ? otherCity?.trim() : null,
+        primary_neighbourhood: notFromToronto ? null : primaryNeighbourhood,
+        secondary_neighbourhood: notFromToronto ? null : secondaryNeighbourhood,
+        primary_lat: notFromToronto ? null : primaryLat,
+        primary_lng: notFromToronto ? null : primaryLng,
+        secondary_lat: notFromToronto ? null : secondaryLat,
+        secondary_lng: notFromToronto ? null : secondaryLng,
         opt_in_updates: optInUpdates || false,
       })
       .select();
@@ -92,6 +105,10 @@ export async function POST(request: Request) {
     const updatesText = optInUpdates
       ? "You've opted in to receive updates about Trivvi's development. We'll keep you posted on our progress!"
       : "You've chosen not to receive development updates. No worries - we'll only contact you when we launch in your area.";
+
+    const locationText = notFromToronto
+      ? `We'll notify you when Trivvi expands to ${otherCity?.trim()}.`
+      : `We'll notify you when Trivvi launches in ${primaryNeighbourhood} or ${secondaryNeighbourhood}.`;
 
     const { error } = await resend.emails.send({
       from: 'Trivvi <contact@trivvi.io>',
@@ -118,7 +135,7 @@ export async function POST(request: Request) {
 
       <p>Here's what's next:</p>
       <ul>
-        <li>We'll notify you when Trivvi launches in ${primaryNeighbourhood} or ${secondaryNeighbourhood}.</li>
+        <li>${locationText}</li>
         <li>You'll be among the first to discover great food deals nearby.</li>
       </ul>
 
@@ -136,7 +153,7 @@ Thanks for joining the Trivvi waitlist! We're excited to have you on board.
 ${updatesText}
 
 Here's what's next:
-- We'll notify you when Trivvi launches in ${primaryNeighbourhood} or ${secondaryNeighbourhood}.
+- ${locationText}
 - You'll be among the first to discover great food deals nearby.
 
 Visit https://trivvi.io for more info.

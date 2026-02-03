@@ -197,12 +197,13 @@ export default function ForDiners() {
   ];
 
   return (
-    <SmoothScroll>
-      <main className="min-h-screen bg-white relative overflow-hidden">
-        {/* Gradient Background */}
-        <GradientBackground toColor="#abc4ff" />
-        {/* Navbar */}
-        <Navbar />
+    <>
+      <Navbar />
+      <SmoothScroll>
+        <main className="min-h-screen bg-white relative overflow-hidden">
+          <div data-scroll-sentinel className="absolute top-0 left-0 h-1 w-full" />
+          {/* Gradient Background */}
+          <GradientBackground toColor="#abc4ff" />
         {/* Hero */}
         <section className="px-6 pt-24 pb-12 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -564,23 +565,23 @@ export default function ForDiners() {
                 },
                 {
                   question: "When will Trivvi launch in my city?",
-                  answer: "We're launching city by city. The more demand we see in an area, the sooner Trivvi arrives there.",
+                  answer: "We're targeting a Toronto, Ontario launch first. The more demand we see in an area, the sooner Trivvi arrives there. Launch area is subject to change based on demand and growth.",
                 },
                 {
                   question: "Is Trivvi safe with my location and personal info?",
                   answer: <>Yes. Trivvi uses your location only while the app is open and permissions have been granted to show nearby restaurants and deliver more accurate alerts. We use precise location so notifications trigger at the right time. Trivvi does not track you in the background, store movement history, or sell your location data. Restaurants never see your personal information. You&apos;re always in control and can change your preferences or permissions anytime. Learn more in our <a href="/privacy" className="underline hover:text-black transition-colors">Privacy Policy</a>.</>,
                 },
-            {
-              question: "Do I have to share my location?",
-            answer: "Nope! You can manually set your location anytime. If you opt in, Trivvi checks your area only when you open the app — never in the background. Deals shown match your food preferences.",
+                {
+                  question: "Do I have to share my location?",
+                  answer: "Nope! You can manually set your location anytime. If you opt in, Trivvi checks your area only when you open the app — never in the background. Deals shown match your food preferences.",
                 },
-            {
-              question: "How do restaurants benefit from Trivvi?",
-            answer: "Trivvi helps restaurants fill empty tables, increase visibility, and attract nearby diners — without long-term discounts or third-party delivery fees.",
+                {
+                  question: "How do restaurants benefit from Trivvi?",
+                  answer: "Trivvi helps restaurants fill empty tables, increase visibility, and attract nearby diners — without long-term discounts or third-party delivery fees.",
                 },
-            {
-              question: "How do I join the waitlist?",
-            answer: "Enter your email, drop a pin on the map, and you're in. We'll notify you when Trivvi launches near you.",
+                {
+                  question: "How do I join the waitlist?",
+                  answer: "Enter your email, drop a pin on the map, and you're in. We'll notify you when Trivvi launches near you.",
                 },
               ]}
             />
@@ -640,7 +641,8 @@ export default function ForDiners() {
             }}
           />
         </div>
-      </main>
-    </SmoothScroll>
+        </main>
+      </SmoothScroll>
+    </>
   );
 }

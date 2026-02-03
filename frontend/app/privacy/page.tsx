@@ -8,9 +8,11 @@ import { Mail } from "lucide-react";
 
 export default function PrivacyPolicy() {
   return (
-    <SmoothScroll>
-      <main className="min-h-screen bg-white">
-        <Navbar />
+    <>
+      <Navbar />
+      <SmoothScroll>
+        <main className="min-h-screen bg-white relative">
+          <div data-scroll-sentinel className="absolute top-0 left-0 h-1 w-full" />
 
         <article className="max-w-4xl mx-auto px-6 py-24">
           <h1 className="text-4xl md:text-5xl font-bold text-black mb-4 font-(family-name:--font-caudex)">
@@ -291,7 +293,8 @@ export default function PrivacyPolicy() {
             }}
           />
         </div>
-      </main>
-    </SmoothScroll>
+        </main>
+      </SmoothScroll>
+    </>
   );
 }
