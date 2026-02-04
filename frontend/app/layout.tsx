@@ -17,14 +17,34 @@ const caudex = Caudex({
 export const metadata: Metadata = {
   title: "Trivvi - Connecting Diners & Restaurants",
   description: "Trivvi connects hungry diners with local restaurants offering exclusive deals.",
+  metadataBase: new URL("https://trivvi.io"),
   icons: {
-    icon: "/imageAssets/trivviLogo.svg",
-    apple: "/imageAssets/trivviLogo.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "40x40" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
+    type: "website",
+    siteName: "Trivvi",
     title: "Trivvi - Connecting Diners & Restaurants",
-    description: "Trivvi connects hungry diners with local restaurants offering exclusive deals.",
-    images: ["/imageAssets/trivviLogo.svg"],
+    description: "Discover exclusive food deals from local restaurants near you.",
+    url: "https://trivvi.io",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Trivvi - Connecting Diners & Restaurants",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Trivvi - Connecting Diners & Restaurants",
+    description: "Discover exclusive food deals from local restaurants near you.",
+    images: ["/og-image.png"],
   },
 };
 
