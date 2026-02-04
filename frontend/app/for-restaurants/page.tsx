@@ -669,16 +669,13 @@ export default function ForRestaurants() {
               <div className="relative z-10 text-center">
                 {!submitted ? (
                   <>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 font-(family-name:--font-caudex)">
-                      100% free. No catch.
+                    <h2 className="text-3xl font-bold text-gray-900 mb-3 font-(family-name:--font-caudex)">
+                      Reach new customers for free
                     </h2>
-                    <p className="text-gray-600 mb-4 font-(family-name:--font-caudex)">
-                      List your deals and reach new customers at <strong className="text-gray-900">zero cost</strong>. No commissions, no monthly fees, no contracts.
+                    <p className="text-gray-600 text-base leading-relaxed mb-3">
+                      Join as a <strong className="text-gray-900">founding partner</strong> and list your deals at zero cost. No commissions, no fees, no contracts.
                     </p>
-                    <p className="text-gray-600 text-sm mb-4 font-(family-name:--font-caudex)">
-                      <strong className="text-gray-900">Founding partners</strong> get exclusive benefits. Join now before we open to the public.
-                    </p>
-                    <p className="text-gray-500 text-xs mb-8 font-(family-name:--font-caudex)">
+                    <p className="text-xs text-gray-500 mb-6">
                       Launching in Toronto. Not in Toronto? We&apos;ll notify you when we expand.
                     </p>
 
