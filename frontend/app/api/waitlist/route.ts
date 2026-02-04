@@ -7,6 +7,19 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// HTML escape function to prevent XSS in emails
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// Input length limits
+const MAX_EMAIL_LENGTH = 254;
+const MAX_CITY_LENGTH = 200;
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -47,11 +60,24 @@ export async function POST(request: Request) {
       );
     }
 
+    if (cleanEmail.length > MAX_EMAIL_LENGTH) {
+      return NextResponse.json(
+        { error: 'Email address is too long' },
+        { status: 400 }
+      );
+    }
+
     // Validate location info
     if (notFromToronto) {
       if (!otherCity || typeof otherCity !== 'string' || !otherCity.trim()) {
         return NextResponse.json(
           { error: 'Please enter your city' },
+          { status: 400 }
+        );
+      }
+      if (otherCity.trim().length > MAX_CITY_LENGTH) {
+        return NextResponse.json(
+          { error: 'City name is too long' },
           { status: 400 }
         );
       }
@@ -106,8 +132,9 @@ export async function POST(request: Request) {
       ? "You've opted in to receive updates about Trivvi's development. We'll keep you posted on our progress!"
       : "You've chosen not to receive development updates. No worries - we'll only contact you when we launch in your area.";
 
+    const safeCity = otherCity ? escapeHtml(otherCity.trim()) : '';
     const locationText = notFromToronto
-      ? `We'll notify you when Trivvi expands to ${otherCity?.trim()}.`
+      ? `We'll notify you when Trivvi expands to ${safeCity}.`
       : secondaryNeighbourhood
         ? `We'll notify you when Trivvi launches in ${primaryNeighbourhood} or ${secondaryNeighbourhood}.`
         : `We'll notify you when Trivvi launches in ${primaryNeighbourhood}.`;
