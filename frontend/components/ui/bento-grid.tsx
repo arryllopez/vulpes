@@ -8,20 +8,17 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
+      duration: 0.3,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94] as const,
+      duration: 0.3,
     },
   },
 };
@@ -93,7 +90,7 @@ const BentoCard = ({
       </h3>
       <p className="max-w-lg text-sm md:text-base text-neutral-500">{description}</p>
     </div>
-    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03]" />
+    <div className="pointer-events-none absolute inset-0 transform-gpu group-hover:bg-black/3" />
   </motion.div>
 );
 

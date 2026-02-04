@@ -19,10 +19,7 @@ export const metadata: Metadata = {
   description: "Trivvi connects hungry diners with local restaurants offering exclusive deals.",
   metadataBase: new URL("https://trivvi.io"),
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.png", type: "image/png", sizes: "40x40" },
-    ],
+    icon: "/imageAssets/trivviLogo.svg",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
