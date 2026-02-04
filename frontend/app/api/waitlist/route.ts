@@ -56,9 +56,9 @@ export async function POST(request: Request) {
         );
       }
     } else {
-      if (!primaryNeighbourhood || !secondaryNeighbourhood) {
+      if (!primaryNeighbourhood) {
         return NextResponse.json(
-          { error: 'Please select both neighbourhoods' },
+          { error: 'Please select a primary neighbourhood' },
           { status: 400 }
         );
       }
@@ -108,7 +108,9 @@ export async function POST(request: Request) {
 
     const locationText = notFromToronto
       ? `We'll notify you when Trivvi expands to ${otherCity?.trim()}.`
-      : `We'll notify you when Trivvi launches in ${primaryNeighbourhood} or ${secondaryNeighbourhood}.`;
+      : secondaryNeighbourhood
+        ? `We'll notify you when Trivvi launches in ${primaryNeighbourhood} or ${secondaryNeighbourhood}.`
+        : `We'll notify you when Trivvi launches in ${primaryNeighbourhood}.`;
 
     const { error } = await resend.emails.send({
       from: 'Trivvi <contact@trivvi.io>',

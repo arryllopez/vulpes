@@ -71,7 +71,7 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
         return;
       }
     } else {
-      if (!primaryNeighbourhood || !secondaryNeighbourhood) {
+      if (!primaryNeighbourhood) {
         setShowSelectionWarning(true);
         return;
       }
@@ -220,7 +220,7 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
 
                       {/* Secondary Neighbourhood */}
                       <NeighbourhoodDropdown
-                        label="Secondary neighbourhood"
+                        label="Secondary neighbourhood (optional)"
                         placeholder="Select a neighbourhood"
                         options={allNeighbourhoods}
                         value={secondaryNeighbourhood}
