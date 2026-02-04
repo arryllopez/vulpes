@@ -122,8 +122,8 @@ export default function IsochroneMap({ neighbourhoods }: IsochroneMapProps) {
             );
 
             // Use custom colors based on which neighbourhood (primary vs secondary)
-            const colorIndex = data.features.length - 1 - featureIndex;
-            const fillColor = scheme.colors[colorIndex] || scheme.colors[0];
+            // featureIndex 0 = 5min (innermost), 1 = 10min, 2 = 15min (outermost)
+            const fillColor = scheme.colors[featureIndex] || scheme.colors[0];
 
             L.polygon(coords, {
               fillColor,
