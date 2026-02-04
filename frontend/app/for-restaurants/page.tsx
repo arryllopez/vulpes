@@ -670,16 +670,16 @@ export default function ForRestaurants() {
                 {!submitted ? (
                   <>
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 font-(family-name:--font-caudex)">
-                      Get early access
+                      100% free. No catch.
                     </h2>
-                    <p className="text-gray-600 mb-8 font-(family-name:--font-caudex)">
-                      We&apos;re launching in Toronto, Ontario soon!
-                      <br />
-                      We use your address to confirm whether Trivvi is launching in your area.
-                      <br />
-                      If you are not from Toronto, Ontario, don&apos;t worry, we&apos;ll still keep you updated on our launch plans.
-                      <br />
-                      <strong className="font-bold" >Founding partners get free, exclusive early access to the Trivvi app.</strong>
+                    <p className="text-gray-600 mb-4 font-(family-name:--font-caudex)">
+                      List your deals and reach new customers at <strong className="text-gray-900">zero cost</strong>. No commissions, no monthly fees, no contracts.
+                    </p>
+                    <p className="text-gray-600 text-sm mb-4 font-(family-name:--font-caudex)">
+                      <strong className="text-gray-900">Founding partners</strong> get exclusive benefits. Join now before we open to the public.
+                    </p>
+                    <p className="text-gray-500 text-xs mb-8 font-(family-name:--font-caudex)">
+                      Launching in Toronto. Not in Toronto? We&apos;ll notify you when we expand.
                     </p>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">

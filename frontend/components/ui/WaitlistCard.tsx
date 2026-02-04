@@ -134,13 +134,13 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                 {/* Header */}
                 <div className="mb-6">
                   <h2 className="text-3xl font-bold text-gray-900 mb-3 font-(family-name:--font-caudex)">
-                    Be first in line
+                    Get deals before anyone else
                   </h2>
-                  <h3 className="text-md font-bold text-gray-900 mb-3 font-(family-name:--font-caudex)"> 
-                    Launching in Toronto, Ontario. Expanding soon.
-                  </h3> 
-                  <p className="text-gray-600 text-base leading-relaxed">
-                    Join the waitlist and help us decide where to launch first!
+                  <p className="text-gray-600 text-base leading-relaxed mb-3">
+                    Join as a <strong className="text-gray-900">founding member</strong> and get early access to restaurant deals in your neighbourhood before we open to the public.
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Launching in Toronto. Expanding soon.
                   </p>
                 </div>
 
@@ -241,7 +241,7 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                       htmlFor="opt-in"
                       className="text-sm text-gray-600 cursor-pointer leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                      Opt in to receive updates about Trivvi&apos;s development
+                      Send me occasional updates about Trivvi&apos;s development.
                     </label>
                   </div>
 
