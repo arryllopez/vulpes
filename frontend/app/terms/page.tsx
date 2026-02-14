@@ -69,17 +69,17 @@ export default function TermsOfService() {
 
               <h3 className="text-xl font-semibold text-black mb-3">Consumer Accounts (Diners)</h3>
               <p className="text-gray-700 mb-4">
-                Consumer accounts allow you to discover and receive notifications about deals from nearby restaurants. You are responsible for the accuracy of any location information you provide.
+                Consumer accounts allow you to discover and receive notifications about offers from nearby restaurants. You are responsible for the accuracy of any location information you provide.
               </p>
 
               <h3 className="text-xl font-semibold text-black mb-3">Business Accounts (Restaurant Partners)</h3>
               <p className="text-gray-700 mb-4">
-                Business accounts allow restaurants to post deals and alerts to nearby diners. By creating a business account, you represent that:
+                Business accounts allow restaurants to post offers and alerts to nearby diners. By creating a business account, you represent that:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
                 <li>You are authorized to act on behalf of the restaurant</li>
                 <li>All business information provided is accurate</li>
-                <li>You will honor all deals and promotions posted through the Service</li>
+                <li>You will honor all offers and promotions posted through the Service</li>
                 <li>You have all necessary licenses and permits to operate your restaurant</li>
               </ul>
             </section>
@@ -91,11 +91,11 @@ export default function TermsOfService() {
 
               <h3 className="text-xl font-semibold text-black mb-3">What We Provide</h3>
               <p className="text-gray-700 mb-4">
-                Trivvi is a platform that connects restaurants with nearby diners through location-based deal notifications. We provide:
+                Trivvi is a platform that connects restaurants with nearby diners through location-based offer notifications. We provide:
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
-                <li>A marketplace for restaurants to post time-sensitive deals and alerts</li>
-                <li>Location-based notifications to help diners discover nearby deals</li>
+                <li>A marketplace for restaurants to post time-sensitive offers and alerts</li>
+                <li>Location-based notifications to help diners discover nearby offers</li>
                 <li>Analytics and dashboard tools for restaurant partners</li>
                 <li>Communication features between our platform and users</li>
               </ul>
@@ -106,8 +106,8 @@ export default function TermsOfService() {
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
                 <li>The quality, safety, or legality of restaurant food or services</li>
-                <li>The accuracy of deals posted by restaurants</li>
-                <li>Whether restaurants honor their posted deals</li>
+                <li>The accuracy of offers posted by restaurants</li>
+                <li>Whether restaurants honor their posted offers</li>
                 <li>Any disputes between restaurants and diners</li>
                 <li>Restaurant compliance with health, safety, or other regulations</li>
               </ul>
@@ -122,8 +122,8 @@ export default function TermsOfService() {
               <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
                 <li>That the Service will always be available, uninterrupted, or error-free</li>
                 <li>Any particular level of foot traffic, revenue, or business results for restaurants</li>
-                <li>The availability of deals in any particular area</li>
-                <li>That any specific restaurant or deal will be available</li>
+                <li>The availability of offers in any particular area</li>
+                <li>That any specific restaurant or offer will be available</li>
               </ul>
             </section>
 
@@ -136,7 +136,7 @@ export default function TermsOfService() {
               </p>
               <ul className="list-disc pl-6 text-gray-700 mb-4 space-y-2">
                 <li>Violate any applicable law, regulation, or these Terms</li>
-                <li>Post false, misleading, or fraudulent deals or information</li>
+                <li>Post false, misleading, or fraudulent offers or information</li>
                 <li>Impersonate any person or entity</li>
                 <li>Harass, abuse, or harm others</li>
                 <li>Send spam, unsolicited communications, or chain letters</li>
@@ -183,7 +183,7 @@ export default function TermsOfService() {
 
               <h3 className="text-xl font-semibold text-black mb-3">Your Content</h3>
               <p className="text-gray-700 mb-4">
-                You retain ownership of content you submit to the Service (such as restaurant information and deals). By posting content, you grant us a worldwide, non-exclusive, royalty-free license to use, display, reproduce, and distribute your content in connection with operating the Service.
+                You retain ownership of content you submit to the Service (such as restaurant information and offers). By posting content, you grant us a worldwide, non-exclusive, royalty-free license to use, display, reproduce, and distribute your content in connection with operating the Service.
               </p>
 
               <h3 className="text-xl font-semibold text-black mb-3">Feedback</h3>
@@ -262,7 +262,7 @@ export default function TermsOfService() {
                 <li>Your violation of these Terms</li>
                 <li>Your violation of any third-party rights</li>
                 <li>Any content you submit to the Service</li>
-                <li>Any deals or transactions between restaurants and diners</li>
+                <li>Any offers or transactions between restaurants and diners</li>
               </ul>
             </section>
 
@@ -363,6 +363,15 @@ export default function TermsOfService() {
                 ),
                 href: "https://www.instagram.com/trivvi.io/",
                 label: "Instagram",
+              },
+              {
+                icon: (
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                  </svg>
+                ),
+                href: "https://www.tiktok.com/@trivviapp",
+                label: "TikTok",
               },
               {
                 icon: <Mail className="h-5 w-5" />,

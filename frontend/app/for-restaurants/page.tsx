@@ -140,7 +140,7 @@ export default function ForRestaurants() {
     },
     {
       name: "View your performance",
-      description: "Simple analytics show exactly how your posted deals are performing.",
+      description: "Simple analytics show exactly how your posted offers are performing.",
       className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
       background: (
         <div
@@ -184,7 +184,7 @@ export default function ForRestaurants() {
     },
     {
       name: "You stay in control",
-      description: "Set your own deals, your own alerts, at your own schedule.",
+      description: "Set your own offers, your own alerts, at your own schedule.",
       className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
       background: (
         <div
@@ -240,7 +240,7 @@ export default function ForRestaurants() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="bg-[#abc4ff]/20 text-[#abc4ff] text-[8px] md:text-[9px] font-semibold px-2 py-0.5 rounded font-(family-name:--font-caudex)">Trivvi Exclusive</span>
               </div>
-              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Deal Title</div>
+              <div className="text-[7px] md:text-[8px] text-gray-500 mb-0.5 font-(family-name:--font-caudex)">Offer Title</div>
               <input
                 type="text"
                 placeholder="20% off Lunch Menu"
@@ -272,7 +272,7 @@ export default function ForRestaurants() {
                 <span className="text-[6px] md:text-[7px] text-gray-600 font-(family-name:--font-caudex)">0.8km</span>
               </div>
               <button className="w-full bg-[#abc4ff] text-white text-[8px] md:text-[9px] py-1.5 rounded-lg font-medium font-(family-name:--font-caudex)">
-                Get Deal
+                Get Offer
               </button>
               <div className="absolute bottom-0 left-0 right-0 h-25 bg-gradient-to-t from-white from-50% to-transparent pointer-events-none" />
             </div>
@@ -428,7 +428,7 @@ export default function ForRestaurants() {
                 {
                   step: "3",
                   title: "Access your personal dashboard",
-                  description: "Gain access to your dashboard where you can create and manage your special deals and alerts.",
+                  description: "Gain access to your dashboard where you can create and manage your offers and alerts.",
                 },
                 {
                   step: "4",
@@ -505,7 +505,7 @@ export default function ForRestaurants() {
                     <span className="text-black/90 text-xs font-semibold">Chirp</span>
                     <span className="text-black/50 text-[10px]">2m ago</span>
                   </div>
-                  <p className="text-black font-medium text-xs">New deal nearby!</p>
+                  <p className="text-black font-medium text-xs">New offer nearby!</p>
                   <p className="text-black/70 text-xs ">BOGO burgers @ Michael&apos;s Burgers (350m)</p>
                 </div>
               </div>
@@ -528,7 +528,7 @@ export default function ForRestaurants() {
                     <span className="text-black/90 text-xs font-semibold">Chirp</span>
                     <span className="text-black/50 text-[10px]">5m ago</span>
                   </div>
-                  <p className="text-black font-medium text-xs">Fresh deal alert!</p>
+                  <p className="text-black font-medium text-xs">Fresh offer alert!</p>
                   <p className="text-black/70 text-xs ">$5 off brunch @ Lawrence&apos;s (150m)</p>
                 </div>
               </div>
@@ -606,7 +606,7 @@ export default function ForRestaurants() {
                 Meet Chirp
               </h2>
               <p className="text-lg md:text-xl text-gray-600 font-(family-name:--font-inter) max-w-md">
-                Your messenger to hungry locals. When you send a deal, Chirp delivers it to nearby diners who are ready to eat.
+                Your messenger to hungry locals. When you send an offer, Chirp delivers it to nearby diners who are ready to eat.
               </p>
             </motion.div>
           </div>
@@ -673,7 +673,7 @@ export default function ForRestaurants() {
                       Reach new customers for free
                     </h2>
                     <p className="text-gray-600 text-base leading-relaxed mb-3">
-                      Join as a <strong className="text-gray-900">founding partner</strong> and list your deals at zero cost. No commissions, no fees, no contracts.
+                      Join as a <strong className="text-gray-900">founding partner</strong> and list your offers at zero cost. No commissions, no fees, no contracts.
                     </p>
                     <p className="text-xs text-gray-500 mb-6">
                       Launching in Toronto. Not in Toronto? We&apos;ll notify you when we expand.
@@ -812,24 +812,24 @@ export default function ForRestaurants() {
                   answer: "Restaurants who join the waitlist become our founding partners and get free early access to the Trivvi app. We'll share more details when we launch in your area.",
                 },
                 {
-                  question: "How do I create a deal?",
+                  question: "How do I create an offer?",
                   answer: "Simply log into your Trivvi dashboard, pick what kind of alert you want to send, set the details and then hit send. Chirp will take care of the rest.",
                 },
                 {
-                  question: "What kind of deals work best?",
+                  question: "What kind of offers work best?",
                   answer: "Percentage discounts and special combo offers tend to perform well. The key is making it compelling enough to get people up and moving.",
                 },
                 {
                   question: "How far do notifications reach?",
-                  answer: "You can set a custom radius underneath 2km, but most restaurants see the best results within that range. This reaches nearby diners who are most likely to visit quickly. While reducing the radius may limit reach, it often increases conversion rates as the deals feel more urgent and relevant to those close by. Radius is also adjustable per deal, so you can experiment to find what works best for your restaurant.",
+                  answer: "You can set a custom radius underneath 2km, but most restaurants see the best results within that range. This reaches nearby diners who are most likely to visit quickly. While reducing the radius may limit reach, it often increases conversion rates as the offers feel more urgent and relevant to those close by. Radius is also adjustable per offer, so you can experiment to find what works best for your restaurant.",
                 },
                 {
-                  question: "Can I cancel or pause deals?",
-                  answer: "Absolutely. You have full control. Pause, edit, or cancel any deal at any time from your dashboard.",
+                  question: "Can I cancel or pause offers?",
+                  answer: "Absolutely. You have full control. Pause, edit, or cancel any offer at any time from your dashboard.",
                 },
                 {
                   question: "How do I view performance?",
-                  answer: "Your Trivvi dashboard shows analytics including views, redemptions, and revenue generated from each deal — updated whenever you check in.",
+                  answer: "Your Trivvi dashboard shows analytics including views, redemptions, and revenue generated from each offer — updated whenever you check in.",
                 },
                 {
                   question: "When will Trivvi be available in my area?",
@@ -837,7 +837,7 @@ export default function ForRestaurants() {
                 },
                 {
                   question: "Do diners need the Trivvi app?",
-                  answer: "Yes, diners download the free Trivvi app to receive notifications and redeem deals. We're growing our diner base alongside our restaurant partners.",
+                  answer: "Yes, diners download the free Trivvi app to receive notifications and redeem offers. We're growing our diner base alongside our restaurant partners.",
                 },
               ]}
             />
@@ -874,6 +874,15 @@ export default function ForRestaurants() {
                 ),
                 href: "https://www.instagram.com/trivvi.io/",
                 label: "Instagram",
+              },
+              {
+                icon: (
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                  </svg>
+                ),
+                href: "https://www.tiktok.com/@trivviapp",
+                label: "TikTok",
               },
               {
                 icon: <Mail className="h-5 w-5" />,

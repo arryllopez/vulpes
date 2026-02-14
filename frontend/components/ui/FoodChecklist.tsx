@@ -22,7 +22,7 @@ const FoodChecklist = () => {
           Pick the foods you love
         </h2>
         <p className="text-xs text-gray-500 font-(family-name:--font-caudex)">
-          Select your favorites to get personalized deals
+          Select your favourites to get personalized offers
         </p>
       </div>
 

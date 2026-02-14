@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import IPhoneFrame from "./IphoneFrame";
 
-const NotificationMap = ({ isVisible }: { isVisible: boolean }) => {
+const NotificationMap = ({ isVisible, body }: { isVisible: boolean; body: string }) => {
   return (
     <div
       className={`absolute bottom-16 left-3 right-3 z-30 transition-all duration-500 ease-out ${
@@ -14,7 +14,7 @@ const NotificationMap = ({ isVisible }: { isVisible: boolean }) => {
       }`}
     >
       <div
-        className="backdrop-blur-xl rounded-2xl py-2 px-3 shadow-lg border border-black/10 cursor-pointer hover:opacity-90 transition-colors"
+        className="backdrop-blur-xl rounded-2xl py-2 px-3 shadow-lg border border-black/10"
         style={{ backgroundColor: "#d7e3fc" }}
       >
         <div className="flex items-center gap-2.5">
@@ -35,9 +35,9 @@ const NotificationMap = ({ isVisible }: { isVisible: boolean }) => {
               <span className="text-black/90 text-sm font-semibold">Chirp</span>
               <span className="text-black/50 text-xs">now</span>
             </div>
-            <p className="text-black font-medium text-sm text-left">Chirp just found a new deal!</p>
+            <p className="text-black font-medium text-sm text-left">Chirp just found a new offer!</p>
             <p className="text-black/70 text-sm truncate">
-              10% off poutine @ Poots (100m away)
+              {body}
             </p>
           </div>
         </div>
@@ -46,7 +46,11 @@ const NotificationMap = ({ isVisible }: { isVisible: boolean }) => {
   );
 };
 
-const IPhoneStep3Map = () => {
+interface IPhoneStep3MapProps {
+  notificationBody?: string;
+}
+
+const IPhoneStep3Map = ({ notificationBody = "Pho Tien is less busy right now (200m away)" }: IPhoneStep3MapProps) => {
   const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
@@ -78,7 +82,7 @@ const IPhoneStep3Map = () => {
       </div>
 
       {/* Notification */}
-      <NotificationMap isVisible={showNotification} />
+      <NotificationMap isVisible={showNotification} body={notificationBody} />
     </IPhoneFrame>
   );
 };

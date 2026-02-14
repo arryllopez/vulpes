@@ -14,7 +14,7 @@ const Notification = ({ isVisible }: NotificationProps) => {
       }`}
     >
       <div
-        className="backdrop-blur-xl bg-white/20 rounded-2xl py-2 px-3 shadow-lg border border-white/10 cursor-pointer hover:bg-white/25 transition-colors"
+        className="backdrop-blur-xl bg-white/20 rounded-2xl py-2 px-3 shadow-lg border border-white/10"
       >
         <div className="flex items-center gap-2.5">
           {/* App Icon */}
@@ -34,9 +34,9 @@ const Notification = ({ isVisible }: NotificationProps) => {
               <span className="text-white/90 text-sm font-semibold">Chirp</span>
               <span className="text-white/50 text-xs">now</span>
             </div>
-            <p className="text-white font-medium text-sm">Chirp just found a new deal!</p>
+            <p className="text-white font-medium text-sm">Chirp just found a new offer!</p>
             <p className="text-white/70 text-sm truncate">
-              10% off poutine @ Poots (100m away)
+              Pho Tien is less busy right now (200m away)
             </p>
           </div>
         </div>

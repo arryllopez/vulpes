@@ -165,7 +165,7 @@ export async function POST(request: Request) {
       <p>Here's what's next:</p>
       <ul>
         <li>${locationText}</li>
-        <li>You'll be among the first to discover great food deals nearby.</li>
+        <li>You'll be among the first to discover great food offers nearby.</li>
       </ul>
 
       <p>Visit <a href="https://trivvi.io">trivvi.io</a> for more info.</p>
@@ -183,7 +183,7 @@ ${updatesText}
 
 Here's what's next:
 - ${locationText}
-- You'll be among the first to discover great food deals nearby.
+- You'll be among the first to discover great food offers nearby.
 
 Visit https://trivvi.io for more info.
 

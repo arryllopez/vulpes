@@ -90,7 +90,7 @@ const BentoCard = ({
       </h3>
       <p className="max-w-lg text-sm md:text-base text-neutral-500">{description}</p>
     </div>
-    <div className="pointer-events-none absolute inset-0 transform-gpu group-hover:bg-black/3" />
+    <div className="pointer-events-none absolute inset-0 transform-gpu" />
   </motion.div>
 );
 

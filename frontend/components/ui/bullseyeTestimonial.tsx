@@ -27,7 +27,7 @@ const bullseyeTestimonial = () => {
       {/* Stats Bar */}
       <div className="bg-gray-50 rounded-xl p-4 mb-6 text-center">
         <p className="text-2xl font-bold text-gray-900 font-(family-name:--font-caudex)">1.2K</p>
-        <p className="text-xs text-gray-500 font-(family-name:--font-caudex)">Deals Redeemed</p>
+        <p className="text-xs text-gray-500 font-(family-name:--font-caudex)">Total Trivvi Visits</p>
       </div>
 
       {/* See Reviews Button */}

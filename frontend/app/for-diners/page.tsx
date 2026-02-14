@@ -64,7 +64,7 @@ export default function ForDiners() {
   const features = [
     {
       name: "Get notified, not spammed",
-      description: "Open the Trivvi app to receive alerts for real-time deals nearby.",
+      description: "Open the Trivvi app to receive alerts for real-time offers nearby. You control what foods you see, how far you'll go, and how often we notify you.",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3 min-h-[280px] md:min-h-[320px]",
       background: (
         <div
@@ -73,8 +73,8 @@ export default function ForDiners() {
             background: "linear-gradient(to bottom, #abc4ff 0%, #ccdbfd 30%, #ffffff 70%)"
           }}
         >
-          <div className="absolute -top-80 md:-top-72 left-1/2 -translate-x-1/2 scale-[0.7] md:scale-[0.9] origin-top">
-            <IphoneStep3Map />
+          <div className="absolute -top-80 md:-top-88 left-1/2 -translate-x-1/2 scale-[0.7] md:scale-[0.9] origin-top">
+            <IphoneStep3Map notificationBody="Pho Tien is less busy right now (200m away)" />
           </div>
         </div>
       ),
@@ -222,7 +222,7 @@ export default function ForDiners() {
                 framerProps={{
                   show: { transition: { delay: 0.8 } },
                 }}
-                text="Better Prices."
+                text="Right Now."
               />
               <FadeText
                 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black font-(family-name:--font-caudex)"
@@ -230,26 +230,19 @@ export default function ForDiners() {
                 framerProps={{
                   show: { transition: { delay: 1.2 } },
                 }}
-                text="Just Next Door."
+                text="Near You."
               />
             </h1>
 
             <div className="py-10">
-              {/* <p className="text-lg md:text-xl text-black-600 mx-auto whitespace-nowrap">
-                Trivvi sends you deals from local restaurants during their quiet hours.
-                <br />
-                You save money, they fill seats.
-                <br />
-                Everybody wins.
-              </p> */}
-              <div className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl mx-auto">
+<div className="text-base md:text-xl lg:text-2xl text-black text-center w-full max-w-4xl mx-auto">
                 <TextEffect
                   per="word"
                   as="span"
                   preset="blur"
                   delay={1.6}
                 >
-                  {`Trivvi helps diners discover great food at better prices`}
+                  {`Trivvi helps diners discover great food and local favourites nearby.`}
                 </TextEffect>
               </div>
 
@@ -273,14 +266,14 @@ export default function ForDiners() {
                   Discover with Trivvi
                 </h3>
                 <p className="text-base md:text-lg lg:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed">
-                  Discover great food deals happening right now in your area.{" "}
+                  Discover great food offers happening right now in your area.{" "}
                   <br className="hidden md:block" />
                   <strong>Unique to your tastebuds.</strong>
                 </p>
                 <p className="text-base md:text-lg lg:text-xl text-gray-600 font-(family-name:--font-caudex) leading-relaxed mt-4">
                   Receive limited-time alerts from restaurants serving foods you love,{" "}
                   <br className="hidden md:block" />
-                  <strong>at exclusive prices.</strong>
+                  <strong>often at exclusive prices.</strong>
                 </p>
               </motion.div>
 
@@ -293,7 +286,7 @@ export default function ForDiners() {
               >
                 {/* Background phone - IphoneStep3Map */}
                 <div className="absolute -left-72 top-8 -rotate-10 z-0 scale-90">
-                  <IphoneStep3Map />
+                  <IphoneStep3Map notificationBody="$20 burger bundle @ Burgalicious (150m away)" />
                 </div>
                 {/* Foreground phone - IPhoneRecentChirps */}
                 <div className="relative z-10">
@@ -447,7 +440,7 @@ export default function ForDiners() {
                   transition={{ duration: 0.6, ease: "easeOut" }}
                   className="shrink-0"
                 >
-                  <IphoneStep3Map />
+                  <IphoneStep3Map notificationBody="Free drink with any entrée @ Theodore's (100m away)" />
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
@@ -463,7 +456,7 @@ export default function ForDiners() {
                     Stay in the loop
                   </p>
                   <p className="text-xl text-gray-500 font-(family-name:--font-caudex)">
-                    While the app is open, Chirp will send you alerts about great deals nearby. Relevant to your taste, right when you need it.
+                    While the app is open, Chirp will send you alerts about great offers nearby. Relevant to your taste, right when you need it.
                   </p>
                 </motion.div>
               </div>
@@ -500,7 +493,7 @@ export default function ForDiners() {
                 Meet Chirp
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 font-(family-name:--font-inter) max-w-lg mx-auto">
-                Your friendly guide to the best local deals. Chirp helps you discover amazing food at amazing prices, right in your area.
+                Your friendly guide to the best local offers. Chirp helps you discover amazing food nearby, right when you need it.
               </p>
             </motion.div>
 
@@ -511,7 +504,7 @@ export default function ForDiners() {
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
               className="shrink-0 flex items-center justify-center"
             >
-              <IphoneStep3Map />
+              <IphoneStep3Map notificationBody="$20 burger bundle @ Burgalicious (150m away)" />
             </motion.div>
           </div>
         </section>
@@ -545,7 +538,7 @@ export default function ForDiners() {
               faqs={[
                 {
                   question: "What is Trivvi?",
-                  answer: "Trivvi is a food discovery app that shows you great deals in your general area when you open it — from limited-time offers to hidden local spots worth checking out.",
+                  answer: "Trivvi is a food discovery app that shows you great offers in your general area when you open it — from limited-time specials to hidden local spots worth checking out.",
                 },
                 {
                   question: "Is Trivvi free for diners?",
@@ -557,7 +550,7 @@ export default function ForDiners() {
                 },
                 {
                   question: "Do all alerts include discounts?",
-                  answer: "Not always. Some Chirps highlight limited-time deals, while others spotlight great local spots when they're quieter than usual.",
+                  answer: "Not always. Some Chirps highlight limited-time offers, while others spotlight great local spots when they're quieter than usual.",
                 },
                 {
                   question: "How is this different from Yelp / Google Maps?",
@@ -573,7 +566,7 @@ export default function ForDiners() {
                 },
                 {
                   question: "Do I have to share my location?",
-                  answer: "Nope! You can manually set your location anytime. If you opt in, Trivvi checks your area only when you open the app — never in the background. Deals shown match your food preferences.",
+                  answer: "Nope! You can manually set your location anytime. If you opt in, Trivvi checks your area only when you open the app — never in the background. Offers shown match your food preferences.",
                 },
                 {
                   question: "How do restaurants benefit from Trivvi?",
@@ -618,6 +611,15 @@ export default function ForDiners() {
                 ),
                 href: "https://www.instagram.com/trivvi.io/",
                 label: "Instagram",
+              },
+              {
+                icon: (
+                  <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+                  </svg>
+                ),
+                href: "https://www.tiktok.com/@trivviapp",
+                label: "TikTok",
               },
               {
                 icon: <Mail className="h-5 w-5" />,

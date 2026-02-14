@@ -16,7 +16,7 @@ const caudex = Caudex({
 
 export const metadata: Metadata = {
   title: "Trivvi - Connecting Diners & Restaurants",
-  description: "Trivvi connects hungry diners with local restaurants offering exclusive deals.",
+  description: "Trivvi helps diners discover great food and exclusive offers from local restaurants nearby.",
   metadataBase: new URL("https://trivvi.io"),
   icons: {
     icon: "/imageAssets/trivviLogo.svg",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Trivvi",
     title: "Trivvi - Connecting Diners & Restaurants",
-    description: "Discover exclusive food deals from local restaurants near you.",
+    description: "Discover great food and exclusive offers from local restaurants near you.",
     url: "https://trivvi.io",
     images: [
       {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Trivvi - Connecting Diners & Restaurants",
-    description: "Discover exclusive food deals from local restaurants near you.",
+    description: "Discover great food and exclusive offers from local restaurants near you.",
     images: ["/og-image.png"],
   },
 };
@@ -50,7 +50,7 @@ const jsonLd = {
   "@type": "SoftwareApplication",
   name: "Trivvi",
   applicationCategory: "FoodService",
-  description: "Trivvi connects hungry diners with local restaurants offering exclusive deals and limited-time offers.",
+  description: "Trivvi helps diners discover great food and exclusive offers from local restaurants nearby.",
   operatingSystem: "iOS, Android",
   offers: {
     "@type": "Offer",

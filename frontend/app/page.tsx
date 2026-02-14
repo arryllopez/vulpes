@@ -57,14 +57,14 @@ export default function Home() {
             <BlurFade delay={1.8} duration={0.5}>
               <Link href="/for-diners">
                 <GlassButton size="lg" contentClassName="text-black">
-                  I&apos;m hungry for deals
+                  For Diners
                 </GlassButton>
               </Link>
             </BlurFade>
             <BlurFade delay={2.0} duration={0.5}>
               <Link href="/for-restaurants">
                 <GlassButton size="lg" contentClassName="text-black">
-                  I run a restaurant
+                  For Restaurants
                 </GlassButton>
               </Link>
             </BlurFade>

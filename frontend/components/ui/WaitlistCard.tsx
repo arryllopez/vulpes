@@ -134,10 +134,10 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                 {/* Header */}
                 <div className="mb-6">
                   <h2 className="text-3xl font-bold text-gray-900 mb-3 font-(family-name:--font-caudex)">
-                    Get deals before anyone else
+                    Get offers before anyone else
                   </h2>
                   <p className="text-gray-600 text-base leading-relaxed mb-3">
-                    Join as a <strong className="text-gray-900">founding member</strong> and get early access to restaurant deals in your neighbourhood before we open to the public.
+                    Join as a <strong className="text-gray-900">founding member</strong> and get early access to nearby food offers before restaurants open them to the public.
                   </p>
                   <p className="text-xs text-gray-500">
                     Launching in Toronto. Expanding soon.
@@ -250,7 +250,7 @@ export function WaitlistCard({ onSubmit }: WaitlistCardProps) {
                     <p className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
                       {notFromToronto
                         ? "Please enter your city to help us understand where to expand!"
-                        : "Please select both a primary and secondary neighbourhood to help us understand where to launch first!"}
+                        : "Please select a primary neighbourhood to help us understand where to launch first!"}
                     </p>
                   )}
 

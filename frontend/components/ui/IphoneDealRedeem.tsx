@@ -73,7 +73,7 @@ const IPhoneDealRedeem = () => {
               Take me there
             </button>
             <button className="w-full h-12 mt-3 bg-gradient-to-r from-[#b6ccfe] to-[#c1d3fe] text-gray-800 rounded-xl font-bold text-base flex items-center justify-center gap-2 shadow-lg shadow-blue-100 active:scale-95 transition-transform font-(family-name:--font-caudex)">
-                Redeem Deal
+                Redeem Offer
             </button>
           </div>
         </div>
